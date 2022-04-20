@@ -16,7 +16,7 @@
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow)">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html" style="font-size: 30px">Shisha shop</a><button
+            <a class="navbar-brand" href="/sysdev-project/Admin" style="font-size: 30px">Shisha shop</a><button
                 data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2">
                 <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
             </button>
@@ -25,26 +25,26 @@
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">Products</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/------">Add a hookah</a>
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/------">Add an accessory</a>
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/------">Manage products</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/addHookah">Add a hookah</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/addAccessory">Add an accessory</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/manageProduct">Manage products</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">Settings</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/------">Change email</a>
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/------">Change password</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/changeEmail">Change email</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/changePassword">Change password</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">Edit</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Edit Contact Us</a><a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/-------">Edit About Us</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/editContactUs">Edit Contact Us</a><a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/editAboutUs">Edit About Us</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo URLROOT; ?>/Admin/-------">Preview Database</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/Admin/previewDatabase">Preview Database</a>
                     </li>
                 </ul>
                 <form class="d-flex me-auto navbar-form" target="_self">
