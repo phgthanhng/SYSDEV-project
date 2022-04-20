@@ -13,7 +13,7 @@
           ">
                 <img class="img-responsive" src="<?php echo URLROOT; ?>/img/hookah.jpg" />
                 <div class="d-xxl-flex" style="position: absolute; bottom: 0">
-                    <a href="browse_hookah.html" style="text-decoration: none;">
+                    <a href="<?php echo URLROOT; ?>/Hookah/index" style="text-decoration: none;">
                         <h1 class="d-xxl-flex align-items-center" style="color: #ffffff; font-weight: bold">
                             Hookahs
                         </h1>
@@ -31,7 +31,7 @@
           ">
                 <img class="img-responsive" src="<?php echo URLROOT; ?>/img/accessories1%20(1).jpg" />
                 <div class="d-xxl-flex" style="position: absolute; bottom: 0">
-                    <a href="browse_accessory.html" style="text-decoration: none;">
+                    <a href="<?php echo URLROOT; ?>/Accessories/index" style="text-decoration: none;">
                         <h1 class="d-xxl-flex align-items-center" style="color: #ffffff; font-weight: bold">
                             Accessories
                         </h1>
