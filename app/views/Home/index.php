@@ -4,7 +4,7 @@
         <h1 style="text-align: center; margin-top: 50px">Browse products</h1>
         <div class="row" style="margin-top: 50px; margin-bottom: 50px">
             <div class="float-start col" style="
-            height: 400px; /*width: 500px;*/
+            height: 400px;
             opacity: 0.8;
             display: flex;
             justify-content: center;
@@ -21,11 +21,11 @@
                 </div>
             </div>
             <div class="float-start col" style="
-            height: 400px; /*width: 100%;*/
+            height: 400px; 
             opacity: 0.8;
             display: flex;
             justify-content: center;
-            position: relative; /*object-fit: cover;*/
+            position: relative;
             margin-right: 30px;
             margin-left: 30px;
           ">

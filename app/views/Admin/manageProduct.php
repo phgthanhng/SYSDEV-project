@@ -1,43 +1,41 @@
-<?php require APPROOT . '/views/includes/adminheader.php';?>
+<?php require APPROOT . '/views/includes/adminheader.php'; ?>
 
+<div class="table-responsive" style="transform: scale(1);transform-origin: top;opacity: 0.88;filter: contrast(92%);margin-top: 60px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="background: #ffffff;border-color: #000000;">Product Name</th>
+                <th style="background: #ffffff;border-bottom-color: #000000;">Category</th>
+                <th colspan="3" style="background: #ffffff;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if (!empty($data[""])) {
+                foreach ($data[""] as $product) {
+                    echo "<tr>";
+                    echo "<td style='background: #ffffff;'>
+                        </td>";
+                    echo "<td style='background: #ffffff;'>
+                        </td>";
 
-<div class="container" style="margin-bottom: 40px">
-    <h1 style="text-align: center; margin-top: 50px">Browse products</h1>
-    <div class="row" style="margin-top: 50px; margin-bottom: 50px">
-        <div class="float-start col" style="
-            height: 400px; /*width: 500px;*/
-            opacity: 0.8;
-            display: flex;
-            justify-content: center;
-            position: relative;
-            margin-left: 30px;
-          ">
-          <!-- Hookah src here -->
-            <img class="img-responsive" src="<?php echo URLROOT; ?>/img/hookah.jpg" />
-            <div class="d-xxl-flex" style="position: absolute; bottom: 0">
-                <h1 class="d-xxl-flex align-items-center" style="color: #ffffff; font-weight: bold">
-                    Hookahs
-                </h1>
-            </div>
-        </div>
-        <div class="float-start col" style="
-            height: 400px; /*width: 100%;*/
-            opacity: 0.8;
-            display: flex;
-            justify-content: center;
-            position: relative; /*object-fit: cover;*/
-            margin-right: 30px;
-            margin-left: 30px;
-          ">
-          <!-- Accessories src here -->
-            <img class="img-responsive" src="<?php echo URLROOT; ?>/img/accessories1%20(1).jpg" />
-            <div class="d-xxl-flex" style="position: absolute; bottom: 0">
-                <h1 class="d-xxl-flex align-items-center" style="color: #ffffff; font-weight: bold">
-                    Accessories
-                </h1>
-            </div>
-        </div>
-    </div>
+                    echo "<td style='background: #ffffff;'>
+                        <a href=''>Details</a>
+                        </td>";
+                    echo "<td style='background: #ffffff;'>
+                        <a href=''>Edit</a>
+                        </td>";
+                    echo "<td style='background: #ffffff;'>
+                        <a href=''>Delete</a>
+                        </td>";
+                    echo "</tr>";
+                }
+            }
+            ?>
+        </tbody>
+    </table>
 </div>
 
-<?php require APPROOT . '/views/includes/footer.php';?>
+
+
+<?php require APPROOT . '/views/includes/footer.php'; ?>

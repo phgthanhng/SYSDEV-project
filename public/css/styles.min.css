@@ -336,13 +336,22 @@ p {
 
 .card-body {
     transition: transform 0.2s ease;
-  }
+}
 
 .card-body:hover {
     transform: scale(1.1);
-  }
+}
 
-  body,
+body,
 html {
-  height: 75%;
+    height: 75%;
+}
+
+h1.d-xxl-flex {
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto;
 }
