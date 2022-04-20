@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2022 at 12:41 AM
+-- Generation Time: Apr 21, 2022 at 01:38 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `shishadb`
 --
+CREATE DATABASE IF NOT EXISTS `shishadb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `shishadb`;
 
 -- --------------------------------------------------------
 
@@ -32,6 +34,13 @@ CREATE TABLE `about_us` (
   `image` varchar(255) DEFAULT NULL,
   `text` varchar(800) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `about_us`
+--
+
+INSERT INTO `about_us` (`about_id`, `image`, `text`) VALUES
+(0, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat aliquam odio, non gravida sem vehicula non. Suspendisse non congue sem, fringilla ultrices ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis est augue, vehicula in dolor id, viverra mattis lectus. Phasellus sed ex sit amet velit tristique pharetra eu nec lorem. Praesent tempor imperdiet posuere. Sed a tortor gravida diam tincidunt cursus id at quam. Nunc interdum tempus hendrerit. Quisque vitae elementum purus. Nam pharetra porta porttitor. Aenean vehicula posuere elit, sit amet vehicula lacus porta nec. Donec ipsum leo, varius non varius nec, ultricies in lorem.Pellentesque in ligula maximus, gravida risus et, congue tellus. Phasellus malesuada tellus in nulla vestibulum pharetra. Phasellus co');
 
 -- --------------------------------------------------------
 
@@ -65,6 +74,13 @@ CREATE TABLE `admin` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `contact_id`, `about_id`, `email`, `password`) VALUES
+(0, 0, 0, 'admin@email.com', '$2y$10$ZBe3udFijMgmuC5KTvG43e9CGPVql7Qm0fmgCklUP/QMliZ0dNSaS');
+
 -- --------------------------------------------------------
 
 --
@@ -74,9 +90,17 @@ CREATE TABLE `admin` (
 CREATE TABLE `contact` (
   `contact_id` int(11) NOT NULL,
   `businessEmail` varchar(30) NOT NULL,
+  `phone` text NOT NULL,
   `location` varchar(255) NOT NULL,
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`contact_id`, `businessEmail`, `phone`, `location`, `name`) VALUES
+(0, 'CONTACT@EMAIL.COM', '514-420-6969', '821 AV. SAINTE-CROIX, SAINT-LAURENT, QC H4L39X', 'John Doe');
 
 -- --------------------------------------------------------
 
@@ -118,6 +142,7 @@ ALTER TABLE `accessory`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `FK_admin_contact` (`contact_id`),
   ADD KEY `FK_admin_aboutus` (`about_id`);
 
