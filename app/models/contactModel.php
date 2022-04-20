@@ -5,71 +5,85 @@
             parent::__construct();
         }
 
-        public function getAdmin($admin_id){
-            $this->query("SELECT contact_id 
-                          FROM admin 
-                          WHERE admin_id = :admin_id");
+        // public function getAdmin($admin_id){
+        //     $this->query("SELECT contact_id 
+        //                   FROM admin 
+        //                   WHERE admin_id = :admin_id");
+
+        //     $this->bind("admin_id",$admin_id);
+
+        //     return $this->getSingle();
+
+        // }
+
+        public function getContact($admin_id){
+
+
+            $this->query("SELECT businessEmail, location, name 
+                          FROM contact 
+                          WHERE admin.admin_id = :admin_id 
+                          JOIN admin ON contact.admin_id = admin.admin_id");
 
             $this->bind("admin_id",$admin_id);
 
             return $this->getSingle();
-
         }
 
-        public function getContact($admin_id){
-
-            $contact = $this->getAdmin($admin_id);
-
-            $this->query("SELECT businessEmail, location, name 
-                          FROM contact 
-                          WHERE contact_id = :contact_id");
-
-            $this->bind("contact_id",$contact->contact_id);
-
-            return $this->getSingle();
-        }
-
-
-        public function updateEmail($admin_id,$email){
-
-            $contact = $this->getAdmin($admin_id);
-
+        public function updateContact($admin_id,$email,$location,$phone,$name){
             $this->query("UPDATE contact 
-                          businessEmail = :email 
-                          WHERE contact_id = :contact_id");
+                          SET businessEmail = :email, location = :location, phone = :phone, name = :name 
+                          WHERE admin.admin_id = :admin_id 
+                          JOIN admin ON contact.admin_id = admin.admin_id");
 
-            $this->bind("email",$email);
-            $this->bind("contact_id",$contact->contact_id);
-
-            return $this->execute();
-        }
-
-        public function updateLocation($admin_id,$location){
-
-            $contact = $this->getAdmin($admin_id);
-
-            $this->query("UPDATE contact 
-                          location = :location 
-                          WHERE contact_id = :contact_id");
-
+            $this->bind("admin_id",$admin_id);
+            $this->bind("businessEmail",$email);
             $this->bind("location",$location);
-            $this->bind("contact_id",$contact->contact_id);
-
-            return $this->execute();
-        }
-
-        public function updateName($admin_id,$name){
-
-            $contact = $this->getAdmin($admin_id);
-
-            $this->query("UPDATE contact 
-                          name = :name 
-                          WHERE contact_id = :contact_id");
-
+            $this->bind("phone",$phone);
             $this->bind("name",$name);
-            $this->bind("contact_id",$contact->contact_id);
 
             return $this->execute();
         }
+
+        // public function updateEmail($admin_id,$email){
+
+
+            // $this->query("UPDATE contact 
+            //               businessEmail = :email 
+            //               WHERE contact.admin_id = :admin_id 
+            //               JOIN admin ON contact.admin_id = admin.admin_id");
+
+        //     $this->bind("email",$email);
+        //     $this->bind("admin_id",$admin_id);
+
+        //     return $this->execute();
+        // }
+
+        // public function updateLocation($admin_id,$location){
+
+
+        //     $this->query("UPDATE contact 
+        //                   location = :location 
+        //                   WHERE admin.admin_id = :admin_id 
+        //                   JOIN admin ON contact.admin_id = admin.admin_id");
+
+        //     $this->bind("location",$location);
+        //     $this->bind("admin_id",$admin_id);
+
+        //     return $this->execute();
+        // }
+
+        // public function updateName($admin_id,$name){
+
+
+        //     $this->query("UPDATE contact 
+        //                   name = :name 
+        //                   WHERE admin.admin_id = :admin_id 
+        //                   JOIN admin ON contact.admin_id = admin.admin_id");
+
+        //     $this->bind("name",$name);
+        //     $this->bind("admin_id",$admin_id);
+
+        //     return $this->execute();
+        // }
     }
 ?>
