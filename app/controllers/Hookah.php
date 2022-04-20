@@ -7,6 +7,7 @@ class Hookah extends Controller {
     }
 
     public function index() {
-        echo 'index page of the hookah controller';
+        $this->view('Hookah/index');
+        // echo 'index page of the hookah controller';
     }
 }

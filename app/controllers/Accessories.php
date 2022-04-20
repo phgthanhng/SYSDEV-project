@@ -7,6 +7,7 @@ class Accessories extends Controller {
     }
 
     public function index() {
-        echo 'index page of the accessories controller';
+        $this->view('Accessories/index');
+        // echo 'index page of the accessories controller';
     }
 }

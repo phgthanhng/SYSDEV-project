@@ -7,11 +7,17 @@ class Admin extends Controller {
     }
 
     public function index() {
-        echo 'index page of the admin controller';
+        $this->view('Admin/index');
+        // echo 'index page of the admin controller';
     }
 
     public function login() {
-        echo 'login page';
+        $this->view('Admin/login');
+        // echo 'login page';
+    }
+
+    public function createSession() {
+        
     }
 
     public function logout() {

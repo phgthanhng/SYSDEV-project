@@ -24,22 +24,22 @@
                           WHERE admin.admin_id = :admin_id 
                           JOIN admin ON contact.admin_id = admin.admin_id");
 
-            $this->bind("admin_id",$admin_id);
+            $this->bind("admin_id", $admin_id);
 
             return $this->getSingle();
         }
 
-        public function updateContact($admin_id,$email,$location,$phone,$name){
+        public function updateContact($admin_id, $email, $location, $phone, $name){
             $this->query("UPDATE contact 
                           SET businessEmail = :email, location = :location, phone = :phone, name = :name 
                           WHERE admin.admin_id = :admin_id 
                           JOIN admin ON contact.admin_id = admin.admin_id");
 
-            $this->bind("admin_id",$admin_id);
-            $this->bind("businessEmail",$email);
-            $this->bind("location",$location);
-            $this->bind("phone",$phone);
-            $this->bind("name",$name);
+            $this->bind("admin_id", $admin_id);
+            $this->bind("businessEmail", $email);
+            $this->bind("location", $location);
+            $this->bind("phone", $phone);
+            $this->bind("name", $name);
 
             return $this->execute();
         }
