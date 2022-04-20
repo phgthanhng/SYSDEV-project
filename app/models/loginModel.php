@@ -15,6 +15,15 @@ class loginModel extends Model{
         return $this->getSingle();
     }
 
+    public function getAdminByEmail($email) {
+        $this->query("SELECT *
+                        FROM admin
+                        WHERE email = :email");
+        $this->bind(":email", $email);
+
+        return $this->getSingle();
+    }
+
     public function updateEmail($admin_id,$email){
         $this->query("UPDATE admin 
                         SET email = :email 
