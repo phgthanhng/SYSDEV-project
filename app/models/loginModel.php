@@ -6,12 +6,12 @@
             parent::__construct();
         }
 
-        public function getAdmin($admin_id){
+        public function getAdmin($email){
             $this->query("SELECT password 
                           FROM admin 
-                          WHERE admin_id = :admin_id");
+                          WHERE email = :email");
 
-            $this->bind("admin_id",$admin_id);
+            $this->bind("email",$email);
 
             return $this->getSingle();
         }
