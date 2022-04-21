@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/font-awesome.min.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/ionicons.min.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Heebo:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
