@@ -25,17 +25,19 @@ class aboutUsModel extends Model{
         return $this->getSingle();
     }
 
-    public function updateAboutUs($admin_id, $text, $image){
+    public function updateAboutUs($admin_id, $about_us){
         $this->query("UPDATE about_us 
                         SET text = :text, image = :image 
                         WHERE admin.admin_id = :admin_id 
                         JOIN admin ON about_us.admin_id = admin.admin_id");
 
         $this->bind(":admin_id", $admin_id);
-        $this->bind(":text", $text);
-        $this->bind(":image", $image);
+        $this->bind(":text", $about_us["text"]);
+        $this->bind(":image", $about_us["image"]);
 
         return $this->execute();
     }
+
+    
 }
 ?>
