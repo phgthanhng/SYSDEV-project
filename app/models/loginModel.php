@@ -10,7 +10,7 @@ class loginModel extends Model{
                         FROM admin 
                         WHERE admin_id = :admin_id");
 
-        $this->bind("admin_id",$admin_id);
+        $this->bind(":admin_id",$admin_id);
 
         return $this->getSingle();
     }
@@ -29,8 +29,8 @@ class loginModel extends Model{
                         SET email = :email 
                         WHERE admin_id = :admin_id");
 
-        $this->bind("admin_id",$admin_id);
-        $this->bind("email",$email);
+        $this->bind(":admin_id",$admin_id);
+        $this->bind(":email",$email);
         
         return $this->execute();
     }
@@ -40,8 +40,8 @@ class loginModel extends Model{
                         SET password = :password 
                         WHERE admin_id = :admin_id");
 
-        $this->bind("admin_id",$admin_id);
-        $this->bind("password",$password);
+        $this->bind(":admin_id",$admin_id);
+        $this->bind(":password",$password);
 
         return $this->execute();
     }

@@ -7,98 +7,77 @@ class Admin extends Controller {
         $this->loginModel = $this->model('loginModel');
     }
 
-    public function index() {
-        if (!isLoggedIn()) {
-            echo 'You do not have permission to access this page';
-            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
-            return;
-        }
+    public function denyPermission() {
+        echo '
+            <div style="background-color:#000;  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <h1 style="color:red;text-align: center;padding:5px;"> 
+                    You do not have permission to access this page!
+                </h1>
+            </div>';
+        echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
+    }
 
+    public function index() {
+        if (!isLoggedIn())
+           return $this->denyPermission(); 
+        
         return $this->view('Admin/index');
     }
 
     public function addHookah() {
-        if (!isLoggedIn()) {
-            echo 'You do not have permission to access this page';
-            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
-            return;
-        }
-
+        if (!isLoggedIn()) 
+           return $this->denyPermission();
+        
         return $this->view('Admin/addHookah');
     }
 
     public function addAccessory() {
-        if (!isLoggedIn()) {
-            echo 'You do not have permission to access this page';
-            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
-            return;
-        }
+        if (!isLoggedIn()) 
+           return $this->denyPermission();    
 
         return $this->view('Admin/addAccessory');
     }
 
     public function manageProduct() {
-        if (!isLoggedIn()) {
-            echo 'You do not have permission to access this page';
-            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
-            return;
-        }
-
+        if (!isLoggedIn()) 
+           return $this->denyPermission();
+        
         return $this->view('Admin/manageProduct');
     }
 
     public function changeEmail() {
-        if (!isLoggedIn()) {
-            echo 'You do not have permission to access this page';
-            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
-            return;
-        }
-
+        if (!isLoggedIn()) 
+            return $this->denyPermission();
+        
         return $this->view('Admin/changeEmail');
     }
 
     public function changePassword() {
-        if (!isLoggedIn()) {
-            echo 'You do not have permission to access this page';
-            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
-            return;
-        }
-
+        if (!isLoggedIn()) 
+            return $this->denyPermission();
+        
         return $this->view('Admin/changePassword');
     }
 
     public function editContactUs() {
-        if (!isLoggedIn()) {
-            echo 'You do not have permission to access this page';
-            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
-            return;
-        }
-
+        if (!isLoggedIn()) 
+            return $this->denyPermission();
+        
         return $this->view('Admin/editContactUs');
     }
 
     public function editAboutUs() {
-        if (!isLoggedIn()) {
-            echo 'You do not have permission to access this page';
-            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
-            return;
-        }
+        if (!isLoggedIn()) 
+            return $this->denyPermission();
 
         return $this->view('Admin/editAboutUs');
     }
 
     public function previewDatabase() {
-        if (!isLoggedIn()) {
-            echo 'You do not have permission to access this page';
-            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
-            return;
-        }
-
+        if (!isLoggedIn()) 
+            return $this->denyPermission();
+       
         return $this->view('Admin/previewDatabase');
-    }
-
-    public function createSession() {
-        
     }
 
     public function login() {
