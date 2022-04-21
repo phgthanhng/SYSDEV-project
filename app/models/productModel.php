@@ -66,8 +66,7 @@
             $this->bind(":description",$accessory["description"]);
             $this->bind(":brand",$accessory["brand"]);
             $this->bind(":image",$accessory["image"]);
-            $this->bind(":hookah_id",$accessory["hookah_id"]);
-            $this->bind(":accessory_id",$accessory["accessory_id"]);
+            
 
             return $this->execute();
         }
