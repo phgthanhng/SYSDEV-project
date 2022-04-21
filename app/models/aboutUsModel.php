@@ -14,6 +14,13 @@ class aboutUsModel extends Model{
 
     // }
 
+    public function getAllAboutUs(){
+        $this->query("SELECT * 
+                      FROM about_us");
+
+        return $this->getResultSet();
+    }
+    
     public function getAboutUs($admin_id){
         $this->query("SELECT image, text 
                         FROM about_us 

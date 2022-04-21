@@ -5,6 +5,13 @@ class loginModel extends Model{
         parent::__construct();
     }
 
+    public function getAllAdmin(){
+        $this->query("SELECT * 
+                      FROM admin");
+
+        return $this->getResultSet();
+    }
+
     public function getAdmin($admin_id){
         $this->query("SELECT password 
                         FROM admin 
