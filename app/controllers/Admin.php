@@ -58,7 +58,28 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
            return $this->denyPermission();    
 
-        return $this->view('Admin/addAccessory');
+           if (!isset($_POST['submit']))
+           {
+               return $this->view('Admin/addAccessory');
+           }
+           else 
+           {
+               $data = [
+                   "name" => $_POST['name'],
+                   "price" => $_POST['price'],
+                   "category" => $_POST['category'],
+                   "quantity" => $_POST['quantity'],
+                   "description" => $_POST['desc'],
+                   "brand" => $_POST['brand'],
+                   "image" => $this->imageUpload()
+               ];
+   
+               if ($this->productModel->addAccessory($data))
+               {
+                   echo 'Adding accessory to database...';
+                   echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
+               }
+           }
     }
 
     public function manageProduct() {
