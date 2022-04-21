@@ -15,14 +15,13 @@ function validateForm() {
 <div style="width: 100%">
     <section class="login-dark">
       <form method="post" name="editEmail" method="post" >
-        <div class="illustration">
-          <i class="icon ion-ios-locked-outline"></i>
-        </div>
+      <h2 class="text-center" style="color: #ffffff;">Change Email</h2>
         <div class="mb-3">
+          <!-- put current email here -->
           <input class="form-control" type="email" name="current_email" id="email" value="" readonly />
         </div>
         <div class="mb-3">
-          <input class="form-control" type="email" name="email" id="email" placeholder="Password" />
+          <input class="form-control" type="email" name="email" id="email" placeholder="New emal" />
         </div>
         <div class="mb-3">
           <input class="form-control" type="email" name="verify_email" id="verify_email" placeholder="Confirm your new email" />

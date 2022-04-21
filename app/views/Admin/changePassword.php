@@ -13,10 +13,9 @@ function validateForm() {
 <div style="width: 100%">
     <section class="login-dark">
       <form method="post" name="editPassword" method="post" onsubmit="return validateForm()">
-        <div class="illustration">
-          <i class="icon ion-ios-locked-outline"></i>
-        </div>
+      <h2 class="text-center" style="color: #ffffff;">Change Password</h2>
         <div class="mb-3">
+          <!-- put admin's email here -->
           <input class="form-control" type="email" name="email" id="email" value="" readonly />
         </div>
         <div class="mb-3">

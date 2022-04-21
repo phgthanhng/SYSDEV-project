@@ -1,8 +1,8 @@
 <?php require APPROOT . '/views/includes/adminheader.php';?>
 
-<div style="margin-top: 50px; margin-bottom: 60px">
+<div style="margin-top: 50px; margin-bottom: 50px">
     <form method="post" enctype="multipart/form-data">
-        <div class="d-flex flex-column justify-content-center" id="accessory_form" style="margin-bottom: 50px">
+        <div class="d-flex flex-column justify-content-center" id="accessory_form">
             <div class="login-box-header">
                 <h4 style="
                 color: #000000;
@@ -15,13 +15,13 @@
             <div class="accessory_input" style="background-color: #ffffff" name="name">
                 <label class="form-label">Name:</label><input class="form-control form-control" type="text" required=""
                     minlength="6" name="name" /><label class="form-label" style="margin-top: 10px">Price:</label><input
-                    class="form-control form-control" type="number" required="" step="0.01" name="price" /><label
+                    class="form-control form-control" type="number" min="0" required="" step="0.01" name="price"/><label
                     class="form-label" style="margin-top: 10px">Category:</label><input
                     class="form-control form-control" type="text" required="" name="category" /><label
                     class="form-label" style="margin-top: 10px">Quantity:</label><input
                     class="form-control form-control" type="number" required="" min="1" name="quantity" /><label
                     class="form-label" style="margin-top: 10px">Description:</label><textarea
-                    class="form-control form-control" name="desc"></textarea><label class="form-label"
+                    class="form-control form-control" name="desc" style="height: 200px;"></textarea><label class="form-label"
                     style="margin-top: 10px">Brand:</label><input class="form-control form-control" type="text"
                     required="" name="brand" /><label class="form-label" style="margin-top: 10px">Image:</label><input
                     class="form-control form-control" type="file" required="" minlength="6" name="image" />

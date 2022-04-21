@@ -15,13 +15,13 @@
                 <label class="form-label">Name:</label>
                 <input class="form-control form-control" type="text" required="" minlength="6" name="name" value="" />
                 <label class="form-label" style="margin-top: 10px">Price:</label>
-                <input class="form-control form-control" type="number" required="" step="0.01" name="price" value=""/>
+                <input class="form-control form-control" type="number" required="" step="0.01" min="0" name="price" value=""/>
                 <label class="form-label" style="margin-top: 10px">Category:</label>
                 <input class="form-control form-control" type="text" required="" name="category" value=""/>
                 <label class="form-label" style="margin-top: 10px">Quantity:</label>
                 <input class="form-control form-control" type="number" required="" min="1" name="quantity" value=""/>
                 <label class="form-label" style="margin-top: 10px">Description:</label>
-                <textarea class="form-control form-control" name="desc"> <?php ?> </textarea>
+                <textarea class="form-control form-control" name="desc" style="height: 200px;"> <?php ?> </textarea>
                 <label class="form-label" style="margin-top: 10px">Brand:</label>
                 <input class="form-control form-control" type="text" required="" name="brand" />
                 <label class="form-label" style="margin-top: 10px" >Image:</label>
