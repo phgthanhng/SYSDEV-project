@@ -27,17 +27,17 @@
             return $this->getSingle();
         }
 
-        public function updateContact($admin_id, $email, $location, $phone, $name) { 
+        public function updateContact($admin_id,$contact) { 
             $this->query("UPDATE contact 
                           SET businessEmail = :email, location = :location, phone = :phone, name = :name 
                           WHERE admin.admin_id = :admin_id 
                           JOIN admin ON contact.admin_id = admin.admin_id");
 
             $this->bind(":admin_id", $admin_id);
-            $this->bind(":email", $email);
-            $this->bind(":location", $location);
-            $this->bind(":phone", $phone);
-            $this->bind(":name", $name);
+            $this->bind(":email", $contact["email"]);
+            $this->bind(":location", $contact["location"]);
+            $this->bind(":phone", $contact["phone"]);
+            $this->bind(":name", $contact["name"]);
 
             return $this->execute();
         }
