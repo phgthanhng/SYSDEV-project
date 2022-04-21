@@ -49,7 +49,7 @@
         box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 0.1);
     }
 
-    
+
     p.max-content {
         width: max-content;
     }
@@ -57,23 +57,24 @@
     p.min-content {
         width: min-content;
     }
-    </style>
+</style>
 <div class="container" style="max-width: 100rem; margin-top: 100px; margin-bottom: 100px; margin-inline:auto; padding-inline: 2rem;">
     <div class="product-grid">
-        <div class="card stacked">
-
-            <?php
-            if (!empty($data[""])) {
-                foreach($data[""] as $product) {
-                    echo '<img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">';
-                    echo '<div class="card__content">';
-                    echo '<h2 class="card__title">' . $product->name . '</h2>';
-                    echo '<p class="card__price">' . $product->price . '</p>';
-                    echo '</div>';
-                }
+        <?php
+        if (!empty($data[""])) {
+            foreach ($data[""] as $product) {
+                echo '<a href="" style="text-decoration: none;">';
+                echo '<div class="card stacked">';
+                echo '<img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">';
+                echo '<div class="card__content">';
+                echo '<h2 class="card__title">' . $product->name . '</h2>';
+                echo '<p class="card__price">' . $product->price . '</p>';
+                echo '</div>';
+                echo '</div>';
+                echo '</a>';
             }
-            ?>
-        </div>
+        }
+        ?>
     </div>
 </div>
 
