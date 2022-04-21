@@ -59,7 +59,7 @@
     }
 </style>
 <div class="container" style="max-width: 100rem; margin-top: 100px; margin-bottom: 100px; margin-inline:auto; padding-inline: 2rem;">
-    <div class="product-grid">
+    <div class="product-grid">        
         <?php
         if (!empty($data[""])) {
             foreach ($data[""] as $product) {
