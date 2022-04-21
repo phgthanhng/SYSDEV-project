@@ -40,8 +40,8 @@
         }
 
         public function addHookah($hookah){
-            $this->query("INSERT INTO hookah (name,price,color,type,quantity,description,brand,image,hookah_id)
-                          VALUES (:name,:price,:color,:type,:quantity,:description,:brand,:image,:hookah_id)" );
+            $this->query("INSERT INTO hookah (name,price,color,type,quantity,description,brand,image)
+                          VALUES (:name,:price,:color,:type,:quantity,:description,:brand,:image)" );
 
             $this->bind(":name",$hookah["name"]);
             $this->bind(":price",$hookah["price"]);
@@ -51,7 +51,6 @@
             $this->bind(":description",$hookah["description"]);
             $this->bind(":brand",$hookah["brand"]);
             $this->bind(":image",$hookah["image"]);
-            $this->bind(":hookah_id",$hookah["hookah_id"]);
 
             return $this->execute();
         }

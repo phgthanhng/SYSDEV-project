@@ -29,7 +29,7 @@
         </div>
         <div class="submit-row" style="margin-bottom: 8px; padding-top: 0px">
             <button class="btn btn-primary d-block box-shadow w-100" id="submit-id-submit" type="submit"
-                style="background: #081210; margin-top: 20px">
+                style="background: #081210; margin-top: 20px" name="submit">
                 Create
             </button>
             <div class="d-flex justify-content-between"></div>

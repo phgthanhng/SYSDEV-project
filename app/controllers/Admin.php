@@ -5,6 +5,7 @@ class Admin extends Controller {
     {
         // initialise models here
         $this->loginModel = $this->model('loginModel');
+        $this->productModel = $this->model('productModel');
     }
 
     public function denyPermission() {
@@ -28,7 +29,29 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
            return $this->denyPermission();
         
-        return $this->view('Admin/addHookah');
+        if (!isset($_POST['submit']))
+        {
+            return $this->view('Admin/addHookah');
+        }
+        else 
+        {
+            $data = [
+                "name" => $_POST['name'],
+                "price" => $_POST['price'],
+                "color" => $_POST['color'],
+                "type" => $_POST['type'],
+                "quantity" => $_POST['quantity'],
+                "description" => $_POST['desc'],
+                "brand" => $_POST['brand'],
+                "image" => $this->imageUpload()
+            ];
+
+            if ($this->productModel->addHookah($data))
+            {
+                echo 'Adding hookah to database...';
+                echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
+            }
+        }
     }
 
     public function addAccessory() {
@@ -127,5 +150,34 @@ class Admin extends Controller {
         session_destroy();
         echo 'logging out';
         echo '<meta http-equiv="refresh" content="2;url=/SYSDEV-project/" />'; // redirect to home page
+    }
+
+    public function imageUpload(){
+        //default value for the picture
+        $filename=false;
+        
+        //save the file that gets sent as a picture
+        $file = $_FILES['image'];
+        
+        $acceptedTypes = ['image/jpeg'=>'jpg',
+            'image/gif'=>'gif',
+            'image/png'=>'png'];
+        //validate the file
+        
+        if(empty($file['tmp_name']))
+            return false;
+
+        $fileData = getimagesize($file['tmp_name']);
+
+        if($fileData!=false && 
+            in_array($fileData['mime'],array_keys($acceptedTypes))){
+
+            //save the file to its permanent location
+                
+            $folder = dirname(APPROOT).'/public/img';
+            $filename = uniqid() . '.' . $acceptedTypes[$fileData['mime']];
+            move_uploaded_file($file['tmp_name'], "$folder/$filename");
+        }
+        return $filename;
     }
 }
