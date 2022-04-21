@@ -45,7 +45,7 @@
                         <input class="form-control search-field" type="search" id="search-field-1" name="search" style="border-radius: 30px" placeholder="Search by name" />
                     </div>
                 </form>
-                <a href="<?php echo URLROOT; ?>/Admin/login" style="text-decoration: none; margin-right: 15px">Login</a>
+                <a href="<?php echo URLROOT; ?>/Admin/login" style="text-decoration: none; margin-right: 15px"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
             </div>
         </div>
     </nav>

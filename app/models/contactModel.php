@@ -16,6 +16,13 @@
 
         // }
 
+        public function getAllContact(){
+            $this->query("SELECT * 
+                          FROM contact");
+    
+            return $this->getResultSet();
+        }
+
         public function getContact($admin_id) {  
             $this->query("SELECT businessEmail, location, name 
                           FROM contact 
