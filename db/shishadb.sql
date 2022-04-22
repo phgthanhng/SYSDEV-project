@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2022 at 01:38 AM
+-- Generation Time: Apr 22, 2022 at 12:56 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,6 +59,13 @@ CREATE TABLE `accessory` (
   `image` varchar(255) DEFAULT NULL,
   `category` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `accessory`
+--
+
+INSERT INTO `accessory` (`accessory_id`, `hookah_id`, `name`, `brand`, `description`, `quantity`, `price`, `image`, `category`) VALUES
+(5, NULL, 'Designer Black Charcoal Tong', 'Cyril', '• Length: 9 in approx.\r\n\r\n• Opening: 2 in.\r\n\r\n• Color: steel.\r\n\r\n• Great resistance to high temperatures.', 3, '13.00', '626196b15be5e.jpg', 'Tong');
 
 -- --------------------------------------------------------
 
@@ -121,6 +128,13 @@ CREATE TABLE `hookah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `hookah`
+--
+
+INSERT INTO `hookah` (`hookah_id`, `name`, `brand`, `description`, `quantity`, `price`, `image`, `type`, `color`) VALUES
+(0, 'Adina Hookah', 'Adina', 'Material: V2A stainless steel / Sleeves: epoxy resin\r\nHeight: about 21.25 in.\r\nCoal plate diameter: approx. 22 cm', 4, '290.00', '62618a8fbf684.jpg', 'Modern', 'Black');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -157,6 +171,16 @@ ALTER TABLE `contact`
 --
 ALTER TABLE `hookah`
   ADD PRIMARY KEY (`hookah_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `accessory`
+--
+ALTER TABLE `accessory`
+  MODIFY `accessory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
