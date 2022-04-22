@@ -59,8 +59,11 @@
         width: min-content;
     }
 </style>
+<h1 style="text-align: center; margin-top: 50px">Browse products</h1>
+
 <div class="container" style="max-width: 100rem; margin-top: 100px; margin-bottom: 100px; margin-inline:auto; padding-inline: 2rem;">
-    <div class="product-grid">        
+
+    <div class="product-grid">
         <?php
         if (!empty($data["hookahs"])) {
             foreach ($data["hookahs"] as $product) {
@@ -79,6 +82,25 @@
         ?>
     </div>
 </div>
+
+
+
+
+
+
+
+
+<!-- <div class="container" style="margin-top: 100px">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="<?php echo URLROOT ?>/public/img/accessories1.jpg" alt="">
+        </div>
+        <div class="col-md-7">
+            p.new
+        </div>
+    </div>
+</div> -->
+
 
 
 
