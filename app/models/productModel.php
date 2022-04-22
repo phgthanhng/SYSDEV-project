@@ -5,7 +5,6 @@
             parent::__construct();
         }
 
-
         // for the Manage Products table 
         // will need some testing!!
         public function getAllProducts(){ 
@@ -14,6 +13,7 @@
                           UNION 
                           SELECT accessory_id as product_id, name, price, IF(description,'','Accessory') as description 
                           FROM accessory
+                          ORDER BY name ASC
                           ");
             
             return $this->getResultSet();
