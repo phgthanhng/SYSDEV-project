@@ -5,6 +5,20 @@
             parent::__construct();
         }
 
+
+        // for the Manage Products table 
+        // will need some testing!!
+        public function getAllProducts(){ 
+            $this->query("SELECT hookah_id as product_id, name, price, IF(description,'','Hookah') as description 
+                          FROM hookah
+                          UNION 
+                          SELECT accessory_id as product_id, name, price, IF(description,'','Accessory') as description 
+                          FROM accessory
+                          ");
+            
+            return $this->getResultSet();
+        }
+
         public function getAllHookahs(){
             $this->query("SELECT * 
                           FROM hookah");
