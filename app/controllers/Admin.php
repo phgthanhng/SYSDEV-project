@@ -167,7 +167,7 @@ class Admin extends Controller {
 
     public function logout() {
         // unset session values and destroy session
-        unset($_SESSION['user_id']);
+        unset($_SESSION['admin_id']);
         session_destroy();
         echo 'logging out';
         echo '<meta http-equiv="refresh" content="2;url=/SYSDEV-project/" />'; // redirect to home page
