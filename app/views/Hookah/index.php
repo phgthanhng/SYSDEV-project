@@ -3,12 +3,11 @@
     .product-grid {
         display: grid;
         gap: 0.25rem;
-        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 0.25fr));
     }
 
     .card {
-        width: 250px;
-        aspect-ratio: 1 / 1.8;
+        aspect-ratio: 1 / 1.5;
         border: none;
     }
 
@@ -50,7 +49,6 @@
         box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 0.1);
     }
 
-
     p.max-content {
         width: max-content;
     }
@@ -68,7 +66,7 @@
         if (!empty($data["hookahs"])) {
             foreach ($data["hookahs"] as $product) {
                 echo '<div class="card stacked">';
-                echo '<a href="" style="text-decoration: none;">';
+                echo '<a href="<?php echo URLROOT; ?>" style="text-decoration: none;">';
                 echo '<img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">';
                 echo '<div class="card__content">';
                 echo '<h2 class="card__title">' . $product->name . '</h2>';
@@ -82,26 +80,5 @@
         ?>
     </div>
 </div>
-
-
-
-
-
-
-
-
-<!-- <div class="container" style="margin-top: 100px">
-    <div class="row">
-        <div class="col-md-5">
-            <img src="<?php echo URLROOT ?>/public/img/accessories1.jpg" alt="">
-        </div>
-        <div class="col-md-7">
-            p.new
-        </div>
-    </div>
-</div> -->
-
-
-
 
 <?php require APPROOT . '/views/includes/footer.php';  ?>

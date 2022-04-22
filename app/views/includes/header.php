@@ -15,9 +15,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" style="  background-color: #fdf1ec;
+">
     <nav class="navbar navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow)">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?php echo URLROOT; ?>/Home/index" style="font-size: 30px">Shisha Shop</a>
