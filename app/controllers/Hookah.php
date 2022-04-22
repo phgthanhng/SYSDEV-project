@@ -4,10 +4,16 @@ class Hookah extends Controller {
     public function __construct()
     {
         // initialise models here
+        $this->productModel = $this->model('productModel');
     }
 
     public function index() {
-        $this->view('Hookah/index');
-        // echo 'index page of the hookah controller';
+        $hookahs = $this->productModel->getAllHookahs();
+
+        $data = [
+            "hookahs" => $hookahs
+        ];
+
+        $this->view('Hookah/index', $data);
     }
 }
