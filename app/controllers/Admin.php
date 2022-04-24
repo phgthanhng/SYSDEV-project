@@ -58,28 +58,28 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
            return $this->denyPermission();    
 
-           if (!isset($_POST['submit']))
-           {
-               return $this->view('Admin/addAccessory');
-           }
-           else 
-           {
-               $data = [
-                   "name" => $_POST['name'],
-                   "price" => $_POST['price'],
-                   "category" => $_POST['category'],
-                   "quantity" => $_POST['quantity'],
-                   "description" => $_POST['desc'],
-                   "brand" => $_POST['brand'],
-                   "image" => $this->imageUpload()
-               ];
-   
-               if ($this->productModel->addAccessory($data))
-               {
-                   echo 'Adding accessory to database...';
-                   echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
-               }
-           }
+        if (!isset($_POST['submit']))
+        {
+            return $this->view('Admin/addAccessory');
+        }
+        else 
+        {
+            $data = [
+                "name" => $_POST['name'],
+                "price" => $_POST['price'],
+                "category" => $_POST['category'],
+                "quantity" => $_POST['quantity'],
+                "description" => $_POST['desc'],
+                "brand" => $_POST['brand'],
+                "image" => $this->imageUpload()
+            ];
+
+            if ($this->productModel->addAccessory($data))
+            {
+                echo 'Adding accessory to database...';
+                echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
+            }
+        }
     }
 
     public function manageProduct() {
@@ -87,6 +87,63 @@ class Admin extends Controller {
            return $this->denyPermission();
         
         return $this->view('Admin/manageProduct');
+    }
+
+    public function editHookah($id) {
+        if (!isLoggedIn()) 
+           return $this->denyPermission();
+
+        $hookah = $this->productModel->getHookah([ "hookah_id" => $id]);
+        // check if hookah exists
+        if (!isset($hookah->hookah_id))
+        {
+            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
+            return;
+        }
+        
+        if (!isset($_POST['submit']))
+        {
+            return $this->view('Admin/editHookah', [ "hookah" => $hookah]);
+        }
+        else 
+        {
+            $data = [
+                "hookah_id" => $id,
+                "name" => $_POST['name'],
+                "price" => $_POST['price'],
+                "color" => $_POST['color'],
+                "type" => $_POST['type'],
+                "quantity" => $_POST['quantity'],
+                "description" => $_POST['desc'],
+                "brand" => $_POST['brand'],
+                "image" => $this->imageUpload()
+            ];
+
+            if ($this->productModel->updateHookah($data))
+            {
+                echo 'Updating hookah...';
+                echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/hookah/detail/'.$id.'">';
+            }
+        }
+    }
+
+    public function deleteHookah($id) {
+        if (!isLoggedIn()) 
+           return $this->denyPermission();
+
+        $hookah = $this->productModel->getHookah([ "hookah_id" => $id ]);
+        // check if hookah exists
+        if (!isset($hookah->hookah_id))
+        {
+            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
+            return;
+        }
+
+        if ($this->productModel->deleteHookah([ "hookah_id" => $id ]))
+        {
+            echo 'Deleting hookah from database...';
+            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
+        }
     }
 
     public function changeEmail() {
@@ -182,7 +239,9 @@ class Admin extends Controller {
         
         $acceptedTypes = ['image/jpeg'=>'jpg',
             'image/gif'=>'gif',
-            'image/png'=>'png'];
+            'image/png'=>'png',
+            'image/webp' => 'jpg'
+        ];
         //validate the file
         
         if(empty($file['tmp_name']))

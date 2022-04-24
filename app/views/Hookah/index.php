@@ -66,7 +66,7 @@
         if (!empty($data["hookahs"])) {
             foreach ($data["hookahs"] as $product) {
                 echo '<div class="card stacked">';
-                echo '<a href="<?php echo URLROOT; ?>" style="text-decoration: none;">';
+                echo '<a href="'.URLROOT.'/hookah/detail/'.$product->hookah_id.'" style="text-decoration: none;">';
                 echo '<img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">';
                 echo '<div class="card__content">';
                 echo '<h2 class="card__title">' . $product->name . '</h2>';

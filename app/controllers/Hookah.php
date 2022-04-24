@@ -16,4 +16,16 @@ class Hookah extends Controller {
 
         $this->view('Hookah/index', $data);
     }
+
+    public function detail($id) {
+        $hookah = $this->productModel->getHookah([
+            "hookah_id" => $id
+        ]);
+
+        $data = [
+            "hookah" => $hookah
+        ];
+
+        return $this->view('Hookah/details', $data);
+    }
 }
