@@ -22,13 +22,16 @@
                             <p>$<?php echo $data['hookah']->price ?></p>
                         </div>
                         <?php 
-                            echo '
-                            <div class="col-2">
-                                <a href="'.URLROOT.'/Admin/editHookah/'.$data['hookah']->hookah_id.'" class="btn btn-primary">Edit</a>
-                            </div>
-                            <div class="col-2">
-                                <a href="'.URLROOT.'/Admin/deleteHookah/'.$data['hookah']->hookah_id.'" class="btn btn-danger">Delete</a>
-                            </div>';
+                            if (isLoggedIn()) 
+                            {
+                                echo '
+                                <div class="col-2">
+                                    <a href="'.URLROOT.'/Admin/editHookah/'.$data['hookah']->hookah_id.'" class="btn btn-primary">Edit</a>
+                                </div>
+                                <div class="col-2">
+                                    <a href="'.URLROOT.'/Admin/deleteHookah/'.$data['hookah']->hookah_id.'" class="btn btn-danger">Delete</a>
+                                </div>';
+                            }
                         ?>
                     </div>
                 </div>
