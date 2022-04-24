@@ -63,10 +63,10 @@
 
     <div class="product-grid">
         <?php
-        if (!empty($data[""])) {
-            foreach ($data[""] as $product) {
+        if (!empty($data["accessories"])) {
+            foreach ($data["accessories"] as $product) {
                 echo '<div class="card stacked">';
-                echo '<a href="<?php echo URLROOT; ?>" style="text-decoration: none;">';
+                echo '<a href="'.URLROOT.'/accessories/detail/'.$product->accessory_id.'" style="text-decoration: none;">';
                 echo '<img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">';
                 echo '<div class="card__content">';
                 echo '<h2 class="card__title">' . $product->name . '</h2>';

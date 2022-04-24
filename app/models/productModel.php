@@ -105,7 +105,7 @@
         public function updateAccessory($accessory){
             $this->query("UPDATE accessory 
                           SET name = :name, price = :price, category = :category, quantity = :quantity, description = :description, brand = :brand, image = :image, hookah_id = :hookah_id 
-                          WHERE accessory = :accessory_id" );
+                          WHERE accessory_id = :accessory_id" );
 
             $this->bind(":name",$accessory["name"]);
             $this->bind(":price",$accessory["price"]);

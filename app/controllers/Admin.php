@@ -85,8 +85,10 @@ class Admin extends Controller {
     public function manageProduct() {
         if (!isLoggedIn()) 
            return $this->denyPermission();
+
+        $products = $this->productModel->getAllProducts();
         
-        return $this->view('Admin/manageProduct');
+        return $this->view('Admin/manageProduct', [ "products" => $products ]);
     }
 
     public function editHookah($id) {
@@ -127,6 +129,44 @@ class Admin extends Controller {
         }
     }
 
+    public function editAccessory($id) {
+        if (!isLoggedIn()) 
+           return $this->denyPermission();
+
+        $accessory = $this->productModel->getAccessory([ "accessory_id" => $id ]);
+        // check if hookah exists
+        if (!isset($accessory->accessory_id))
+        {
+            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
+            return;
+        }
+        
+        if (!isset($_POST['submit']))
+        {
+            return $this->view('Admin/editAccessory', [ "accessory" => $accessory ]);
+        }
+        else 
+        {
+            $data = [
+                "hookah_id" => null,
+                "accessory_id" => $id,
+                "name" => $_POST['name'],
+                "price" => $_POST['price'],
+                "category" => $_POST['category'],
+                "quantity" => $_POST['quantity'],
+                "description" => $_POST['desc'],
+                "brand" => $_POST['brand'],
+                "image" => $this->imageUpload()
+            ];
+
+            if ($this->productModel->updateAccessory($data))
+            {
+                echo 'Updating Accessory...';
+                echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/accessories/detail/'.$id.'">';
+            }
+        }
+    }
+
     public function deleteHookah($id) {
         if (!isLoggedIn()) 
            return $this->denyPermission();
@@ -142,6 +182,25 @@ class Admin extends Controller {
         if ($this->productModel->deleteHookah([ "hookah_id" => $id ]))
         {
             echo 'Deleting hookah from database...';
+            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
+        }
+    }
+
+    public function deleteAccessory($id) {
+        if (!isLoggedIn()) 
+           return $this->denyPermission();
+
+        $accessory = $this->productModel->getAccessory([ "accessory_id" => $id ]);
+        // check if hookah exists
+        if (!isset($accessory->accessory_id))
+        {
+            echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
+            return;
+        }
+
+        if ($this->productModel->deleteAccessory([ "accessory_id" => $id ]))
+        {
+            echo 'Deleting accessory from database...';
             echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/manageProduct">';
         }
     }

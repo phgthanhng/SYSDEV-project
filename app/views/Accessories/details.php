@@ -20,7 +20,6 @@
                             <p><?php echo $data['accessory']->description ?></p>
                             <p>Catergory: <?php echo $data['accessory']->category ?></p>
                             <p>Brand: <?php echo $data['accessory']->brand ?></p>
-                            <p>Color: <?php echo $data['accessory']->color ?></p>
                             <p>Available quantity: <?php echo $data['accessory']->quantity ?></p>
                             <br>
                             <p style="font-weight: bold; font-size:xx-large">$<?php echo $data['accessory']->price ?></p>
