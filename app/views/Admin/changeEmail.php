@@ -11,7 +11,6 @@ function validateForm() {
 }
 </script>
 
-
 <div style="width: 100%">
     <section class="login-dark">
       <form method="post" name="editEmail" method="post" >
@@ -34,7 +33,4 @@ function validateForm() {
       </form>
     </section>
   </div>
-
-
-
 <?php require APPROOT . '/views/includes/footer.php';  ?>

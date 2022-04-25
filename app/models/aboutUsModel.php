@@ -1,6 +1,8 @@
 <?php
 class aboutUsModel extends Model{
-
+    /*
+     * Default constructor of the aboutUsModel class
+     */
     public function __construct()
     {
         parent::__construct();
@@ -14,13 +16,19 @@ class aboutUsModel extends Model{
 
     // }
 
+    /*
+     * Retrieves About Us records from the database
+     */
     public function getAllAboutUs(){
         $this->query("SELECT * 
-                      FROM about_us");
+                        FROM about_us");
 
         return $this->getResultSet();
     }
     
+    /*
+     * Retrieves About us record based on the adminID
+     */
     public function getAboutUs($admin_id){
         $this->query("SELECT image, text 
                         FROM about_us 
@@ -32,6 +40,9 @@ class aboutUsModel extends Model{
         return $this->getSingle();
     }
 
+    /*
+     * Updates an About us record based on the adminID
+     */
     public function updateAboutUs($admin_id, $about_us){
         $this->query("UPDATE about_us 
                         SET text = :text, image = :image 
@@ -44,7 +55,5 @@ class aboutUsModel extends Model{
 
         return $this->execute();
     }
-
-    
 }
 ?>

@@ -18,7 +18,7 @@
                             <h2><?php echo $data['accessory']->name ?></h2>
                             <br>
                             <p><?php echo $data['accessory']->description ?></p>
-                            <p>Catergory: <?php echo $data['accessory']->category ?></p>
+                            <p>Category: <?php echo $data['accessory']->category ?></p>
                             <p>Brand: <?php echo $data['accessory']->brand ?></p>
                             <p>Available quantity: <?php echo $data['accessory']->quantity ?></p>
                             <br>

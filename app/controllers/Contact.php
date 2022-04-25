@@ -6,6 +6,9 @@ class Contact extends Controller {
         // initialise models here
     }
 
+    /*
+     * Displays contact us page
+     */
     public function index() {
         $this->view('Contact/index');
         // echo 'index page of the about us controller';

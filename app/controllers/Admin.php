@@ -1,5 +1,4 @@
 <?php
-
 class Admin extends Controller {
     public function __construct()
     {
@@ -8,6 +7,9 @@ class Admin extends Controller {
         $this->productModel = $this->model('productModel');
     }
 
+    /*
+     * Removes access to Admin controls if not an admin
+     */
     public function denyPermission() {
         echo '
             <div style="background-color:#000;  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
@@ -18,21 +20,24 @@ class Admin extends Controller {
         echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
     }
 
+    /*
+     * Displays default admin page if admin is logged in but 
+     * if not removes access to Admin controls
+     */
     public function index() {
-        if (!isLoggedIn())
-           return $this->denyPermission(); 
-        
-        return $this->view('Admin/index');
+        return !isLoggedIn() ? $this->denyPermission() :  $this->view('Admin/index');
     }
 
+    /*
+     * Adds a hookah product to the system
+     */
     public function addHookah() {
         if (!isLoggedIn()) 
-           return $this->denyPermission();
+            return $this->denyPermission();
         
         if (!isset($_POST['submit']))
-        {
             return $this->view('Admin/addHookah');
-        }
+
         else 
         {
             $data = [
@@ -54,14 +59,16 @@ class Admin extends Controller {
         }
     }
 
+    /*
+     * Adds an accessory to the system
+     */
     public function addAccessory() {
         if (!isLoggedIn()) 
-           return $this->denyPermission();    
+            return $this->denyPermission();    
 
         if (!isset($_POST['submit']))
-        {
             return $this->view('Admin/addAccessory');
-        }
+
         else 
         {
             $data = [
@@ -82,6 +89,9 @@ class Admin extends Controller {
         }
     }
 
+    /*
+     * Displays all products(Hookah and Accessory) so Admin can manage the product/s
+     */
     public function manageProduct() {
         if (!isLoggedIn()) 
            return $this->denyPermission();
@@ -91,6 +101,9 @@ class Admin extends Controller {
         return $this->view('Admin/manageProduct', [ "products" => $products ]);
     }
 
+    /*
+     * Updates a specific hookah based on the hookahID
+     */
     public function editHookah($id) {
         if (!isLoggedIn()) 
            return $this->denyPermission();
@@ -104,9 +117,7 @@ class Admin extends Controller {
         }
         
         if (!isset($_POST['submit']))
-        {
             return $this->view('Admin/editHookah', [ "hookah" => $hookah]);
-        }
         else 
         {
             $data = [
@@ -129,11 +140,15 @@ class Admin extends Controller {
         }
     }
 
+    /*
+     * Updates a specific accessory 
+     */
     public function editAccessory($id) {
         if (!isLoggedIn()) 
            return $this->denyPermission();
 
         $accessory = $this->productModel->getAccessory([ "accessory_id" => $id ]);
+        
         // check if hookah exists
         if (!isset($accessory->accessory_id))
         {
@@ -142,9 +157,8 @@ class Admin extends Controller {
         }
         
         if (!isset($_POST['submit']))
-        {
             return $this->view('Admin/editAccessory', [ "accessory" => $accessory ]);
-        }
+            
         else 
         {
             $data = [
@@ -167,6 +181,9 @@ class Admin extends Controller {
         }
     }
 
+    /*
+     * Deletes a specific hookah based on the hookahID
+     */
     public function deleteHookah($id) {
         if (!isLoggedIn()) 
            return $this->denyPermission();
@@ -186,6 +203,9 @@ class Admin extends Controller {
         }
     }
 
+    /*
+     * Deletes a specific accessory based on the accessoryID
+     */
     public function deleteAccessory($id) {
         if (!isLoggedIn()) 
            return $this->denyPermission();
@@ -205,6 +225,9 @@ class Admin extends Controller {
         }
     }
 
+    /*
+     * Updates the email of the admin
+     */
     public function changeEmail() {
         if (!isLoggedIn()) 
             return $this->denyPermission();
@@ -212,6 +235,9 @@ class Admin extends Controller {
         return $this->view('Admin/changeEmail');
     }
 
+    /*
+     * Updates the password of the admin
+     */
     public function changePassword() {
         if (!isLoggedIn()) 
             return $this->denyPermission();
@@ -219,6 +245,9 @@ class Admin extends Controller {
         return $this->view('Admin/changePassword');
     }
 
+    /*
+     * Updates the Contact Us page
+     */
     public function editContactUs() {
         if (!isLoggedIn()) 
             return $this->denyPermission();
@@ -226,6 +255,9 @@ class Admin extends Controller {
         return $this->view('Admin/editContactUs');
     }
 
+    /*
+     * Updates the About Us page
+     */
     public function editAboutUs() {
         if (!isLoggedIn()) 
             return $this->denyPermission();
@@ -233,6 +265,9 @@ class Admin extends Controller {
         return $this->view('Admin/editAboutUs');
     }
 
+    /*
+     * Displays all information from the database
+     */
     public function previewDatabase() {
         if (!isLoggedIn()) 
             return $this->denyPermission();
@@ -240,12 +275,48 @@ class Admin extends Controller {
         return $this->view('Admin/previewDatabase');
     }
 
+    /*
+     * Allows the admin to upload an image to the system
+     */
+    public function imageUpload(){
+        //default value for the picture
+        $filename=false;
+        
+        //save the file that gets sent as a picture
+        $file = $_FILES['image'];
+        
+        $acceptedTypes = ['image/jpeg'=>'jpg',
+            'image/gif'=>'gif',
+            'image/png'=>'png',
+            'image/webp' => 'jpg'
+        ];
+
+        //validate the file
+        if(empty($file['tmp_name']))
+            return false;
+
+        $fileData = getimagesize($file['tmp_name']);
+
+        if($fileData!=false && 
+            in_array($fileData['mime'],array_keys($acceptedTypes))){
+
+            //save the file to its permanent location
+                
+            $folder = dirname(APPROOT).'/public/img';
+            $filename = uniqid() . '.' . $acceptedTypes[$fileData['mime']];
+            move_uploaded_file($file['tmp_name'], "$folder/$filename");
+        }
+        return $filename;
+    }
+
+    /*
+     * Verify credentials and logs in the admin if correct
+     */
     public function login() {
         // if is trying to view the page
         if (!isset($_POST['submit'])) 
-        {
             $this->view('Admin/login');
-        }
+
         else
         { 
             // get email and password from input
@@ -281,42 +352,14 @@ class Admin extends Controller {
         }
     }
 
+    /*
+     * Destroys a session and logouts the admin
+     */
     public function logout() {
         // unset session values and destroy session
         unset($_SESSION['admin_id']);
         session_destroy();
         echo 'logging out';
         echo '<meta http-equiv="refresh" content="2;url=/SYSDEV-project/" />'; // redirect to home page
-    }
-
-    public function imageUpload(){
-        //default value for the picture
-        $filename=false;
-        
-        //save the file that gets sent as a picture
-        $file = $_FILES['image'];
-        
-        $acceptedTypes = ['image/jpeg'=>'jpg',
-            'image/gif'=>'gif',
-            'image/png'=>'png',
-            'image/webp' => 'jpg'
-        ];
-        //validate the file
-        
-        if(empty($file['tmp_name']))
-            return false;
-
-        $fileData = getimagesize($file['tmp_name']);
-
-        if($fileData!=false && 
-            in_array($fileData['mime'],array_keys($acceptedTypes))){
-
-            //save the file to its permanent location
-                
-            $folder = dirname(APPROOT).'/public/img';
-            $filename = uniqid() . '.' . $acceptedTypes[$fileData['mime']];
-            move_uploaded_file($file['tmp_name'], "$folder/$filename");
-        }
-        return $filename;
     }
 }

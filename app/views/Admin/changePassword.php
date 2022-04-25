@@ -32,7 +32,4 @@ function validateForm() {
       </form>
     </section>
   </div>
-
-
-
 <?php require APPROOT . '/views/includes/footer.php';  ?>

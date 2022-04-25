@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/font-awesome.min.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/ionicons.min.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.min.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

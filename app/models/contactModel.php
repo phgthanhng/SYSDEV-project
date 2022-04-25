@@ -1,6 +1,9 @@
 <?php
     class contactModel extends Model{
-
+        
+        /*
+         * Default constructor of the contactModel class
+         */
         public function __construct(){
             parent::__construct();
         }
@@ -16,6 +19,10 @@
 
         // }
 
+        
+        /*
+         * Retrieves all contact record from the database
+         */
         public function getAllContact(){
             $this->query("SELECT * 
                           FROM contact");
@@ -23,6 +30,9 @@
             return $this->getResultSet();
         }
 
+        /*
+         * Retrieves a specific contact record from the database based on the adminID 
+         */
         public function getContact($admin_id) {  
             $this->query("SELECT businessEmail, location, name 
                           FROM contact 
@@ -33,8 +43,11 @@
 
             return $this->getSingle();
         }
-
-        public function updateContact($admin_id,$contact) { 
+   
+        /*
+         * Updates a specific contact record from the database based on the adminID
+         */
+        public function updateContact($admin_id, $contact) { 
             $this->query("UPDATE contact 
                           SET businessEmail = :email, location = :location, phone = :phone, name = :name 
                           WHERE admin.admin_id = :admin_id 
