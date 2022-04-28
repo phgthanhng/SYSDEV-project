@@ -175,5 +175,45 @@
 
             return $this->execute();
         }
+
+        public function getHookahFilter($brand,$type,$color,$price){
+            
+
+            $query = "SELECT * FROM hookah ";
+            $count = 0;
+
+            if(!empty($brand)){
+                $count++;
+
+                $query = $query . "WHERE brand IN ($brand) ";
+            }
+            if(!empty($type))
+            {
+                $count++;
+                if($count==1){
+                    $query = $query . "AND type IN ($type) ";
+                }
+                else{
+                    $query = $query . "WHERE type IN ($type) ";
+                }    
+                
+            }
+            if(!empty($color))
+            {
+                $count++;
+                if($count==1){
+                    $query = $query . "AND color IN ($color) ";
+                }
+                else{
+                    $query = $query . "WHERE color IN ($color) ";
+                }    
+                
+            }
+
+            $this->query($query);
+
+            return $this->execute();
+
+        }
     }
 ?>
