@@ -212,8 +212,35 @@
 
             $this->query($query);
 
-            return $this->execute();
+            return $this->getResultSet();
 
+        }
+
+        public function getAccessoryFilter($brand,$price,$category){
+            $query = "SELECT * FROM accessory ";
+            $count = 0;
+
+            if(!empty($brand)){
+                $count++;
+
+                $query = $query . "WHERE brand IN ($brand) ";
+            }
+            if(!empty($type))
+            {
+                $count++;
+                if($count==1){
+                    $query = $query . "AND category IN ($category) ";
+                }
+                else{
+                    $query = $query . "WHERE category IN ($category) ";
+                }    
+                
+            }
+            
+
+            $this->query($query);
+
+            return $this->getResultSet();
         }
     }
 ?>
