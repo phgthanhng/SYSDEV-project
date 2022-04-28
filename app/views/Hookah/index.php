@@ -86,10 +86,7 @@
                 </label>
             </div>
         </div>
-
-    </div>
-
-    <div class="container" style="max-width: 100rem; margin-top: 100px; margin-bottom: 100px; margin-inline:auto; padding-inline: 2rem;">
+        <div class="container" style="max-width: 100rem; margin-top: 100px; margin-bottom: 100px; margin-inline:auto; padding-inline: 2rem;">
         <h1 style="text-align: center; margin-top: 50px; margin-bottom:50px">Browse products</h1>
         <div class="dropdown" style="margin-left: 30px; margin-bottom: 30px">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -121,6 +118,9 @@
             ?>
         </div>
     </div>
+    </div>
+
+    
 </div>
 
 <?php require APPROOT . '/views/includes/footer.php';  ?>
