@@ -7,7 +7,7 @@
 
 <div class="container" style="margin: 100px auto; ">
 
-        <div class="card" style="border: none;">
+        <div class="product_details" style="border: none;">
             <div class="row" style="margin: 50px auto;">
                 <div class="col-md-6 text-center align-self-center">
                     <img class="img-fluid" src="<?php echo URLROOT.'/public/img/'.$data["hookah"]->image; ?>"> 
