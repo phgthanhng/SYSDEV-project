@@ -21,7 +21,7 @@
 
 <body class="d-flex flex-column min-vh-100" style="  background-color: #fdf1ec;
 ">
-    <nav class="navbar navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow)">
+    <nav class="navbar sticky-top navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow); position: sticky">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?php echo URLROOT; ?>/Home/index" style="font-size: 30px">Shisha Shop</a>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2">

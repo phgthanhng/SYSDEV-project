@@ -1,7 +1,8 @@
 .product-grid {
     display: grid;
-    gap: 0.25rem;
+    gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 0.25fr));
+    margin-left: 30px;
 }
 
 .card {
@@ -53,4 +54,44 @@ p.max-content {
 
 p.min-content {
     width: min-content;
+}
+
+
+/* side bar */
+
+#viewport {
+    padding-left: 250px;
+    margin-right: 30px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+
+/* Sidebar Styles */
+
+#sidebar {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 250px;
+    /* this shit */
+    height: 100%;
+    padding-top: 20px;
+    margin-left: -250px;
+    margin-right: 30px;
+    overflow-y: auto;
+    background: #ffffff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.form-check,
+.category {
+    margin-left: 20px;
+    margin-top: 5px;
+    font-size: 20px;
 }
