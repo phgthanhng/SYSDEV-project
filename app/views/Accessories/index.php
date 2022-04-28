@@ -1,5 +1,15 @@
+<<<<<<< Updated upstream
 <?php require APPROOT . '/views/includes/header.php';  ?>
 <div class="wrapper">
+=======
+<?php
+    if (!isLoggedIn())
+        require APPROOT . '/views/includes/header.php';  
+    else
+        require APPROOT . '/views/includes/adminheader.php';  
+?>
+<div class="wrapper" >
+>>>>>>> Stashed changes
     <div id="viewport">
         <!-- Sidebar -->
         <div id="sidebar">

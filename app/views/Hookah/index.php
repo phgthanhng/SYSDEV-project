@@ -1,5 +1,9 @@
-<?php require APPROOT . '/views/includes/header.php';  ?>
-
+<?php
+    if (!isLoggedIn())
+        require APPROOT . '/views/includes/header.php';  
+    else
+        require APPROOT . '/views/includes/adminheader.php';  
+?>
 <div class="wrapper">
     <div id="viewport">
         <!-- Sidebar -->
