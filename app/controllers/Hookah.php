@@ -14,13 +14,16 @@ class Hookah extends Controller {
      * Displays all hookahs
      */
     public function index() {
-        $hookahs = $this->productModel->getAllHookahs();
+        $brand = isset($_GET['brand']) ? $_GET['brand'] : [];
+        $type = isset($_GET['type']) ? $_GET['type'] : [];
+        $color = isset($_GET['color']) ? $_GET['color'] : [];
+        $price = isset($_GET['price']) ? $_GET['price'] : [];
 
+        $hookahs = $this->productModel->getHookahFilter($brand, $type, $color, $price);
         $data = [
             "hookahs" => $hookahs
         ];
-
-        $this->view('Hookah/index', $data);
+        return $this->view('Hookah/index', $data);
     }
 
     /*

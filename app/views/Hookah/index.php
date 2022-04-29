@@ -4,89 +4,108 @@
     else
         require APPROOT . '/views/includes/adminheader.php';  
 ?>
+<script src="<?php echo URLROOT ?>/public/js/hookah.js" defer></script>
 <div class="wrapper">
     <div id="viewport">
         <!-- Sidebar -->
         <div id="sidebar">
             <label for="" class="category">Price</label>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="" id="price-0">
+                <label class="form-check-label" for="price-0">
                     Under $25
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="price-1">
+                <label class="form-check-label" for="price-1">
                     $25 to $50
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="price-2">
+                <label class="form-check-label" for="price-2">
                     $50 to $100
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="price-3">
+                <label class="form-check-label" for="price-3">
                     $100 to $200
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="price-4">
+                <label class="form-check-label" for="price-4">
                     $200 & Above
                 </label>
             </div>
             <label for="" class="category">Type</label>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="" id="type-egyptian">
+                <label class="form-check-label" for="type-egyptian">
                     Egyptian
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="type-syrian">
+                <label class="form-check-label" for="type-syrian">
                     Syrian
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="type-indian">
+                <label class="form-check-label" for="type-indian">
                     Indian
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="type-traditional">
+                <label class="form-check-label" for="type-traditional">
                     Traditional
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="type-modern">
+                <label class="form-check-label" for="type-modern">
                     Modern
                 </label>
             </div>
             <label for="" class="category">Color</label>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
-                    black
+                <input class="form-check-input" type="checkbox" value="" id="color-Black">
+                <label class="form-check-label" for="color-Black">
+                    Black
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="color-Red">
+                <label class="form-check-label" for="color-Red">
                     Red
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="color-Green">
+                <label class="form-check-label" for="color-Green">
                     Green
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="color-Pink">
+                <label class="form-check-label" for="color-Pink">
+                    Pink
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="color-Blue">
+                <label class="form-check-label" for="color-Blue">
+                    Blue
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="color-Yellow">
+                <label class="form-check-label" for="color-Yellow">
+                    Yellow
                 </label>
             </div>
         </div>
