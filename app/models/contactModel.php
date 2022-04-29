@@ -43,6 +43,16 @@
 
             return $this->getSingle();
         }
+
+        public function getContactById($id) {  
+            $this->query("SELECT businessEmail, phone, location, name 
+                          FROM contact 
+                          WHERE contact_id = :contact_id");
+
+            $this->bind(":contact_id", $id);
+
+            return $this->getSingle();
+        }
    
         /*
          * Updates a specific contact record from the database based on the adminID

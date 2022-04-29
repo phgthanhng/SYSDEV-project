@@ -6,6 +6,7 @@ class Admin extends Controller {
         $this->loginModel = $this->model('loginModel');
         $this->productModel = $this->model('productModel');
         $this->contactModel = $this->model('contactModel');
+        $this->aboutUsModel = $this->model('aboutUsModel');
     }
 
     /*
@@ -253,31 +254,29 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
             return $this->denyPermission();
         
-        
+        if (!isset($_POST['submit'])) {
+            return $this->view('Admin/editContactUs');
+        }
+        else 
+        {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $address = $_POST['address'];
 
-            if (!isset($_POST['submit'])) {
-                return $this->view('Admin/editContactUs');
-            }
-            else 
+            $contact = [
+                "email" => $email,
+                "location" => $address,
+                "phone" => $phone,
+                "name" => $name
+            ];
+
+            if ($this->contactModel->updateContact($_SESSION['admin_id'], $contact))
             {
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $phone = $_POST['phone'];
-                $address = $_POST['address'];
-    
-                $about_us = [
-                    "email" => $email,
-                    "location" => $address,
-                    "phone" => $phone,
-                    "name" => $name
-                ];
-    
-                if ($this->contactModel->updateContact($_SESSION['admin_id'], $about_us))
-                {
-                    echo "updating contact...";
-                    echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Contact/">';
-                }
+                echo "updating contact...";
+                echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Contact/">';
             }
+        }
     }
 
     /*
@@ -287,7 +286,23 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
             return $this->denyPermission();
         
+        if (!isset($_POST['submit'])) {
             return $this->view('Admin/editAboutUs');
+        }
+        else 
+        {
+            $text = $_POST['aboutus_content'];
+            $about_us = [
+                "text" => $text,
+                "image" => $this->imageUpload()
+            ];
+
+            if ($this->aboutUsModel->updateAboutUs($_SESSION['admin_id'], $about_us))
+            {
+                echo "updating about us...";
+                echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/AboutUs/">';
+            }
+        }
     }
 
     /*

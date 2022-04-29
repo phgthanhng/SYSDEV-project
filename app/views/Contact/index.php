@@ -4,13 +4,13 @@
         Contact us
     </h1>
     <h5 style="text-align: center; margin-bottom: 20px">
-        Email: contact@email.com
+        Email: <?php echo $data['contact']->businessEmail ?>
     </h5>
     <h5 style="text-align: center; margin-bottom: 20px">
-        Phone number: xxx xxx xxxx
+        Phone number: <?php echo $data['contact']->phone ?>
     </h5>
     <h5 style="text-align: center; margin-bottom: 150px">
-        Address: 821 Av. Sainte-Croix, Saint-Laurent, QC h4l39x
+        Address: <?php echo $data['contact']->location ?>
     </h5>
 </div>
 <?php require APPROOT . '/views/includes/footer.php';  ?>

@@ -7,13 +7,18 @@ class AboutUs extends Controller {
     public function __construct()
     {
         // initialise models here
+        $this->aboutUsModel = $this->model('aboutUsModel');
     }
 
     /*
      * Displays the AboutUs page
      */
     public function index() {
-        $this->view('AboutUs/index');
-        // echo 'index page of the about us controller';
+        $aboutus = $this->aboutUsModel->getAboutUsById(0);
+        $data = [
+            "about" => $aboutus
+        ];
+
+        $this->view('AboutUs/index', $data);
     }
 }
