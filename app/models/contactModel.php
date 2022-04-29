@@ -50,8 +50,9 @@
         public function updateContact($admin_id, $contact) { 
             $this->query("UPDATE contact 
                           SET businessEmail = :email, location = :location, phone = :phone, name = :name 
-                          WHERE admin.admin_id = :admin_id 
-                          JOIN admin ON contact.admin_id = admin.admin_id");
+                          WHERE contact_id = (
+                              SELECT contact_id FROM admin WHERE admin_id = :admin_id
+                          )");
 
             $this->bind(":admin_id", $admin_id);
             $this->bind(":email", $contact["email"]);

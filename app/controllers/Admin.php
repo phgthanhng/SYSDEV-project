@@ -5,6 +5,7 @@ class Admin extends Controller {
         // initialise models here
         $this->loginModel = $this->model('loginModel');
         $this->productModel = $this->model('productModel');
+        $this->contactModel = $this->model('contactModel');
     }
 
     /*
@@ -252,7 +253,31 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
             return $this->denyPermission();
         
-        return $this->view('Admin/editContactUs');
+        
+
+            if (!isset($_POST['submit'])) {
+                return $this->view('Admin/editContactUs');
+            }
+            else 
+            {
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $phone = $_POST['phone'];
+                $address = $_POST['address'];
+    
+                $about_us = [
+                    "email" => $email,
+                    "location" => $address,
+                    "phone" => $phone,
+                    "name" => $name
+                ];
+    
+                if ($this->contactModel->updateContact($_SESSION['admin_id'], $about_us))
+                {
+                    echo "updating contact...";
+                    echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Contact/">';
+                }
+            }
     }
 
     /*
@@ -261,8 +286,8 @@ class Admin extends Controller {
     public function editAboutUs() {
         if (!isLoggedIn()) 
             return $this->denyPermission();
-
-        return $this->view('Admin/editAboutUs');
+        
+            return $this->view('Admin/editAboutUs');
     }
 
     /*
