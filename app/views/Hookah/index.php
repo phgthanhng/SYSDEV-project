@@ -47,8 +47,8 @@ else
             if (!empty($data["brands"])) {
                 foreach ($data["brands"] as $brand) {
                     echo '<div class="form-check">';
-                    echo '<input class="form-check-input" type="checkbox" value="" id="price-0">';
-                    echo '<label class="form-check-label" for="price-0">
+                    echo '<input class="form-check-input" type="checkbox" value="" id="brand-'.$brand->brand.'">';
+                    echo '<label class="form-check-label" for="price-'.$brand->brand.'">
                     ' . $brand->brand . '
                 </label>';
                     echo ' </div>';
@@ -61,8 +61,8 @@ else
             if (!empty($data["types"])) {
                 foreach ($data["types"] as $type) {
                     echo '<div class="form-check">';
-                    echo '<input class="form-check-input" type="checkbox" value="" id="price-0">';
-                    echo '<label class="form-check-label" for="price-0">
+                    echo '<input class="form-check-input" type="checkbox" value="" id="type-'.$type->type.'">';
+                    echo '<label class="form-check-label" for="type-'.$type->type.'">
                     ' . $type->type . '
                 </label>';
                     echo ' </div>';
@@ -74,8 +74,8 @@ else
             if (!empty($data["colors"])) {
                 foreach ($data["colors"] as $color) {
                     echo '<div class="form-check">';
-                    echo '<input class="form-check-input" type="checkbox" value="" id="price-0">';
-                    echo '<label class="form-check-label" for="price-0">
+                    echo '<input class="form-check-input" type="checkbox" value="" id="color-'.$color->color.'">';
+                    echo '<label class="form-check-label" for="type-'.$color->color.'">
                     ' . $color->color . '
                 </label>';
                     echo ' </div>';
