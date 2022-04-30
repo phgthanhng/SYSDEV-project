@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/includes/header.php';  ?>
+<?php require APPROOT . '/views/includes/adminheader.php';  ?>
 <div style="margin-top: 50px; margin-bottom: 60px">
     <form method="post" enctype="multipart/form-data">
         <div class="d-flex flex-column justify-content-center" id="accessory_form" style="margin-bottom: 50px">
