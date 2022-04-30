@@ -21,7 +21,7 @@
                       <td><?= $product->name?></td>
                       <td><?= $product->price?></td>
                       <?php if($product->description=="Hookah") : ?>
-                        <td><a class="link-info" href="<?= URLROOT ?>/Hookah/details/<?= $product->product_id ?>">Details</a></td>
+                        <td><a class="link-info" href="<?= URLROOT ?>/Hookah/detail/<?= $product->product_id ?>">Details</a></td>
                         <td><a class="link-success" href="<?= URLROOT ?>/Admin/editHookah/<?= $product->product_id ?>">Edit</a></td>
                         <td ><a class="link-danger" href="<?= URLROOT ?>/Admin/deleteHookah/<?= $product->product_id ?>">Delete</a></td>
                       <?php else :?>
