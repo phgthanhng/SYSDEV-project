@@ -5,38 +5,40 @@
     else
         require APPROOT . '/views/includes/adminheader.php';  
 ?>
+<script src="<?php echo URLROOT ?>/public/js/hookah.js" defer></script>
+
 <div class="wrapper" >
     <div id="viewport">
         <!-- Sidebar -->
         <div id="sidebar">
             <label for="" class="category">Price</label>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="" id="price-0">
+                <label class="form-check-label" for="price-0">
                     Under $25
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="price-1">
+                <label class="form-check-label" for="price-1">
                     $25 to $50
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="price-2">
+                <label class="form-check-label" for="price-2">
                     $50 to $100
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="price-3">
+                <label class="form-check-label" for="price-3">
                     $100 to $200
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
+                <input class="form-check-input" type="checkbox" value="" id="price-4">
+                <label class="form-check-label" for="price-4">
                     $200 & Above
                 </label>
             </div>
@@ -45,7 +47,7 @@
             if (!empty($data["categories"])) {
                 foreach ($data["categories"] as $category) {
                     echo '<div class="form-check">';
-                    echo '<input class="form-check-input" type="checkbox" value="" id="price-0">';
+                    echo '<input class="form-check-input" type="checkbox" value="" id="category-'.$category->category.'">';
                     echo '<label class="form-check-label" for="price-0">
                     ' . $category->category . '
                 </label>';
@@ -58,7 +60,7 @@
             if (!empty($data["brands"])) {
                 foreach ($data["brands"] as $brand) {
                     echo '<div class="form-check">';
-                    echo '<input class="form-check-input" type="checkbox" value="" id="price-0">';
+                    echo '<input class="form-check-input" type="checkbox" value="" id="brand-'.$category->category.'">';
                     echo '<label class="form-check-label" for="price-0">
                     ' . $brand->brand . '
                 </label>';
@@ -78,8 +80,8 @@
                 Dropdown button
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Price Low to High</a></li>
-                <li><a class="dropdown-item" href="#">Price High to Low</a></li>
+                <li><a class="dropdown-item" href="#" id="sort-0">Price Low to High</a></li>
+                <li><a class="dropdown-item" href="#" id="sort-1">Price High to Low</a></li>
             </ul>
         </div>
 

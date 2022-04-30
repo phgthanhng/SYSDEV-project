@@ -18,7 +18,7 @@ class Hookah extends Controller {
         $type = isset($_GET['type']) ? $_GET['type'] : [];
         $color = isset($_GET['color']) ? $_GET['color'] : [];
         $price = isset($_GET['price']) ? $_GET['price'] : [];
-        $sort = isset($_GET['sort']) ? $_GET['sort'] : [];
+        $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
 
         $brands = $this->productModel->getHookahBrand();
         $types = $this->productModel->getHookahType();

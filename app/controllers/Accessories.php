@@ -14,7 +14,12 @@ class Accessories extends Controller {
      * Displays all accessories
      */
     public function index() {
-        $accessories = $this->productModel->getAllAccessories();
+        $brand = isset($_GET['brand']) ? $_GET['brand'] : [];
+        $category = isset($_GET['category']) ? $_GET['category'] : [];
+        $price = isset($_GET['price']) ? $_GET['price'] : [];
+        $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
+
+        $accessories = $this->productModel->getAccessoryFilter($brand, $price, $category, $sort);
         $brands = $this->productModel->getAccessoryBrand();
         $categories = $this->productModel->getAccessoryCategory();
 
