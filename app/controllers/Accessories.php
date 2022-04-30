@@ -15,8 +15,15 @@ class Accessories extends Controller {
      */
     public function index() {
         $accessories = $this->productModel->getAllAccessories();
+        $brands = $this->productModel->getAccessoryBrand();
+        $categories = $this->productModel->getAccessoryCategory();
 
-        $this->view('Accessories/index', [ "accessories" => $accessories ]);
+        $data = [
+            "accessories" => $accessories, 
+            "brands" => $brands,
+            "categories" => $categories
+        ];
+        $this->view('Accessories/index', $data);
     }
 
     /*

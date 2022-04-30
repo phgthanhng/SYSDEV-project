@@ -40,25 +40,32 @@
                     $200 & Above
                 </label>
             </div>
-            <label for="" class="category">Type</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
-                    Mouthpiece
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
-                    Tong
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
-                    Bowl
-                </label>
-            </div>
+            <label for="" class="category">Category</label>
+            <?php
+            if (!empty($data["categories"])) {
+                foreach ($data["categories"] as $category) {
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="checkbox" value="" id="price-0">';
+                    echo '<label class="form-check-label" for="price-0">
+                    ' . $category->category . '
+                </label>';
+                    echo ' </div>';
+                }
+            }
+            ?>
+            <label for="" class="category">Brand</label>
+            <?php
+            if (!empty($data["brands"])) {
+                foreach ($data["brands"] as $brand) {
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="checkbox" value="" id="price-0">';
+                    echo '<label class="form-check-label" for="price-0">
+                    ' . $brand->brand . '
+                </label>';
+                    echo ' </div>';
+                }
+            }
+            ?>
         </div>
 
     </div>

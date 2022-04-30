@@ -20,8 +20,14 @@ class Hookah extends Controller {
         $price = isset($_GET['price']) ? $_GET['price'] : [];
 
         $hookahs = $this->productModel->getHookahFilter($brand, $type, $color, $price);
+        $brands = $this->productModel->getHookahBrand();
+        $types = $this->productModel->getHookahType();
+        $colors = $this->productModel->getHookahColor();
         $data = [
-            "hookahs" => $hookahs
+            "hookahs" => $hookahs,
+            "brands" => $brands,
+            "types" => $types,
+            "colors" => $colors
         ];
         return $this->view('Hookah/index', $data);
     }

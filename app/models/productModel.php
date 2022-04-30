@@ -312,5 +312,45 @@
 
             return $this->getResultSet();
         }
+
+        /**
+         * to get all the brands of hookah in the db (with no duplicate)
+         */
+        public function getHookahBrand() {
+            $this->query("SELECT DISTINCT brand FROM hookah");
+            return $this->getResultSet();
+        }
+
+        /**
+         * to get all the types of hookah in the db (with no duplicate)
+         */
+        public function getHookahType() {
+            $this->query("SELECT DISTINCT type FROM hookah");
+            return $this->getResultSet();
+        }
+
+        /**
+         * to get all the colors of hookah in the db (with no duplicate)
+         */
+        public function getHookahColor() {
+            $this->query("SELECT DISTINCT color FROM hookah");
+            return $this->getResultSet();
+        }
+
+        /**
+         * to get all the categories of accessory in the db (with no duplicate)
+         */
+        public function getAccessoryCategory() {
+            $this->query("SELECT DISTINCT category FROM accessory");
+            return $this->getResultSet();
+        }
+
+        /**
+         * to get all the brand of accessory in the db (with no duplicate)
+         */
+        public function getAccessoryBrand() {
+            $this->query("SELECT DISTINCT brand FROM accessory");
+            return $this->getResultSet();
+        }
     }
 ?>

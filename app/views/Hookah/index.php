@@ -1,14 +1,15 @@
 <?php
-    if (!isLoggedIn())
-        require APPROOT . '/views/includes/header.php';  
-    else
-        require APPROOT . '/views/includes/adminheader.php';  
+if (!isLoggedIn())
+    require APPROOT . '/views/includes/header.php';
+else
+    require APPROOT . '/views/includes/adminheader.php';
 ?>
 <script src="<?php echo URLROOT ?>/public/js/hookah.js" defer></script>
 <div class="wrapper">
     <div id="viewport">
         <!-- Sidebar -->
         <div id="sidebar">
+            
             <label for="" class="category">Price</label>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="price-0">
@@ -40,74 +41,47 @@
                     $200 & Above
                 </label>
             </div>
+            <label for="" class="category">Brand</label>
+
+            <?php
+            if (!empty($data["brands"])) {
+                foreach ($data["brands"] as $brand) {
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="checkbox" value="" id="price-0">';
+                    echo '<label class="form-check-label" for="price-0">
+                    ' . $brand->brand . '
+                </label>';
+                    echo ' </div>';
+                }
+            }
+            ?>
             <label for="" class="category">Type</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="type-egyptian">
-                <label class="form-check-label" for="type-egyptian">
-                    Egyptian
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="type-syrian">
-                <label class="form-check-label" for="type-syrian">
-                    Syrian
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="type-indian">
-                <label class="form-check-label" for="type-indian">
-                    Indian
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="type-traditional">
-                <label class="form-check-label" for="type-traditional">
-                    Traditional
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="type-modern">
-                <label class="form-check-label" for="type-modern">
-                    Modern
-                </label>
-            </div>
+
+            <?php
+            if (!empty($data["types"])) {
+                foreach ($data["types"] as $type) {
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="checkbox" value="" id="price-0">';
+                    echo '<label class="form-check-label" for="price-0">
+                    ' . $type->type . '
+                </label>';
+                    echo ' </div>';
+                }
+            }
+            ?>
             <label for="" class="category">Color</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="color-Black">
-                <label class="form-check-label" for="color-Black">
-                    Black
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="color-Red">
-                <label class="form-check-label" for="color-Red">
-                    Red
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="color-Green">
-                <label class="form-check-label" for="color-Green">
-                    Green
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="color-Pink">
-                <label class="form-check-label" for="color-Pink">
-                    Pink
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="color-Blue">
-                <label class="form-check-label" for="color-Blue">
-                    Blue
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="color-Yellow">
-                <label class="form-check-label" for="color-Yellow">
-                    Yellow
-                </label>
-            </div>
+            <?php
+            if (!empty($data["colors"])) {
+                foreach ($data["colors"] as $color) {
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="checkbox" value="" id="price-0">';
+                    echo '<label class="form-check-label" for="price-0">
+                    ' . $color->color . '
+                </label>';
+                    echo ' </div>';
+                }
+            }
+            ?>
         </div>
     </div>
 
