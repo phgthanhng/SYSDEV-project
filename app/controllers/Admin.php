@@ -312,7 +312,22 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
             return $this->denyPermission();
        
-        return $this->view('Admin/previewDatabase');
+
+        $admin = $this->loginModel->getAllAdmin();
+        $hookahs = $this->productModel->getAllHookahs();
+        $accessories = $this->productModel->getAllAccessories();
+        $contact = $this->contactModel->getAllContact(); 
+        $aboutUs = $this->aboutUsModel->getAllAboutUs();
+        
+        $database = [
+            'admins' => $admin,
+            'hookahs' => $hookahs,
+            'accessories' => $accessories,
+            'contacts' => $contact,
+            'aboutUs' => $aboutUs
+        ];
+
+        return $this->view('Admin/previewDatabase',$database);
     }
 
     /*
