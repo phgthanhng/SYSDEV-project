@@ -3,7 +3,7 @@
 
 
 <div class="container">
-    <h1 style="margin-bottom: 25px;margin-top: 50px;text-align: center;">Manage my Products(<?= $data['total']->count?>)</h1>
+    <h1 style="margin-bottom: 25px;margin-top: 50px;text-align: center;">Manage my Products(<?= count($data['products'])?>)</h1>
         <div class="table-responsive">
         <table class="table">
                 <thead>

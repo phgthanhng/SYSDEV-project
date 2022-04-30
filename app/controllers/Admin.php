@@ -98,11 +98,9 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
            return $this->denyPermission();
 
-        $count = $this->productModel->getAllProductsCounter();
         $products = $this->productModel->getAllProducts();
 
         $data = [
-            'total' => $count,
             'products' => $products
         ];
         

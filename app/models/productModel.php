@@ -8,21 +8,9 @@
         }
 
         
-        // NOTE: for the Manage Products table 
-        // will need some testing!!
         /*
          * Retrieves all products of the hookah table and accessory table from the database
          */
-        public function getAllProductsCounter(){
-            $this->query("SELECT 
-                        (SELECT COUNT(hookah_id) FROM hookah) +
-                        (SELECT COUNT(accessory_id) FROM accessory) 
-                        AS count");
-            
-            return $this->getSingle();
-        }
-
-        
         public function getAllProducts(){ 
             $this->query("SELECT hookah_id as product_id, name, price, IF(description, '', 'Hookah') as description 
                           FROM hookah
