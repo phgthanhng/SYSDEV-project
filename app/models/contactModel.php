@@ -43,6 +43,16 @@
 
             return $this->getSingle();
         }
+
+        public function getContactById($id) {  
+            $this->query("SELECT businessEmail, phone, location, name 
+                          FROM contact 
+                          WHERE contact_id = :contact_id");
+
+            $this->bind(":contact_id", $id);
+
+            return $this->getSingle();
+        }
    
         /*
          * Updates a specific contact record from the database based on the adminID
@@ -50,8 +60,9 @@
         public function updateContact($admin_id, $contact) { 
             $this->query("UPDATE contact 
                           SET businessEmail = :email, location = :location, phone = :phone, name = :name 
-                          WHERE admin.admin_id = :admin_id 
-                          JOIN admin ON contact.admin_id = admin.admin_id");
+                          WHERE contact_id = (
+                              SELECT contact_id FROM admin WHERE admin_id = :admin_id
+                          )");
 
             $this->bind(":admin_id", $admin_id);
             $this->bind(":email", $contact["email"]);

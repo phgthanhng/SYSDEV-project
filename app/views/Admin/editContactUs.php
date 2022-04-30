@@ -13,17 +13,19 @@
         </div>
         <div class="accessory_input" style="background-color: #ffffff" name="name">
 
-        <label class="form-label">Email:</label>
+        <label class="form-label">Name:</label>
+        <input class="form-control form-control" type="text" required="" minlength="6" name="name" />
+        <label class="form-label" style="margin-top: 10px">Email:</label>
         <input class="form-control form-control" type="email" required="" minlength="6" name="email" />
         <label class="form-label" style="margin-top: 10px">Phone Number:</label>
-        <input class="form-control form-control" type="text" required="" name="phoneNumber" pattern="^\d{3}\d{3}\d{4}$"  />
+        <input class="form-control form-control" type="text" required="" name="phone" pattern="^\d{3}\d{3}\d{4}$"  />
         <label class="form-label" style="margin-top: 10px">Address:</label>
         <input class="form-control form-control" type="text" required="" name="address" />
         </div>
         <div class="submit-row" style="margin-bottom: 8px; padding-top: 0px">
             <button class="btn btn-primary d-block box-shadow w-100" id="submit-id-submit" type="submit"
                 style="background: #081210; margin-top: 20px" name="submit">
-                Edit
+                Save
             </button>
             <div class="d-flex justify-content-between"></div>
         </div>

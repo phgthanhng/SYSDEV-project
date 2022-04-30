@@ -4,13 +4,18 @@ class Contact extends Controller {
     public function __construct()
     {
         // initialise models here
+        $this->contactModel = $this->model('contactModel');
     }
 
     /*
      * Displays contact us page
      */
     public function index() {
-        $this->view('Contact/index');
-        // echo 'index page of the about us controller';
+        $contact = $this->contactModel->getContactById(0);
+        $data = [
+            "contact" => $contact
+        ];
+
+        $this->view('Contact/index', $data);
     }
 }
