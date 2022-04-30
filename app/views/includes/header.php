@@ -19,9 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column min-vh-100" style="  background-color: #fdf1ec;
-">
-    <nav class="navbar sticky-top navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow); position: sticky">
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar sticky-top navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow); position: sticky; bottom: 0">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?php echo URLROOT; ?>/Home/index" style="font-size: 30px">Shisha Shop</a>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2">
@@ -31,16 +30,16 @@
             <div class="collapse navbar-collapse" id="navcol-2" style="width: 600px">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">Products</a>
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: #ffffff;">Products</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="<?php echo URLROOT; ?>/Hookah/index">Hookah</a>
                             <a class="dropdown-item" href="<?php echo URLROOT; ?>/Accessories/index">Accessory</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo URLROOT; ?>/Contact/index">Contact us</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/Contact/index"style="color: #ffffff;">Contact us</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/AboutUs/index">about Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/AboutUs/index" style="color: #ffffff;">about Us</a></li>
                 </ul>
                 <form class="d-flex me-auto navbar-form" target="_self">
                     <div class="d-flex align-items-center">
