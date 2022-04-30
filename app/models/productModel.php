@@ -176,7 +176,7 @@
             return $this->execute();
         }
 
-        public function getHookahFilter($brand,$type,$color,$price){
+        public function getHookahFilter($brand,$type,$color,$price, $sort){
             
 
             $query = "SELECT * FROM hookah ";
@@ -279,6 +279,10 @@
                             break;
                     }
                 }
+            }
+            if (isset($sort))
+            {
+                $query .= $sort == "0" ? "ORDER BY price ASC" : "ORDER BY price DESC";
             }
             $this->query($query);
 

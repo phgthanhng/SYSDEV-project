@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/font-awesome.min.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/ionicons.min.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.min.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
 </head>
 
 <body class="d-flex flex-column min-vh-100">

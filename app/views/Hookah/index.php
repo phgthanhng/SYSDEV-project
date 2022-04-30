@@ -92,8 +92,8 @@ else
                 Dropdown button
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Price Low to High</a></li>
-                <li><a class="dropdown-item" href="#">Price High to Low</a></li>
+                <li><a class="dropdown-item" href="#" id="sort-0">Price Low to High</a></li>
+                <li><a class="dropdown-item" href="#" id="sort-1">Price High to Low</a></li>
             </ul>
         </div>
 
@@ -102,7 +102,7 @@ else
             <?php
             if (!empty($data["hookahs"])) {
                 foreach ($data["hookahs"] as $product) {
-                    echo '<div class="card stacked">';
+                    echo '<div class="card stacked"';
                     echo '<a href="' . URLROOT . '/hookah/detail/' . $product->hookah_id . '" style="text-decoration: none;">';
                     echo '<img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">';
                     echo '<div class="card__content">';
