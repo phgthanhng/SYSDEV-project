@@ -174,7 +174,7 @@
             return $this->execute();
         }
 
-        
+
         public function getHookahFilter($brand, $type, $color, $price, $sort){
             $query = "SELECT * FROM hookah ";
             $count = 0;
@@ -231,7 +231,7 @@
                             
                             else {
                                 $query .=  $priceCount == 0 ? "AND (price BETWEEN 50 AND 100) "
-                                        : $query .= "OR (price BETWEEN 50 AND 100) ";    
+                                        : "OR (price BETWEEN 50 AND 100) ";    
                                 $priceCount++;
                             }  
                             $count++;
