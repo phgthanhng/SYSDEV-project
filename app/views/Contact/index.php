@@ -4,13 +4,13 @@
         Contact us
     </h1>
     <h5 style="text-align: center; margin-bottom: 20px">
-        Email: <?php echo $data['contact']->businessEmail ?>
+        Email: <?= $data['contact']->businessEmail ?>
     </h5>
     <h5 style="text-align: center; margin-bottom: 20px">
-        Phone number: <?php echo $data['contact']->phone ?>
+        Phone number: <?= $data['contact']->phone ?>
     </h5>
     <h5 style="text-align: center; margin-bottom: 150px">
-        Address: <?php echo $data['contact']->location ?>
+        Address: <?= $data['contact']->location ?>
     </h5>
 </div>
 <?php require APPROOT . '/views/includes/footer.php';  ?>

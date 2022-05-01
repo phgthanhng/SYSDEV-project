@@ -5,7 +5,7 @@
     else
         require APPROOT . '/views/includes/adminheader.php';  
 ?>
-<script src="<?php echo URLROOT ?>/public/js/hookah.js" defer></script>
+<script src="<?= URLROOT ?>/public/js/hookah.js" defer></script>
 
 <div class="wrapper" >
     <div id="viewport">
@@ -43,31 +43,28 @@
                 </label>
             </div>
             <label for="" class="category">Category</label>
-            <?php
-            if (!empty($data["categories"])) {
-                foreach ($data["categories"] as $category) {
-                    echo '<div class="form-check">';
-                    echo '<input class="form-check-input" type="checkbox" value="" id="category-'.$category->category.'">';
-                    echo '<label class="form-check-label" for="price-0">
-                    ' . $category->category . '
-                </label>';
-                    echo ' </div>';
-                }
-            }
-            ?>
+
+            <?php if(!empty($data["categories"])) : ?>
+                <?php foreach($data["categories"] as $category) : ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="category-'<?=$category->category?>">
+                        <label class="form-check-label" for="category-<?=$category->category?>"><?=$category->category?></label>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
             <label for="" class="category">Brand</label>
-            <?php
-            if (!empty($data["brands"])) {
-                foreach ($data["brands"] as $brand) {
-                    echo '<div class="form-check">';
-                    echo '<input class="form-check-input" type="checkbox" value="" id="brand-'.$category->category.'">';
-                    echo '<label class="form-check-label" for="price-0">
-                    ' . $brand->brand . '
-                </label>';
-                    echo ' </div>';
-                }
-            }
-            ?>
+
+            <?php if(!empty($data["brands"])) : ?>
+                <?php foreach($data["brands"] as $brand) : ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="brand-<?=$brand->brand?>">
+                        <label class="form-check-label" for="brand-<?=$brand->brand?>"><?=$brand->brand?></label>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            
         </div>
 
     </div>
@@ -86,26 +83,28 @@
         </div>
 
         <div class="product-grid">
-            <?php
-            if (!empty($data["accessories"])) {
-                foreach ($data["accessories"] as $product) {
-                    echo '<div class="card stacked">';
-                    echo '<a href="' . URLROOT . '/accessories/detail/' . $product->accessory_id . '" style="text-decoration: none;">';
-                    echo '<a href="'. URLROOT . '/accessories/detail/' . $product->accessory_id . '" style="text-decoration: none;">
-                            <img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">
-                        </a>';
-                    echo '<div class="card__content">';
-                    echo '<a href="'. URLROOT . '/accessories/detail/' . $product->accessory_id . '" style="text-decoration: none;">
-                            <h2 class="card__title">' . $product->name . '</h2>
-                        </a>';
-                    echo '<p class="card__price">' . $product->price . '</p>';
-                    echo '</a>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</a>';
-                }
-            }
-            ?>
+
+            <?php if(!empty($data["accessories"])) : ?>
+                <?php foreach ($data["accessories"] as $product) : ?>
+                    <div class="card stacked">
+                        <a href="<?= URLROOT ?>/accessories/detail/<?= $product->accessory_id ?>" style="text-decoration: none;">
+                            <a href="<?= URLROOT ?>/accessories/detail/<?= $product->accessory_id ?>" style="text-decoration: none;">
+                                <img src="<?= URLROOT ?>/public/img/<?= $product->image ?>" class="card__img">
+                            </a>
+                            <div class="card__content">
+                                <a href="<?= URLROOT ?>/accessories/detail/<?= $product->accessory_id ?>" style="text-decoration: none;">
+                                    <h2 class="card__title"><?= $product->name ?></h2>
+                                    <p class="card__price"><?= $product->price ?></p>
+                                </a>
+                                
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+
+            
         </div>
     </div>
 </div>

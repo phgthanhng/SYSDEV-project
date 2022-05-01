@@ -18,17 +18,16 @@
             Log In
           </button>
         </div>
-        <a class="forgot" href="<?php echo URLROOT; ?>/Admin/-------">Forgot your email or password?</a>
-        <?php 
-        // check if theres an error message. If so, display it
-        if (isset($data['message'])) {
-          echo '
-              <div class="alert alert-default alert-dismissible fade show mt-3" role="alert" style="background-color:rgb(192,51,51)">
-                 <strong>'.$data['message'].'</strong>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>';
-        }
-      ?>
+        <a class="forgot" href="<?= URLROOT ?>/Admin/-------">Forgot your email or password?</a>
+
+        <?php if (isset($data['message'])) : // check if theres an error message. If so, display it ?>
+          <div class="alert alert-default alert-dismissible fade show mt-3" role="alert" style="background-color:rgb(192,51,51)">
+            <strong><?=$data['message']?></strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+        
+        
       </form>
     </section>
   </div>
