@@ -1,10 +1,10 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
-    <div class="container" style="margin-bottom: 40px">
-        <h1 style="text-align: center; margin-top: 50px">Browse products</h1>
+    <div class="container" style="margin:auto">
+        <h1 style="text-align: center; padding-top:4rem; margin-top: 100px">Browse products</h1>
         <div class="row" style="margin-top: 50px; margin-bottom: 50px">
         
             <div class="float-start col" style="
-            height: 400px;
+            height: 80%;
             opacity: 0.8;
             display: flex;
             justify-content: center;
@@ -23,7 +23,7 @@
             </div>
             
             <div class="float-start col" style="
-            height: 400px; 
+            height: 80%; 
             opacity: 0.8;
             display: flex;
             justify-content: center;
