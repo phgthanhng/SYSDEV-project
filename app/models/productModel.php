@@ -262,8 +262,8 @@
                             $priceCount++;
                             break;
                     }
-                    $count++; // increase counter if any/more price checkbox was checked
                 }
+                $count++; // increase counter if any/more price checkbox was checked
             }
 
             // SORT BY PRICE
@@ -353,8 +353,8 @@
                             $priceCount++;
                             break;
                     }
-                    $count++; // increase counter if price was chosen
                 }
+                $count++; // increase counter if price was chosen
             }
 
             if (isset($sort))

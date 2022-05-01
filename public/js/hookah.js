@@ -39,7 +39,6 @@ sortPriceASC.onclick = (event) => {
         search = search.replace("?sort=1", "");
     }
 
-
     window.location.search = search;
 }
 
