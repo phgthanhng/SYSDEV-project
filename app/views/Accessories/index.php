@@ -77,7 +77,7 @@
 
         <div class="dropdown" style="margin-left: 30px; margin-bottom: 30px">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
+                Sort Price
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="#" id="sort-0">Price Low to High</a></li>
@@ -91,9 +91,13 @@
                 foreach ($data["accessories"] as $product) {
                     echo '<div class="card stacked">';
                     echo '<a href="' . URLROOT . '/accessories/detail/' . $product->accessory_id . '" style="text-decoration: none;">';
-                    echo '<img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">';
+                    echo '<a href="'. URLROOT . '/accessories/detail/' . $product->accessory_id . '" style="text-decoration: none;">
+                        <img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">
+                        </a>';
                     echo '<div class="card__content">';
-                    echo '<h2 class="card__title">' . $product->name . '</h2>';
+                    echo '<a href="'. URLROOT . '/accessories/detail/' . $product->accessory_id . '" style="text-decoration: none;">
+                        <h2 class="card__title">' . $product->name . '</h2>
+                        </a>';
                     echo '<p class="card__price">' . $product->price . '</p>';
                     echo '</a>';
                     echo '</div>';

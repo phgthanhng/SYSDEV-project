@@ -7,7 +7,6 @@
             parent::__construct();
         }
 
-        
         /*
          * Retrieves all products of the hookah table and accessory table from the database
          */
@@ -175,16 +174,25 @@
         }
 
 
+        /*
+         * Filter a hookah product 
+         * @param $brand array of brands
+         * @papram $type array of colors
+         * @param $price array of price ID(0, 1, 2, 3, 4)
+         * @param $sort chosen sort type(ascending or descending)
+         */
         public function getHookahFilter($brand, $type, $color, $price, $sort){
             $query = "SELECT * FROM hookah ";
             $count = 0;
 
+        // BRAND filtering
             if (!empty($brand)) 
             {
-                $count++;
                 $query .= "WHERE brand IN ('".implode("', '", $brand)."') ";
+                $count++;
             }
-
+        
+        // TYPE filtering
             if (!empty($type))
             {
                 $query .= $count == 0 ? "WHERE type IN ('".implode("', '", $type)."') "
@@ -192,25 +200,25 @@
                 $count++;
             }
 
+        // COLOR filtering
             if(!empty($color))
             {
                 $query .= $count == 0 ? "WHERE color IN ('".implode("', '", $color)."') " 
                         :  "AND color IN ('".implode("', '", $color)."') ";
                 $count++;
             }
-
+        
+        // PRICE filtering
             if (!empty($price)) {
-                $priceCount = 0;
+                $priceCount = 0;        // counter that describes how many checked price range option was chosen in the filter
                 foreach($price as $p) {
                     switch ($p) {
-
                         case '0':
-                            if ($count == 0)
+                            if ($count == 0) 
                                 $query .= "WHERE (price < 25) ";                
                             else
-                                $query .= $price == 0 ? "AND (price < 25) " : "OR (price < 25) ";   
+                                $query .= $priceCount == 0 ? "AND (price < 25) " : "OR (price < 25) ";   
 
-                            $count++;
                             $priceCount++;
                             break;
 
@@ -218,12 +226,9 @@
                             if ($count == 0)
                                 $query .= "WHERE (price BETWEEN 25 AND 50) ";                
                             
-                            else {
-                                $query .= $priceCount == 0 ? "AND (price BETWEEN 25 AND 50) "
-                                        : "OR (price BETWEEN 25 AND 50) ";  
-                                  
-                            }  
-                            $count++;
+                            else
+                                $query .= $priceCount == 0 ? "AND (price BETWEEN 25 AND 50) " : "OR (price BETWEEN 25 AND 50) ";  
+                            
                             $priceCount++;
                             break;
 
@@ -231,12 +236,9 @@
                             if ($count == 0)
                                 $query .= "WHERE (price BETWEEN 50 AND 100) ";                
                             
-                            else {
-                                $query .=  $priceCount == 0 ? "AND (price BETWEEN 50 AND 100) "
-                                        : "OR (price BETWEEN 50 AND 100) ";    
+                            else 
+                                $query .=  $priceCount == 0 ? "AND (price BETWEEN 50 AND 100) " : "OR (price BETWEEN 50 AND 100) ";    
                                 
-                            }  
-                            $count++;
                             $priceCount++;
                             break;
 
@@ -244,12 +246,9 @@
                             if ($count == 0)
                                 $query .= "WHERE (price BETWEEN 100 AND 200) ";                
                             
-                            else {
-                                $query .=  $priceCount == 0 ? "AND (price BETWEEN 100 AND 200) "
-                                       : "OR (price BETWEEN 100 AND 200) ";    
+                            else 
+                                $query .=  $priceCount == 0 ? "AND (price BETWEEN 100 AND 200) " : "OR (price BETWEEN 100 AND 200) ";    
                                 
-                            }  
-                            $count++;
                             $priceCount++;
                             break;
 
@@ -257,17 +256,17 @@
                             if ($count == 0) 
                                 $query .= "WHERE (price > 200) ";                
                             
-                            else {
-                                $query .= $priceCount == 0 ? "AND (price > 200) " 
-                                        : "OR (price > 200) ";    
+                            else 
+                                $query .= $priceCount == 0 ? "AND (price > 200) " : "OR (price > 200) ";    
                                 
-                            }  
-                            $count++;
                             $priceCount++;
                             break;
                     }
+                    $count++; // increase counter if any/more price checkbox was checked
                 }
             }
+
+            // SORT BY PRICE
             if (isset($sort))
                 $query .= $sort == "0" ? "ORDER BY price ASC" : "ORDER BY price DESC";
 
@@ -288,17 +287,78 @@
             $query = "SELECT * FROM accessory ";
             $count = 0;
 
+            // BRAND filtering
             if (!empty($brand)) {
                 $query .= "WHERE brand IN ('".implode("', '", $brand)."') ";
                 $count++;
-            }
-
+            }   
+            
+            // CATEGORY filtering
             if (!empty($category)) {
                 $query .= $count == 0 ? "WHERE category IN ('".implode("', '", $category)."') "
-                        : "AND category IN ('".implode("', '", $category)."') ";
-                    
+                        : "AND category IN ('".implode("', '", $category)."') ";  
                 $count++;
             }
+
+            // PRICE filtering
+            if (!empty($price)) {
+                $priceCount = 0;
+                foreach($price as $p) {
+                    switch ($p) {
+                        case '0':
+                            if ($count == 0)
+                                $query .= "WHERE (price < 25) ";                
+                            else
+                                $query .= $priceCount == 0 ? "AND (price < 25) " : "OR (price < 25) ";   
+                            $priceCount++;
+                            break;
+
+                        case '1':
+                            if ($count == 0)
+                                $query .= "WHERE (price BETWEEN 25 AND 50) ";                
+                            
+                            else
+                                $query .= $priceCount == 0 ? "AND (price BETWEEN 25 AND 50) " : "OR (price BETWEEN 25 AND 50) ";  
+                            
+                            $priceCount++;
+                            break;
+
+                        case '2':
+                            if ($count == 0)
+                                $query .= "WHERE (price BETWEEN 50 AND 100) ";                
+                            
+                            else 
+                                $query .=  $priceCount == 0 ? "AND (price BETWEEN 50 AND 100) " : "OR (price BETWEEN 50 AND 100) ";    
+                                
+                            $priceCount++;
+                            break;
+
+                        case '3':
+                            if ($count == 0)
+                                $query .= "WHERE (price BETWEEN 100 AND 200) ";                
+                            
+                            else 
+                                $query .=  $priceCount == 0 ? "AND (price BETWEEN 100 AND 200) " : "OR (price BETWEEN 100 AND 200) ";    
+                                
+                            $priceCount++;
+                            break;
+
+                        default:
+                            if ($count == 0) 
+                                $query .= "WHERE (price > 200) ";                
+                            
+                            else 
+                                $query .= $priceCount == 0 ? "AND (price > 200) " : "OR (price > 200) ";    
+                                
+                            $priceCount++;
+                            break;
+                    }
+                    $count++; // increase counter if price was chosen
+                }
+            }
+
+            if (isset($sort))
+                $query .= $sort == "0" ? "ORDER BY price ASC" : "ORDER BY price DESC";
             
             $this->query($query);
 
