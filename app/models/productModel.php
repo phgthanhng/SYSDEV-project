@@ -211,6 +211,7 @@
                                 $query .= $price == 0 ? "AND (price < 25) " : "OR (price < 25) ";   
 
                             $count++;
+                            $priceCount++;
                             break;
 
                         case '1':
@@ -220,9 +221,10 @@
                             else {
                                 $query .= $priceCount == 0 ? "AND (price BETWEEN 25 AND 50) "
                                         : "OR (price BETWEEN 25 AND 50) ";  
-                                $priceCount++;  
+                                  
                             }  
                             $count++;
+                            $priceCount++;
                             break;
 
                         case '2':
@@ -232,9 +234,10 @@
                             else {
                                 $query .=  $priceCount == 0 ? "AND (price BETWEEN 50 AND 100) "
                                         : "OR (price BETWEEN 50 AND 100) ";    
-                                $priceCount++;
+                                
                             }  
                             $count++;
+                            $priceCount++;
                             break;
 
                         case '3':
@@ -244,9 +247,10 @@
                             else {
                                 $query .=  $priceCount == 0 ? "AND (price BETWEEN 100 AND 200) "
                                        : "OR (price BETWEEN 100 AND 200) ";    
-                                $priceCount++;
+                                
                             }  
                             $count++;
+                            $priceCount++;
                             break;
 
                         default:
@@ -256,9 +260,10 @@
                             else {
                                 $query .= $priceCount == 0 ? "AND (price > 200) " 
                                         : "OR (price > 200) ";    
-                                $priceCount++;
+                                
                             }  
                             $count++;
+                            $priceCount++;
                             break;
                     }
                 }
