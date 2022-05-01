@@ -174,104 +174,89 @@
             return $this->execute();
         }
 
-        public function getHookahFilter($brand,$type,$color,$price, $sort){
-            
-
+        
+        public function getHookahFilter($brand, $type, $color, $price, $sort){
             $query = "SELECT * FROM hookah ";
             $count = 0;
 
-            if(!empty($brand)){
+            if (!empty($brand)) 
+            {
                 $count++;
-
                 $query .= "WHERE brand IN ('".implode("', '", $brand)."') ";
             }
-            if(!empty($type))
-            {
-                if($count==0){
-                    $query .= "WHERE type IN ('".implode("', '", $type)."') ";
-                }
-                else{
-                    $query .= "AND type IN ('".implode("', '", $type)."') ";
-                }    
 
+            if (!empty($type))
+            {
+                $query .= $count == 0 ? "WHERE type IN ('".implode("', '", $type)."') "
+                        : "AND type IN ('".implode("', '", $type)."') ";
                 $count++;
             }
+
             if(!empty($color))
             {
-                if($count==0){
-                    $query .= "WHERE color IN ('".implode("', '", $color)."') ";                    
-                }
-                else{
-                    $query .= "AND color IN ('".implode("', '", $color)."') ";
-                }    
-                
+                $query .= $count == 0 ? "WHERE color IN ('".implode("', '", $color)."') " 
+                        :  "AND color IN ('".implode("', '", $color)."') ";
                 $count++;
             }
+
             if (!empty($price)) {
                 $priceCount = 0;
                 foreach($price as $p) {
                     switch ($p) {
+
                         case '0':
-                            if($count == 0){
+                            if ($count == 0)
                                 $query .= "WHERE (price < 25) ";                
-                            }
-                            else{
-                                if ($price == 0)
-                                    $query .= "AND (price < 25) ";
-                                else
-                                    $query .= "OR (price < 25) ";    
-                            }  
+                            else
+                                $query .= $price == 0 ? "AND (price < 25) " : "OR (price < 25) ";   
+
                             $count++;
                             break;
+
                         case '1':
-                            if($count == 0){
+                            if ($count == 0)
                                 $query .= "WHERE (price BETWEEN 25 AND 50) ";                
-                            }
-                            else{
-                                if ($priceCount == 0)
-                                    $query .= "AND (price BETWEEN 25 AND 50) ";
-                                else
-                                    $query .= "OR (price BETWEEN 25 AND 50) ";  
-                                    $priceCount++;  
+                            
+                            else {
+                                $query .= $priceCount == 0 ? "AND (price BETWEEN 25 AND 50) "
+                                        : "OR (price BETWEEN 25 AND 50) ";  
+                                $priceCount++;  
                             }  
                             $count++;
                             break;
+
                         case '2':
-                            if($count == 0){
+                            if ($count == 0)
                                 $query .= "WHERE (price BETWEEN 50 AND 100) ";                
-                            }
-                            else{
-                                if ($priceCount == 0)
-                                    $query .= "AND (price BETWEEN 50 AND 100) ";
-                                else
-                                    $query .= "OR (price BETWEEN 50 AND 100) ";    
+                            
+                            else {
+                                $query .=  $priceCount == 0 ? "AND (price BETWEEN 50 AND 100) "
+                                        : $query .= "OR (price BETWEEN 50 AND 100) ";    
                                 $priceCount++;
                             }  
                             $count++;
                             break;
+
                         case '3':
-                            if($count == 0){
+                            if ($count == 0)
                                 $query .= "WHERE (price BETWEEN 100 AND 200) ";                
-                            }
-                            else{
-                                if ($priceCount == 0)
-                                    $query .= "AND (price BETWEEN 100 AND 200) ";
-                                else
-                                    $query .= "OR (price BETWEEN 100 AND 200) ";    
-                                    $priceCount++;
+                            
+                            else {
+                                $query .=  $priceCount == 0 ? "AND (price BETWEEN 100 AND 200) "
+                                       : "OR (price BETWEEN 100 AND 200) ";    
+                                $priceCount++;
                             }  
                             $count++;
                             break;
+
                         default:
-                            if($count == 0){
+                            if ($count == 0) 
                                 $query .= "WHERE (price > 200) ";                
-                            }
-                            else{
-                                if ($priceCount == 0)
-                                    $query .= "AND (price > 200) ";
-                                else
-                                    $query .= "OR (price > 200) ";    
-                                    $priceCount++;
+                            
+                            else {
+                                $query .= $priceCount == 0 ? "AND (price > 200) " 
+                                        : "OR (price > 200) ";    
+                                $priceCount++;
                             }  
                             $count++;
                             break;
@@ -279,150 +264,76 @@
                 }
             }
             if (isset($sort))
-            {
                 $query .= $sort == "0" ? "ORDER BY price ASC" : "ORDER BY price DESC";
-            }
+
             $this->query($query);
 
             return $this->getResultSet();
 
         }
 
-        public function getAccessoryFilter($brand,$price,$category, $sort){
+        /*
+         * Filters the accessory depending on the brand, price, catgegory, and sort by price chosen 
+         * @param $brand array of brands
+         * @param $price array of price ID
+         * @param $category array of categories
+         * @param $sort sorting type
+         */
+        public function getAccessoryFilter($brand, $price, $category, $sort) {
             $query = "SELECT * FROM accessory ";
             $count = 0;
 
-            if(!empty($brand)){
+            if (!empty($brand)) {
                 $query .= "WHERE brand IN ('".implode("', '", $brand)."') ";
-                
                 $count++;
             }
-            if(!empty($category))
-            {
-                if($count==0){
-                    $query .= "WHERE category IN ('".implode("', '", $category)."') ";
-                }
-                else{
-                    $query .= "AND category IN ('".implode("', '", $category)."') ";
-                    
-                }    
 
+            if (!empty($category)) {
+                $query .= $count == 0 ? "WHERE category IN ('".implode("', '", $category)."') "
+                        : "AND category IN ('".implode("', '", $category)."') ";
+                    
                 $count++;
             }
-            if (!empty($price)) {
-                $priceCount = 0;
-                foreach($price as $p) {
-                    switch ($p) {
-                        case '0':
-                            if($count == 0){
-                                $query .= "WHERE (price < 25) ";                
-                            }
-                            else{
-                                if ($price == 0)
-                                    $query .= "AND (price < 25) ";
-                                else
-                                    $query .= "OR (price < 25) ";    
-                            }  
-                            $count++;
-                            break;
-                        case '1':
-                            if($count == 0){
-                                $query .= "WHERE (price BETWEEN 25 AND 50) ";                
-                            }
-                            else{
-                                if ($priceCount == 0)
-                                    $query .= "AND (price BETWEEN 25 AND 50) ";
-                                else
-                                    $query .= "OR (price BETWEEN 25 AND 50) ";  
-                                    $priceCount++;  
-                            }  
-                            $count++;
-                            break;
-                        case '2':
-                            if($count == 0){
-                                $query .= "WHERE (price BETWEEN 50 AND 100) ";                
-                            }
-                            else{
-                                if ($priceCount == 0)
-                                    $query .= "AND (price BETWEEN 50 AND 100) ";
-                                else
-                                    $query .= "OR (price BETWEEN 50 AND 100) ";    
-                                $priceCount++;
-                            }  
-                            $count++;
-                            break;
-                        case '3':
-                            if($count == 0){
-                                $query .= "WHERE (price BETWEEN 100 AND 200) ";                
-                            }
-                            else{
-                                if ($priceCount == 0)
-                                    $query .= "AND (price BETWEEN 100 AND 200) ";
-                                else
-                                    $query .= "OR (price BETWEEN 100 AND 200) ";    
-                                    $priceCount++;
-                            }  
-                            $count++;
-                            break;
-                        default:
-                            if($count == 0){
-                                $query .= "WHERE (price > 200) ";                
-                            }
-                            else{
-                                if ($priceCount == 0)
-                                    $query .= "AND (price > 200) ";
-                                else
-                                    $query .= "OR (price > 200) ";    
-                                    $priceCount++;
-                            }  
-                            $count++;
-                            break;
-                    }
-                }
-            }
-            if (isset($sort))
-            {
-                $query .= $sort == "0" ? "ORDER BY price ASC" : "ORDER BY price DESC";
-            }
+            
             $this->query($query);
 
             return $this->getResultSet();
         }
 
-        /**
-         * to get all the brands of hookah in the db (with no duplicate)
+        /*
+         *  Retrieves all the brands of hookah in the database (with no duplicate)
          */
         public function getHookahBrand() {
             $this->query("SELECT DISTINCT brand FROM hookah");
             return $this->getResultSet();
         }
 
-        /**
-         * to get all the types of hookah in the db (with no duplicate)
+        /*
+         * Retrieves all the types of hookah in the database (with no duplicate)
          */
         public function getHookahType() {
             $this->query("SELECT DISTINCT type FROM hookah");
             return $this->getResultSet();
         }
 
-        /**
-         * to get all the colors of hookah in the db (with no duplicate)
+        /*
+         * Retrieves all the colors of hookah in the database (with no duplicate)
          */
         public function getHookahColor() {
             $this->query("SELECT DISTINCT color FROM hookah");
             return $this->getResultSet();
         }
 
-        /**
-         * to get all the categories of accessory in the db (with no duplicate)
+        /*
+         * Retrieves all the categories of accessory in the database (with no duplicate)
          */
         public function getAccessoryCategory() {
             $this->query("SELECT DISTINCT category FROM accessory");
             return $this->getResultSet();
         }
 
-        /**
-         * to get all the brand of accessory in the db (with no duplicate)
+        /*
+         * Retrieves all the brand of accessory in the databse (with no duplicate)
          */
         public function getAccessoryBrand() {
             $this->query("SELECT DISTINCT brand FROM accessory");

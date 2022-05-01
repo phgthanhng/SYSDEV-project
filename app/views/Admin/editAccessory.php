@@ -25,7 +25,7 @@
                 <label class="form-label" style="margin-top: 10px">Brand:</label>
                 <input class="form-control form-control" type="text" required="" name="brand" value="<?php echo $data['accessory']->brand ?>"/>
                 <label class="form-label" style="margin-top: 10px" >Image:</label>
-                <input class="form-control form-control" type="file" required="" minlength="6" name="image" value=""/>
+                <input class="form-control form-control" type="file" minlength="6" name="image" value=""/>
             </div>
             <div class="submit-row" style="margin-bottom: 8px; padding-top: 0px">
                 <button class="btn btn-primary d-block box-shadow w-100" name="submit" id="submit-id-submit" type="submit"

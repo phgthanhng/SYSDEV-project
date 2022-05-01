@@ -13,12 +13,7 @@ class Admin extends Controller {
      * Removes access to Admin controls if not an admin
      */
     public function denyPermission() {
-        echo '
-            <div style="background-color:#000;  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                <h1 style="color:red;text-align: center;padding:5px;"> 
-                    You do not have permission to access this page!
-                </h1>
-            </div>';
+        $this->view('Admin/accessDenied');
         echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
     }
 
@@ -122,20 +117,26 @@ class Admin extends Controller {
             return;
         }
         
-        if (!isset($_POST['submit']))
+        // if submit button is not clicked
+        if (!isset($_POST['submit'])) {
             return $this->view('Admin/editHookah', [ "hookah" => $hookah]);
+        }
+        // submit button clicked
         else 
         {
+            $filename = (is_uploaded_file($_FILES['image']['tmp_name'])) ? 
+                    $this->imageUpload() : $hookah->image;
+            
             $data = [
                 "hookah_id" => $id,
-                "name" => $_POST['name'],
-                "price" => $_POST['price'],
-                "color" => $_POST['color'],
-                "type" => $_POST['type'],
-                "quantity" => $_POST['quantity'],
-                "description" => $_POST['desc'],
-                "brand" => $_POST['brand'],
-                "image" => $this->imageUpload()
+                "name" => trim($_POST['name']),
+                "price" => trim($_POST['price']),
+                "color" => trim($_POST['color']),
+                "type" => trim($_POST['type']),
+                "quantity" => trim($_POST['quantity']),
+                "description" => trim($_POST['desc']),
+                "brand" => trim($_POST['brand']),
+                "image" => $filename
             ];
 
             if ($this->productModel->updateHookah($data))
@@ -167,16 +168,19 @@ class Admin extends Controller {
             
         else 
         {
+            $filename = (is_uploaded_file($_FILES['image']['tmp_name'])) ? 
+                    $this->imageUpload() : $accessory->image;
+            
             $data = [
                 "hookah_id" => null,
                 "accessory_id" => $id,
-                "name" => $_POST['name'],
-                "price" => $_POST['price'],
-                "category" => $_POST['category'],
-                "quantity" => $_POST['quantity'],
-                "description" => $_POST['desc'],
-                "brand" => $_POST['brand'],
-                "image" => $this->imageUpload()
+                "name" => trim($_POST['name']),
+                "price" => trim($_POST['price']),
+                "category" => trim($_POST['category']),
+                "quantity" => trim($_POST['quantity']),
+                "description" => trim($_POST['desc']),
+                "brand" => trim($_POST['brand']),
+                "image" => $filename
             ];
 
             if ($this->productModel->updateAccessory($data))
@@ -258,15 +262,15 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
             return $this->denyPermission();
         
-        if (!isset($_POST['submit'])) {
+        if (!isset($_POST['submit'])) 
             return $this->view('Admin/editContactUs');
-        }
+        
         else 
         {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
-            $address = $_POST['address'];
+            $name = trim($_POST['name']);
+            $email = trim($_POST['email']);
+            $phone = trim($_POST['phone']);
+            $address = trim($_POST['address']);
 
             $contact = [
                 "email" => $email,
@@ -290,12 +294,15 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
             return $this->denyPermission();
         
-        if (!isset($_POST['submit'])) {
+        if (!isset($_POST['submit'])) 
             return $this->view('Admin/editAboutUs');
-        }
+    
         else 
         {
-            $text = $_POST['aboutus_content'];
+            // $filename = (is_uploaded_file($_FILES['image']['tmp_name'])) ? 
+            //         $this->imageUpload() : $accessory->image;
+            
+            $text = trim($_POST['aboutus_content']);
             $about_us = [
                 "text" => $text,
                 "image" => $this->imageUpload()
@@ -316,7 +323,6 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
             return $this->denyPermission();
        
-
         $admin = $this->loginModel->getAllAdmin();
         $hookahs = $this->productModel->getAllHookahs();
         $accessories = $this->productModel->getAllAccessories();
@@ -356,7 +362,7 @@ class Admin extends Controller {
 
         $fileData = getimagesize($file['tmp_name']);
 
-        if($fileData!=false && 
+        if ($fileData != false && 
             in_array($fileData['mime'],array_keys($acceptedTypes))){
 
             //save the file to its permanent location
@@ -388,7 +394,7 @@ class Admin extends Controller {
             if (!isset($admin->admin_id)) 
             {
                 $data = [
-                    "message" => "wrong credentials"
+                    "message" => "Wrong credentials"
                 ];
                 return $this->view('Admin/login', $data);
             }
@@ -404,7 +410,7 @@ class Admin extends Controller {
             {
                 // wrong credentials
                 $data = [
-                    "message" => "wrong credentials"
+                    "message" => "Wrong credentials"
                 ];
                 return $this->view('Admin/login', $data);
             }

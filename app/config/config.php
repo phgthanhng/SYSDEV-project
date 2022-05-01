@@ -10,4 +10,4 @@
   define('DB_HOST', 'localhost');
   define('DB_USER', 'root');
   define('DB_PASS', '');
-  define('DB_NAME', 'shishadb');
+  define('DB_NAME', 'shisha_db');
