@@ -40,6 +40,9 @@ class aboutUsModel extends Model{
         return $this->getSingle();
     }
 
+    /*
+     * Retrieves a specific about us record based on the aboutus ID
+     */
     public function getAboutUsById($id){
         $this->query("SELECT image, text 
                         FROM about_us 

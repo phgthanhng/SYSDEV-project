@@ -1,7 +1,5 @@
 <?php require APPROOT . '/views/includes/adminheader.php'; ?>
 
-
-
 <div class="container">
     <h1 style="margin-bottom: 25px;margin-top: 50px;text-align: center;">Manage my Products(<?= count($data['products'])?>)</h1>
         <div class="table-responsive">
@@ -18,7 +16,11 @@
                   <?php foreach ($data['products'] as $product) : ?>
                     <tr class="border border-warning ">
                       <td class="text-center"><?= $product->description?></td>
-                      <td><?= $product->name?></td>
+                      <td>
+                          <a href="<?= URLROOT ?>/Hookah/detail/<?= $product->product_id ?>" style="text-decoration: none">
+                          <?= $product->name?>
+                          </a>
+                        </td>
                       <td class="text-center"><?= $product->price?></td>
                       <?php if($product->description=="Hookah") : ?>
                         <td class="text-center"><a class="link-info" href="<?= URLROOT ?>/Hookah/detail/<?= $product->product_id ?>">Details</a></td>
@@ -35,6 +37,5 @@
             </table>
         </div>
 </div>
-
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>

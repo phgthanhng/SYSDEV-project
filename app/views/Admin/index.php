@@ -11,7 +11,9 @@
             position: relative;
             margin-left: 30px;
           ">
-                <img class="img-responsive" src="<?php echo URLROOT; ?>/img/hookah.jpg" />
+                <a href="<?php echo URLROOT; ?>/Hookah/index" style="text-decoration: none;">
+                     <img class="img-responsive" src="<?php echo URLROOT; ?>/img/hookah.jpg" />
+                </a>
                 <div class="d-xxl-flex" style="position: absolute; bottom: 0">
                     <a href="<?php echo URLROOT; ?>/Hookah/index" style="text-decoration: none;">
                         <h1 class="d-xxl-flex align-items-center" style="color: #ffffff; font-weight: bold">
@@ -29,7 +31,8 @@
             margin-right: 30px;
             margin-left: 30px;
           ">
-                <img class="img-responsive" src="<?php echo URLROOT; ?>/img/accessories1%20(1).jpg" />
+             <a href="<?php echo URLROOT; ?>/Accessories/index" style="text-decoration: none;">
+                <img class="img-responsive" src="<?php echo URLROOT; ?>/img/accessories1%20(1).jpg" /> </a>
                 <div class="d-xxl-flex" style="position: absolute; bottom: 0">
                     <a href="<?php echo URLROOT; ?>/Accessories/index" style="text-decoration: none;">
                         <h1 class="d-xxl-flex align-items-center" style="color: #ffffff; font-weight: bold">

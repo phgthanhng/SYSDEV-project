@@ -6,7 +6,6 @@
 ?>
 
 <div class="container" style="margin: 100px auto;">
-
         <div class="product_details" style="border: none;">
             <div class="row" style="margin: 50px auto;">
                 <div class="col-md-6 text-center align-self-center">
@@ -24,8 +23,8 @@
                             <br>
                             <p style="font-weight: bold; font-size:xx-large">$<?php echo $data['accessory']->price ?></p>
                         </div>
-                        <?php 
 
+                        <?php 
                         // only shows when login
                         if(isLoggedIn()) {
                             echo '
@@ -37,11 +36,11 @@
                             </div>';
                         }
                         ?>
+                        
                     </div>
                 </div>
             </div>
         </div>
-    
 </div>
 
 <?php require APPROOT . '/views/includes/footer.php';  ?>

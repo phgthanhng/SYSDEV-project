@@ -1,6 +1,9 @@
 <?php
 
 class Contact extends Controller {
+    /*
+     * Default constructor of the Contact class
+     */
     public function __construct()
     {
         // initialise models here

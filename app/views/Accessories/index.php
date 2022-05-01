@@ -92,11 +92,11 @@
                     echo '<div class="card stacked">';
                     echo '<a href="' . URLROOT . '/accessories/detail/' . $product->accessory_id . '" style="text-decoration: none;">';
                     echo '<a href="'. URLROOT . '/accessories/detail/' . $product->accessory_id . '" style="text-decoration: none;">
-                        <img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">
+                            <img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">
                         </a>';
                     echo '<div class="card__content">';
                     echo '<a href="'. URLROOT . '/accessories/detail/' . $product->accessory_id . '" style="text-decoration: none;">
-                        <h2 class="card__title">' . $product->name . '</h2>
+                            <h2 class="card__title">' . $product->name . '</h2>
                         </a>';
                     echo '<p class="card__price">' . $product->price . '</p>';
                     echo '</a>';
