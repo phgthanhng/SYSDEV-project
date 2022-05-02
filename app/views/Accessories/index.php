@@ -47,7 +47,7 @@
             <?php if(!empty($data["categories"])) : ?>
                 <?php foreach($data["categories"] as $category) : ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="category-'<?=$category->category?>">
+                        <input class="form-check-input" type="checkbox" value="" id="category-<?=$category->category?>">
                         <label class="form-check-label" for="category-<?=$category->category?>"><?=$category->category?></label>
                     </div>
                 <?php endforeach; ?>
