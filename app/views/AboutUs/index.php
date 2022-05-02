@@ -11,7 +11,7 @@
             position: relative;
             margin-left: 30px;
           ">
-            <img src="<?php echo URLROOT.'/public/img/'.$data['about']->image ?>">
+            <img src="<?= URLROOT ?>/public/img/<?=  $data["about"]->image ?>">
         </div>
         <div class="float-start col" style="
             height: 400px; /*width: 100%;*/
@@ -20,7 +20,7 @@
             margin-right: 30px;
             margin-left: 30px;">
             <p>
-                <?php echo $data["about"]->text ?>
+                <?= $data["about"]->text ?>
                 <br /><br />
             </p>
         </div>

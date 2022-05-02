@@ -104,13 +104,9 @@ else
                 foreach ($data["hookahs"] as $product) {
                     echo '<div class="card stacked"';
                     echo '<a href="' . URLROOT . '/hookah/detail/' . $product->hookah_id . '" style="text-decoration: none;">';
-                    echo '<a href="'. URLROOT . '/hookah/detail/' . $product->hookah_id . '" style="text-decoration: none;">
-                            <img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">
-                        </a>';
+                    echo '<img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">';
                     echo '<div class="card__content">';
-                    echo '<a href="'. URLROOT . '/hookah/detail/' . $product->hookah_id . '" style="text-decoration: none;">
-                        <h2 class="card__title">' . $product->name . '</h2>
-                        </a>';
+                    echo '<h2 class="card__title">' . $product->name . '</h2>';
                     echo '<p class="card__price">' . $product->price . '</p>';
                     echo '</a>';
                     echo '</div>';

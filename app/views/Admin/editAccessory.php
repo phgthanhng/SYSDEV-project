@@ -13,17 +13,17 @@
             </div>
             <div class="accessory_input" style="background-color: #ffffff" name="name">
                 <label class="form-label">Name:</label>
-                <input class="form-control form-control" type="text" required="" minlength="6" name="name" value="<?php echo $data['accessory']->name ?>" />
+                <input class="form-control form-control" type="text" required="" minlength="6" name="name" value="<?= $data['accessory']->name ?>" />
                 <label class="form-label" style="margin-top: 10px">Price:</label>
-                <input class="form-control form-control" type="number" required="" step="0.01" min="0" name="price" value="<?php echo $data['accessory']->price ?>"/>
+                <input class="form-control form-control" type="number" required="" step="0.01" min="0" name="price" value="<?= $data['accessory']->price ?>"/>
                 <label class="form-label" style="margin-top: 10px">Category:</label>
-                <input class="form-control form-control" type="text" required="" name="category" value="<?php echo $data['accessory']->category ?>"/>
+                <input class="form-control form-control" type="text" required="" name="category" value="<?= $data['accessory']->category ?>"/>
                 <label class="form-label" style="margin-top: 10px">Quantity:</label>
-                <input class="form-control form-control" type="number" required="" min="1" name="quantity" value="<?php echo $data['accessory']->quantity ?>"/>
+                <input class="form-control form-control" type="number" required="" min="1" name="quantity" value="<?= $data['accessory']->quantity ?>"/>
                 <label class="form-label" style="margin-top: 10px">Description:</label>
-                <textarea class="form-control form-control" name="desc" style="height: 200px;"><?php echo $data['accessory']->description ?></textarea>
+                <textarea class="form-control form-control" name="desc" style="height: 200px;"><?= $data['accessory']->description ?></textarea>
                 <label class="form-label" style="margin-top: 10px">Brand:</label>
-                <input class="form-control form-control" type="text" required="" name="brand" value="<?php echo $data['accessory']->brand ?>"/>
+                <input class="form-control form-control" type="text" required="" name="brand" value="<?= $data['accessory']->brand ?>"/>
                 <label class="form-label" style="margin-top: 10px" >Image:</label>
                 <input class="form-control form-control" type="file" minlength="6" name="image" value=""/>
             </div>

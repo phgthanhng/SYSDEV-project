@@ -14,19 +14,19 @@
             </div>
             <div class="accessory_input" style="background-color: #ffffff" name="name">
             <label class="form-label">Name:</label>
-            <input class="form-control form-control" type="text" required="" minlength="6" name="name" value="<?php echo $data['hookah']->name ?>"/> 
+            <input class="form-control form-control" type="text" required="" minlength="6" name="name" value="<?= $data['hookah']->name ?>"/> 
             <label class="form-label" style="margin-top: 10px">Price:</label>
-            <input class="form-control form-control" type="number" required="" step="0.01" name="price" min="0" value="<?php echo $data['hookah']->price ?>"/>
+            <input class="form-control form-control" type="number" required="" step="0.01" name="price" min="0" value="<?= $data['hookah']->price ?>"/>
             <label class="form-label" style="margin-top: 10px">Color:</label>
-            <input class="form-control form-control" type="text" required="" name="color" value="<?php echo $data['hookah']->color ?>" />
+            <input class="form-control form-control" type="text" required="" name="color" value="<?= $data['hookah']->color ?>" />
             <label class="form-label" style="margin-top: 10px">Type:</label>
-            <input class="form-control form-control" type="text" required="" name="type" value="<?php echo $data['hookah']->type ?>"/>
+            <input class="form-control form-control" type="text" required="" name="type" value="<?= $data['hookah']->type ?>"/>
             <label class="form-label" style="margin-top: 10px">Quantity:</label>
-            <input class="form-control form-control" type="number" required="" min="1" name="quantity" value="<?php echo $data['hookah']->quantity ?>" />
+            <input class="form-control form-control" type="number" required="" min="1" name="quantity" value="<?= $data['hookah']->quantity ?>" />
             <label class="form-label" style="margin-top: 10px">Description:</label>
-            <textarea class="form-control" name="desc" row="10" style="height: 200px;"><?php echo $data['hookah']->description ?></textarea>
+            <textarea class="form-control" name="desc" row="10" style="height: 200px;"><?= $data['hookah']->description ?></textarea>
             <label class="form-label" style="margin-top: 10px">Brand:</label>
-            <input class="form-control form-control" type="text" required="" name="brand" value="<?php echo $data['hookah']->brand ?>"/>
+            <input class="form-control form-control" type="text" required="" name="brand" value="<?= $data['hookah']->brand ?>"/>
             <label class="form-label" style="margin-top: 10px">Image:</label>
             <input class="form-control form-control" type="file" minlength="6" name="image"/>
         </div>

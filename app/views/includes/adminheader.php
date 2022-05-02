@@ -5,17 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>shishaShop</title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<?= URLROOT ?>/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/font-awesome.min.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/ionicons.min.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.min.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
+    <link rel="stylesheet" href="<?= URLROOT ?>/fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="<?= URLROOT ?>/fonts/ionicons.min.css" />
+    <link rel="stylesheet" href="<?= URLROOT ?>/css/styles.min.css" />
+    <link rel="stylesheet" href="<?= URLROOT ?>/css/styles.css" />
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow)">
+    <nav class="navbar fixed-top navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow)">
         <div class="container-fluid">
             <a class="navbar-brand" href="/sysdev-project/Admin" style="font-size: 30px">Shisha shop</a><button
                 data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2">
@@ -26,26 +26,26 @@
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">Products</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/addHookah">Add a hookah</a>
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/addAccessory">Add an accessory</a>
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/manageProduct">Manage products</a>
+                            <a class="dropdown-item" href="<?= URLROOT ?>/Admin/addHookah">Add a hookah</a>
+                            <a class="dropdown-item" href="<?= URLROOT ?>/Admin/addAccessory">Add an accessory</a>
+                            <a class="dropdown-item" href="<?= URLROOT ?>/Admin/manageProduct">Manage products</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">Settings</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/changeEmail">Change email</a>
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/changePassword">Change password</a>
+                            <a class="dropdown-item" href="<?= URLROOT ?>/Admin/changeEmail">Change email</a>
+                            <a class="dropdown-item" href="<?= URLROOT ?>/Admin/changePassword">Change password</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">Edit</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/editContactUs">Edit Contact Us</a><a class="dropdown-item" href="<?php echo URLROOT; ?>/Admin/editAboutUs">Edit About Us</a>
+                            <a class="dropdown-item" href="<?= URLROOT ?>/Admin/editContactUs">Edit Contact Us</a><a class="dropdown-item" href="<?= URLROOT ?>/Admin/editAboutUs">Edit About Us</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo URLROOT; ?>/Admin/previewDatabase">Preview Database</a>
+                        <a class="nav-link" href="<?= URLROOT ?>/Admin/previewDatabase">Preview Database</a>
                     </li>
                 </ul>
                 <form class="d-flex me-auto navbar-form" target="_self">
@@ -58,7 +58,7 @@
                         <input class="form-control search-field" type="search" id="search-field-1" name="search" style="border-radius: 30px" placeholder="Search by name" />
                     </div>
                 </form>
-                <a href="<?php echo URLROOT; ?>/Admin/logout" style="text-decoration: none; margin-right: 15px"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                <a href="<?= URLROOT ?>/Admin/logout" style="text-decoration: none; margin-right: 15px"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
             </div>
         </div>
     </nav>

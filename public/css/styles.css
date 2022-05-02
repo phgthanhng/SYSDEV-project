@@ -102,3 +102,41 @@
         margin-top: 5px;
         font-size: 20px;
     }
+    
+    =======
+    /* side bar */
+    
+    #viewport {
+        grid-area: a;
+        margin-right: 30px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+    /* Sidebar Styles */
+    
+    #sidebar {
+        z-index: 1000;
+        position: fixed;
+        left: 250px;
+        width: 250px;
+        /* this shit */
+        height: 100vh;
+        padding-top: 20px;
+        margin-left: -250px;
+        margin-right: 30px;
+        overflow-y: auto;
+        background: #ffffff;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+    
+    .form-check,
+    .category {
+        margin-left: 20px;
+        margin-top: 5px;
+        font-size: 20px;
+    }

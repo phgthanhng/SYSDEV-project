@@ -12,7 +12,7 @@ function validateForm() {
 </script>
 <div style="width: 100%">
     <section class="login-dark">
-      <form method="post" name="editPassword" method="post" onsubmit="return validateForm()">
+      <form method="post" name="editPassword" onsubmit="return validateForm()">
       <h2 class="text-center" style="color: #ffffff;">Change Password</h2>
         <div class="mb-3">
           <!-- put admin's email here -->
