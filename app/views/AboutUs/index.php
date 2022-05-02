@@ -11,7 +11,7 @@
             position: relative;
             margin-left: 30px;
           ">
-            <img src="<?= URLROOT ?>'/public/img/'<?=  $data["about"]->image ?>">
+            <img src="<?= URLROOT ?>/public/img/<?=  $data["about"]->image ?>">
         </div>
         <div class="float-start col" style="
             height: 400px; /*width: 100%;*/
