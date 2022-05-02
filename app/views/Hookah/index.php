@@ -4,11 +4,11 @@ if (!isLoggedIn())
 else
     require APPROOT . '/views/includes/adminheader.php';
 ?>
-<script src="<?= URLROOT ?>/public/js/hookah.js" defer></script>
+<script src="<?php echo URLROOT ?>/public/js/hookah.js" defer></script>
 <div class="wrapper">
     <div id="viewport">
         <!-- Sidebar -->
-        <div id="sidebar" class="">
+        <div id="sidebar">
             
             <label for="" class="category">Price</label>
             <div class="form-check">
@@ -43,46 +43,50 @@ else
             </div>
             <label for="" class="category">Brand</label>
 
-
-            <?php if(!empty($data["brands"])) : ?>
-                <?php foreach($data["brands"] as $brand) : ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="brand-<?=$brand->brand?>">
-                        <label class="form-check-label" for="brand-<?=$brand->brand?>"><?=$brand->brand?></label>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-
-            
+            <?php
+            if (!empty($data["brands"])) {
+                foreach ($data["brands"] as $brand) {
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="checkbox" value="" id="brand-'.$brand->brand.'">';
+                    echo '<label class="form-check-label" for="price-'.$brand->brand.'">
+                    ' . $brand->brand . '
+                </label>';
+                    echo ' </div>';
+                }
+            }
+            ?>
             <label for="" class="category">Type</label>
 
-            <?php if(!empty($data["types"])) : ?>
-                <?php foreach($data["types"] as $type) : ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="type-<?=$type->type?>">
-                        <label class="form-check-label" for="type-<?=$type->type?>"><?=$type->type?></label>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-
-            
+            <?php
+            if (!empty($data["types"])) {
+                foreach ($data["types"] as $type) {
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="checkbox" value="" id="type-'.$type->type.'">';
+                    echo '<label class="form-check-label" for="type-'.$type->type.'">
+                    ' . $type->type . '
+                </label>';
+                    echo ' </div>';
+                }
+            }
+            ?>
             <label for="" class="category">Color</label>
-
-            <?php if(!empty($data["colors"])) : ?>
-                <?php foreach($data["colors"] as $color) : ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="color-<?=$color->color?>">
-                        <label class="form-check-label" for="color-<?=$color->color?>"><?=$color->color?></label>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-
-            
+            <?php
+            if (!empty($data["colors"])) {
+                foreach ($data["colors"] as $color) {
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="checkbox" value="" id="color-'.$color->color.'">';
+                    echo '<label class="form-check-label" for="type-'.$color->color.'">
+                    ' . $color->color . '
+                </label>';
+                    echo ' </div>';
+                }
+            }
+            ?>
         </div>
     </div>
 
     <div class="container" style="max-width: 100rem; margin-top: 100px; margin-bottom: 100px; margin-inline:auto; padding-inline: 2rem;">
-        <h1 style="text-align: center; margin-top: 50px; margin-bottom:50px">Browse Hookahs(<?= count($data["hookahs"])?>)</h1>
+        <h1 style="text-align: center; margin-top: 50px; margin-bottom:50px">Browse products(<?= count($data["hookahs"])?>)</h1>
         <div class="dropdown" style="margin-left: 30px; margin-bottom: 30px">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Sort Price
@@ -95,27 +99,22 @@ else
 
         <div class="product-grid">
 
-        <?php if(!empty($data["hookahs"])) : ?>
-                <?php foreach ($data["hookahs"] as $product) : ?>
-                    <div class="card stacked">
-                        <a href="<?= URLROOT ?>/hookah/detail/<?= $product->hookah_id ?>" style="text-decoration: none;">
-                            <a href="<?= URLROOT ?>/hookah/detail/<?= $product->hookah_id ?>" style="text-decoration: none;">
-                                <img src="<?= URLROOT ?>/public/img/<?= $product->image ?>" class="card__img">
-                            </a>
-                            <div class="card__content">
-                                <a href="<?= URLROOT ?>/hookah/detail/<?= $product->hookah_id ?>" style="text-decoration: none;">
-                                    <h2 class="card__title"><?= $product->name ?></h2>
-                                    <p class="card__price"><?= $product->price ?></p>
-                                </a>
-                                
-                            </div>
-                        </a>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-
-
-           
+            <?php
+            if (!empty($data["hookahs"])) {
+                foreach ($data["hookahs"] as $product) {
+                    echo '<div class="card stacked"';
+                    echo '<a href="' . URLROOT . '/hookah/detail/' . $product->hookah_id . '" style="text-decoration: none;">';
+                    echo '<img src="' . URLROOT . '/public/img/' . $product->image . '" class="card__img">';
+                    echo '<div class="card__content">';
+                    echo '<h2 class="card__title">' . $product->name . '</h2>';
+                    echo '<p class="card__price">' . $product->price . '</p>';
+                    echo '</a>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</a>';
+                }
+            }
+            ?>
         </div>
     </div>
 
