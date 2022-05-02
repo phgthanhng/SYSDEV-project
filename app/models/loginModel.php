@@ -22,7 +22,7 @@ class loginModel extends Model{
      * Retrieves a specific admin from the Admin table in the database
      */
     public function getAdmin($admin_id){
-        $this->query("SELECT password 
+        $this->query("SELECT email, password 
                         FROM admin 
                         WHERE admin_id = :admin_id");
 

@@ -13,7 +13,7 @@ function validateForm() {
 
 <div style="width: 100%">
     <section class="login-dark">
-      <form method="post" name="editEmail" method="post" >
+      <form method="post" name="editEmail"  >
       <h2 class="text-center" style="color: #ffffff;">Change Email</h2>
         <div class="mb-3">
           <!-- put current email here -->

@@ -63,7 +63,7 @@ p.min-content {
     width: min-content;
 }
 
-div.wrapper {
+/* div.wrapper {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(4, 1fr);
@@ -71,7 +71,7 @@ div.wrapper {
     grid-template-areas: "a b b b" "a b b b" "a b b b";
     column-gap: 20px;
     row-gap: 0px;
-}
+} */
 
 
 /* side bar */
