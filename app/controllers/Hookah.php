@@ -47,4 +47,24 @@ class Hookah extends Controller {
 
         return $this->view('Hookah/details', $data);
     }
+
+    public function test(){
+        $brand = isset($_GET['brand']) ? $_GET['brand'] : [];
+        $type = isset($_GET['type']) ? $_GET['type'] : [];
+        $color = isset($_GET['color']) ? $_GET['color'] : [];
+        $price = isset($_GET['price']) ? $_GET['price'] : [];
+        $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
+
+        $brands = $this->productModel->getHookahBrand();
+        $types = $this->productModel->getHookahType();
+        $colors = $this->productModel->getHookahColor();
+        $hookahs = $this->productModel->getHookahFilter($brand, $type, $color, $price, $sort);
+        $data = [
+            "hookahs" => $hookahs,
+            "brands" => $brands,
+            "types" => $types,
+            "colors" => $colors
+        ];
+        return $this->view('Hookah/test', $data);
+    }
 }
