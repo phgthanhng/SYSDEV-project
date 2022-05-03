@@ -12,7 +12,7 @@
     </div>
   </div>
 </footer>
-<script src="<?php echo URLROOT; ?>/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?= URLROOT; ?>/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
