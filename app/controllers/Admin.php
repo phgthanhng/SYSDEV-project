@@ -13,7 +13,7 @@ class Admin extends Controller {
      * Removes access to Admin controls if not an admin
      */
     public function denyPermission() {
-        $this->view('Admin/accessDenied');
+        $this->view('Message/accessDenied');
         echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
     }
 
@@ -424,7 +424,7 @@ class Admin extends Controller {
         // unset session values and destroy session
         unset($_SESSION['admin_id']);
         session_destroy();
-        $this->view('Admin/logoutScreen');
+        $this->view('Message/logoutScreen');
         echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
          // redirect to home page
     }
