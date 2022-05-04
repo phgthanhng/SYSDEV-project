@@ -424,7 +424,8 @@ class Admin extends Controller {
         // unset session values and destroy session
         unset($_SESSION['admin_id']);
         session_destroy();
-        echo 'logging out';
-        echo '<meta http-equiv="refresh" content="2;url=/SYSDEV-project/" />'; // redirect to home page
+        $this->view('Admin/logoutScreen');
+        echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
+         // redirect to home page
     }
 }
