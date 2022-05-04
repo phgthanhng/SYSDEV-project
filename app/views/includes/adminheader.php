@@ -12,10 +12,12 @@
     <link rel="stylesheet" href="<?= URLROOT ?>/fonts/ionicons.min.css" />
     <link rel="stylesheet" href="<?= URLROOT ?>/css/styles.min.css" />
     <link rel="stylesheet" href="<?= URLROOT ?>/css/styles.css" />
+    <!-- FONT AWESOME ICONS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="d-flex flex-column min-vh-100">
-    <nav class="navbar fixed-top navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow)">
+<body class="d-flex flex-column min-vh-100"  style="padding-top: 65px;">
+    <nav class="navbar fixed-top navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow);position: fixed;">
         <div class="container-fluid">
             <a class="navbar-brand" href="/sysdev-project/Admin" style="font-size: 30px">Shisha shop</a><button
                 data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2">
@@ -41,7 +43,8 @@
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">Edit</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= URLROOT ?>/Admin/editContactUs">Edit Contact Us</a><a class="dropdown-item" href="<?= URLROOT ?>/Admin/editAboutUs">Edit About Us</a>
+                            <a class="dropdown-item" href="<?= URLROOT ?>/Admin/editContactUs">Edit Contact Us</a>
+                            <a class="dropdown-item" href="<?= URLROOT ?>/Admin/editAboutUs">Edit About Us</a>
                         </div>
                     </li>
                     <li class="nav-item">
