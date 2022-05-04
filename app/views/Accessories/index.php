@@ -69,7 +69,7 @@
 
     </div>
 
-    <div class="container" style="max-width: 100rem; margin-top: 100px; margin-bottom: 100px; margin-inline:auto; padding-inline: 2rem;">
+    <div class="products" >
         <h1 style="text-align: center; margin-top: 50px; margin-bottom:50px">Browse Accessories(<?= count($data["accessories"])?>)</h1>
 
         <div class="dropdown" style="margin-left: 30px; margin-bottom: 30px">
