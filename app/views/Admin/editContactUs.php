@@ -14,13 +14,13 @@
         <div class="accessory_input" style="background-color: #ffffff" name="name">
 
         <label class="form-label">Name:</label>
-        <input class="form-control form-control" type="text" required="" minlength="6" name="name" />
+        <input class="form-control form-control" type="text" required="" minlength="6" name="name" value="<?php echo $data['contact']->name?>" />
         <label class="form-label" style="margin-top: 10px">Email:</label>
-        <input class="form-control form-control" type="email" required="" minlength="6" name="email" />
+        <input class="form-control form-control" type="email" required="" minlength="6" name="email" value="<?php echo $data['contact']->businessEmail?>"/>
         <label class="form-label" style="margin-top: 10px">Phone Number:</label>
-        <input class="form-control form-control" type="text" required="" name="phone" pattern="^\d{3}\d{3}\d{4}$"  />
+        <input class="form-control form-control" type="text" required="" name="phone" pattern="^\d{3}\d{3}\d{4}$" value="<?php echo $data['contact']->phone?>" />
         <label class="form-label" style="margin-top: 10px">Address:</label>
-        <input class="form-control form-control" type="text" required="" name="address" />
+        <input class="form-control form-control" type="text" required="" name="address" value="<?php echo $data['contact']->location?>" />
         </div>
         <div class="submit-row" style="margin-bottom: 8px; padding-top: 0px">
             <button class="btn btn-primary d-block box-shadow w-100" id="submit-id-submit" type="submit"

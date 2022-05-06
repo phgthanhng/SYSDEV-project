@@ -294,7 +294,7 @@ class Admin extends Controller
         ];
 
         if(!isset($_POST['submit'])){
-            return $this->view('Admin/changePassword',$data);
+            return $this->view('Admin/changePassword', $data);
         }
     }
 
@@ -306,9 +306,14 @@ class Admin extends Controller
         if (!isLoggedIn())
             return $this->denyPermission();
 
-        if (!isset($_POST['submit']))
-            return $this->view('Admin/editContactUs');
+        if (!isset($_POST['submit'])) {
+            $contact = $this->contactModel->getContactById(0);
+            $data = [
+            "contact" => $contact
+            ];
 
+            $this->view('Admin/editContactUs', $data);
+        }
         else {
             $name = trim($_POST['name']);
             $email = trim($_POST['email']);
@@ -412,13 +417,8 @@ class Admin extends Controller
 
         $fileData = getimagesize($file['tmp_name']);
 
-        if (
-            $fileData != false &&
-            in_array($fileData['mime'], array_keys($acceptedTypes))
-        ) {
-
+        if ($fileData != false &&  in_array($fileData['mime'], array_keys($acceptedTypes))) {
             //save the file to its permanent location
-
             $folder = dirname(APPROOT) . '/public/img';
             $filename = uniqid() . '.' . $acceptedTypes[$fileData['mime']];
             move_uploaded_file($file['tmp_name'], "$folder/$filename");
