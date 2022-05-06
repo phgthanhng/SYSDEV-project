@@ -5,7 +5,7 @@
     else
         require APPROOT . '/views/includes/adminheader.php';  
 ?>
-<script src="<?= URLROOT ?>/public/js/hookah.js" defer></script>
+<script src="<?= URLROOT ?>/public/js/product.js" defer></script>
 
 <div class="wrapper" >
     <div id="viewport">
@@ -71,6 +71,10 @@
 
     <div class="products" >
         <h1 style="text-align: center; margin-top: 50px; margin-bottom:50px">Browse Accessories(<?= count($data["accessories"])?>)</h1>
+        
+        <div class="d-flex align-items-center" style="margin-left: 30px; margin-bottom: 30px">
+            <input class="form-control search-field" type="search" id="search" name="search" style="border-radius: 30px" placeholder="Search by name" />
+        </div>
 
         <div class="dropdown" style="margin-left: 30px; margin-bottom: 30px">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,6 +84,9 @@
                 <li><a class="dropdown-item" href="#" id="sort-0">Price Low to High</a></li>
                 <li><a class="dropdown-item" href="#" id="sort-1">Price High to Low</a></li>
             </ul>
+            <?php if (isset($data["search"])): ?>
+                Results for '<?= $data["search"] ?>':
+            <?php endif ?>
         </div>
 
         <div class="product-grid">

@@ -180,7 +180,7 @@
          * @param $price array of price ID(0, 1, 2, 3, 4)
          * @param $sort chosen sort type(ascending or descending)
          */
-        public function getHookahFilter($brand, $type, $color, $price, $sort){
+        public function getHookahFilter($brand, $type, $color, $price, $name, $sort){
             $query = "SELECT * FROM hookah ";
             $columnCount = 0;
 
@@ -206,9 +206,17 @@
                         :  "AND color IN ('".implode("', '", $color)."') ";
                 $columnCount++;
             }
+
+        // NAME filtering
+            if(!empty($name))
+            {
+                $query .= $columnCount == 0 ? "WHERE name LIKE '%".$name."%' " 
+                        :  "AND name LIKE '%".$name."%' ";
+                $columnCount++;
+            }
         
         // PRICE filtering
-           if (!empty($price)) {
+            if(!empty($price)) {
                 $priceCount = 0;        // counter that describes how many checked price range option was chosen in the filter
                 $p1 = "price < 25";
                 $p2 = "price BETWEEN 25 AND 50";
@@ -288,7 +296,7 @@
          * @param $category array of categories
          * @param $sort sorting type
          */
-        public function getAccessoryFilter($brand, $price, $category, $sort) {
+        public function getAccessoryFilter($brand, $price, $category, $name, $sort) {
             $query = "SELECT * FROM accessory ";
             $count = 0;
 
@@ -302,6 +310,14 @@
             if (!empty($category)) {
                 $query .= $count == 0 ? "WHERE category IN ('".implode("', '", $category)."') "
                         : "AND category IN ('".implode("', '", $category)."') ";  
+                $count++;
+            }
+
+            // NAME filtering
+            if (!empty($name))
+            {
+                $query .= $count == 0 ? "WHERE name LIKE '%".$name."%' " 
+                        :  "AND name LIKE '%".$name."%' ";
                 $count++;
             }
 
@@ -369,9 +385,9 @@
             if (isset($sort))
                 $query .= $sort == "0" ? "ORDER BY price ASC" : "ORDER BY price DESC";
 
+            var_dump($query);
             $this->query($query);
             return $this->getResultSet();
-
         }
 
         /*

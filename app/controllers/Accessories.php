@@ -17,16 +17,18 @@ class Accessories extends Controller {
         $brand = isset($_GET['brand']) ? $_GET['brand'] : [];
         $category = isset($_GET['category']) ? $_GET['category'] : [];
         $price = isset($_GET['price']) ? $_GET['price'] : [];
+        $name = isset($_GET['name']) ? $_GET['name'] : null;
         $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
 
-        $accessories = $this->productModel->getAccessoryFilter($brand, $price, $category, $sort);
+        $accessories = $this->productModel->getAccessoryFilter($brand, $price, $category, $name, $sort);
         $brands = $this->productModel->getAccessoryBrand();
         $categories = $this->productModel->getAccessoryCategory();
 
         $data = [
             "accessories" => $accessories, 
             "brands" => $brands,
-            "categories" => $categories
+            "categories" => $categories,
+            "search" => $name
         ];
         $this->view('Accessories/index', $data);
     }

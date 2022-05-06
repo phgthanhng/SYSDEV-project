@@ -42,7 +42,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="<?= URLROOT ?>/AboutUs/index" style="color: #ffffff;">about Us</a></li>
                 </ul>
-                <form class="d-flex me-auto navbar-form" target="_self">
+                <!-- <form class="d-flex me-auto navbar-form" target="_self">
                     <div class="d-flex align-items-center">
                         <label class="form-label d-flex mb-0" for="search-field">
                             <button class="btn btn-primary" type="button" style="background: rgba(26, 26, 26, 0); background-repeat: no-repeat;">
@@ -51,8 +51,8 @@
                         </label>
                         <input class="form-control search-field" type="search" id="search-field-1" name="search" style="border-radius: 30px" placeholder="Search by name" />
                     </div>
-                </form>
-                <a href="<?= URLROOT ?>/Admin/login" style="text-decoration: none; margin-right: 15px"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                </form> -->
+                <a href="<?= URLROOT ?>/Admin/login" style="text-decoration: none; margin-right: 0; margin-left: auto"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
             </div>
         </div>
     </nav>

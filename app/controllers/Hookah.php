@@ -18,17 +18,19 @@ class Hookah extends Controller {
         $type = isset($_GET['type']) ? $_GET['type'] : [];
         $color = isset($_GET['color']) ? $_GET['color'] : [];
         $price = isset($_GET['price']) ? $_GET['price'] : [];
+        $name = isset($_GET['name']) ? $_GET['name'] : null;
         $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
 
         $brands = $this->productModel->getHookahBrand();
         $types = $this->productModel->getHookahType();
         $colors = $this->productModel->getHookahColor();
-        $hookahs = $this->productModel->getHookahFilter($brand, $type, $color, $price, $sort);
+        $hookahs = $this->productModel->getHookahFilter($brand, $type, $color, $price, $name, $sort);
         $data = [
             "hookahs" => $hookahs,
             "brands" => $brands,
             "types" => $types,
-            "colors" => $colors
+            "colors" => $colors,
+            "search" => $name
         ];
         return $this->view('Hookah/index', $data);
     }
