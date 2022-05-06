@@ -288,6 +288,111 @@
             return $this->getResultSet();
         }
 
+        // STILL REFACTORING PLEASE DO NOT REMOVE :)
+        /*
+         * Filter a hookah product 
+         * @param $brand array of brands
+         * @papram $type array of colors
+         * @param $price array of price ID(0, 1, 2, 3, 4)
+         * @param $sort chosen sort type(ascending or descending)
+         */
+        // public function getHookahFilter($brand, $type, $color, $price, $sort){
+        //     $query = "SELECT * FROM hookah ";
+        //     $columnCount = 0;
+
+        // // BRAND filtering
+        //     if (!empty($brand)) {
+        //         $query .= $this->columnFilter("brand", $columnCount, $brand);  // (db table name, column counter, array of brand)
+        //         $columnCount++;
+        //     }
+        
+        // // TYPE filtering
+        //     if (!empty($type)) {
+        //         $query .= $this->columnFilter("type", $columnCount, $type);
+        //         $columnCount++;
+        //     }
+
+        // // COLOR filtering
+        //     if(!empty($color)) {
+        //         $query .= $this->columnFilter("color", $columnCount, $color);
+        //         $columnCount++;
+        //     }
+        
+        // // PRICE filtering
+        //    if (!empty($price)) {
+        //         $priceCount = 0;        // counter that describes how many checked price range option was chosen in the filter
+        //         $p1 = "price < 25";
+        //         $p2 = "price BETWEEN 25 AND 50";
+        //         $p3 = "price BETWEEN 50 AND 100";
+        //         $p4 = "price BETWEEN 100 AND 200";
+        //         $p5 = "price > 200";
+        //         foreach($price as $p) {
+        //             switch ($p) {
+        //                 case '0':
+        //                     $query .= $this->priceFilter($columnCount, $priceCount, $p1);
+        //                     break;
+        //                 case '1':
+        //                     $query .= $this->priceFilter($columnCount, $priceCount, $p2);
+        //                     break;
+
+        //                 case '2':
+        //                     $query .= $this->priceFilter($columnCount, $priceCount, $p3);
+        //                     break;
+
+        //                 case '3':
+        //                     $query .= $this->priceFilter($columnCount, $priceCount, $p4);
+        //                     break;
+
+        //                 default:
+        //                     $query .= $this->priceFilter($columnCount, $priceCount, $p5);
+        //                     break;
+        //             }
+        //             $priceCount++; // inside foreach loop because this one deals with price ranges
+
+        //         }
+        //         if ($columnCount > 0)
+        //             $query .= ") ";
+
+        //         $columnCount++; // outside foreach loop because this counter deals with brand, type, color and price
+        
+        //     }
+            
+        //     // SORT BY PRICE
+        //     if (isset($sort))
+        //         $query .= $sort == "0" ? "ORDER BY price ASC" : "ORDER BY price DESC";
+
+        //     $this->query($query);
+
+        //     return $this->getResultSet();
+        // }
+
+        /*
+         * Fiters the price depending on the column count and the price count
+         * @param $columnCount the counter for column filtering(brand, type, price, color)
+         * @param $priceCount the counter for the price options 
+         * @param $price the price to be queried in the database
+         */
+        // public function priceFilter($columnCount, $priceCount, $price) {
+        //     if ($columnCount == 0 && $priceCount == 0)
+        //         return "WHERE ({$price}) ";
+        //     return $priceCount == 0 ? "AND ({$price} " : "OR {price} ";
+        // }
+
+        /*
+         * Filters the column depending on the column(brand, type, price, color) selected to be filtered by 
+         * @param $column the column chosen to be filtered (brand, type, price, color)
+         * @param $columnCount the counter for column filtering(brand, type, price, color)
+         * @param $value array of values to be filtered
+         */
+        // public function columnFilter($column, $columnCount, $value) {
+        //     $filter = "{$column} IN ('".implode("', '", $value)."')";
+
+        //     // if column is equal to brand then columnCounter is still 0 
+        //     if ($column == "brand")
+        //         return "WHERE {$filter} ";
+        //     // else, if column counter is 1, then another column was already selected  
+        //     return $columnCount == 0 ? "WHERE {$filter} " : "AND {$filter} "; 
+        // }
 
         /*
          * Filters the accessory depending on the brand, price, catgegory, and sort by price chosen 
@@ -298,89 +403,95 @@
          */
         public function getAccessoryFilter($brand, $price, $category, $name, $sort) {
             $query = "SELECT * FROM accessory ";
-            $count = 0;
+            $columnCount = 0;
 
             // BRAND filtering
-            if (!empty($brand)) {
+            if (!empty($brand)) 
+            {
                 $query .= "WHERE brand IN ('".implode("', '", $brand)."') ";
-                $count++;
-            }   
-            
+                $columnCount++;
+            }
+        
             // CATEGORY filtering
-            if (!empty($category)) {
-                $query .= $count == 0 ? "WHERE category IN ('".implode("', '", $category)."') "
-                        : "AND category IN ('".implode("', '", $category)."') ";  
-                $count++;
+            if (!empty($type))
+            {
+                $query .= $columnCount == 0 ? "WHERE category IN ('".implode("', '", $category)."') "
+                        : "AND category IN ('".implode("', '", $category)."') ";
+                $columnCount++;
             }
 
             // NAME filtering
             if (!empty($name))
             {
-                $query .= $count == 0 ? "WHERE name LIKE '%".$name."%' " 
+                $query .= $columnCount == 0 ? "WHERE name LIKE '%".$name."%' " 
                         :  "AND name LIKE '%".$name."%' ";
-                $count++;
+                $columnCount++;
             }
 
             // PRICE filtering
-            if (!empty($price)) {  // counter that describes how many checked price range option was chosen in the filter
-                
-                $priceCount = 0; 
+            if (!empty($price)) { 
+                $priceCount = 0;        // counter that describes how many checked price range option was chosen in the filter
+                $p1 = "price < 25";
+                $p2 = "price BETWEEN 25 AND 50";
+                $p3 = "price BETWEEN 50 AND 100";
+                $p4 = "price BETWEEN 100 AND 200";
+                $p5 = "price > 200";
                 foreach($price as $p) {
                     switch ($p) {
-
                         case '0':
-                            if ($count == 0) 
-                                $query .= "WHERE (price < 25) ";                
+                            if ($columnCount == 0 && $priceCount == 0) 
+                                $query .= "WHERE ({$p1}) ";                
                             else
-                                $query .= $priceCount == 0 ? "AND (price < 25) " : "OR (price < 25) ";   
+                                $query .= $priceCount == 0 ? "AND ({$p1} " : "OR {$p1} ";   
 
-                            $priceCount++;
                             break;
 
                         case '1':
-                            if ($count == 0)
-                                $query .= "WHERE (price BETWEEN 25 AND 50) ";                
+                            if ($columnCount == 0 && $priceCount == 0)
+                                $query .= "WHERE ({$p2}) ";                
                             
                             else
-                                $query .= $priceCount == 0 ? "AND (price BETWEEN 25 AND 50) " : "OR (price BETWEEN 25 AND 50) ";  
+                                $query .= $priceCount == 0 ? "AND ({$p2} " : "OR {$p2} ";  
                             
-                            $priceCount++;
                             break;
 
                         case '2':
-                            if ($count == 0)
-                                $query .= "WHERE (price BETWEEN 50 AND 100) ";                
+                            if ($columnCount == 0 && $priceCount == 0)
+                                $query .= "WHERE ({$p3}) ";                
                             
                             else 
-                                $query .=  $priceCount == 0 ? "AND (price BETWEEN 50 AND 100) " : "OR (price BETWEEN 50 AND 100) ";    
+                                $query .=  $priceCount == 0 ? "AND ({$p3} " : "OR {$p3} ";    
                                 
-                            $priceCount++;
                             break;
 
                         case '3':
-                            if ($count == 0)
-                                $query .= "WHERE (price BETWEEN 100 AND 200) ";                
+                            if ($columnCount == 0 && $priceCount == 0)
+                                $query .= "WHERE ({$p4}) ";                
                             
                             else 
-                                $query .=  $priceCount == 0 ? "AND (price BETWEEN 100 AND 200) " : "OR (price BETWEEN 100 AND 200) ";    
+                                $query .=  $priceCount == 0 ? "AND ({$p4} " : "OR {$p4} ";    
                                 
-                            $priceCount++;
                             break;
 
                         default:
-                            if ($count == 0) 
-                                $query .= "WHERE (price > 200) ";                
+                            if ($columnCount == 0 && $priceCount == 0) 
+                                $query .= "WHERE ({$p5}) ";                
                             
                             else 
-                                $query .= $priceCount == 0 ? "AND (price > 200) " : "OR (price > 200) ";    
+                                $query .= $priceCount == 0 ? "AND ({$p5} " : "OR {$p5} ";    
                                 
-                            $priceCount++;
                             break;
                     }
-                    $count++; // increase counter if any/more price checkbox was checked
-                }
-            }
+                    $priceCount++; // inside foreach loop because this one deals with price ranges
 
+                }
+                if ($columnCount > 0)
+                  $query .= ") ";
+
+                $columnCount++;  // outside foreach loop because this counter deals with brand, type, color and price
+        
+            }
+            
             // SORT BY PRICE
             if (isset($sort))
                 $query .= $sort == "0" ? "ORDER BY price ASC" : "ORDER BY price DESC";

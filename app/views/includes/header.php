@@ -19,9 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column min-vh-100"  style="padding-top: 65px;">
-
-    <nav class="navbar fixed-top navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow); position: fixed;">
+<body class="d-flex flex-column min-vh-100" style="padding-top: 65px">
+    <nav class="navbar fixed-top navbar-light navbar-expand-md text-center" style="background: var(--bs-yellow); position: fixed; margin-bottom: 100px; height:fit-content">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?= URLROOT ?>/Home/index" style="font-size: 30px">Shisha Shop</a>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2">
