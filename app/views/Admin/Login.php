@@ -8,10 +8,10 @@
           <i class="icon ion-ios-locked-outline"></i>
         </div>
         <div class="mb-3">
-          <input class="form-control" type="email" name="email" placeholder="Email" />
+          <input class="form-control" type="email" name="email" placeholder="Email" required=""/>
         </div>
         <div class="mb-3">
-          <input class="form-control" type="password" name="password" placeholder="Password" />
+          <input class="form-control" type="password" name="password" placeholder="Password" required=""/>
         </div>
         <div class="mb-3">
           <button class="btn btn-primary d-block w-100" type="submit" name="submit">
