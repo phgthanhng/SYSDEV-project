@@ -26,19 +26,19 @@ class aboutUsModel extends Model{
         return $this->getResultSet();
     }
     
-    /*
-     * Retrieves About us record based on the adminID
-     */
-    public function getAboutUs($admin_id){
-        $this->query("SELECT image, text 
-                        FROM about_us 
-                        WHERE admin.admin_id = :admin_id 
-                        JOIN admin ON about_us.admin_id = admin.admin_id");
+    // /*
+    //  * Retrieves About us record based on the adminID
+    //  */
+    // public function getAboutUs($admin_id){
+    //     $this->query("SELECT image, text 
+    //                     FROM about_us 
+    //                     WHERE admin.admin_id = :admin_id 
+    //                     JOIN admin ON about_us.admin_id = admin.admin_id");
 
-        $this->bind(":admin_id", $admin_id);
+    //     $this->bind(":admin_id", $admin_id);
 
-        return $this->getSingle();
-    }
+    //     return $this->getSingle();
+    // }
 
     /*
      * Retrieves a specific about us record based on the aboutus ID

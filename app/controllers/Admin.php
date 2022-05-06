@@ -336,20 +336,26 @@ class Admin extends Controller
     {
         if (!isLoggedIn())
             return $this->denyPermission();
+        $aboutus = $this->aboutUsModel->getAboutUsById(0);
 
-        if (!isset($_POST['submit']))
-            return $this->view('Admin/editAboutUs');
+        if (!isset($_POST['submit'])) { 
+            $data = [
+                'aboutus' => $aboutus
+                ];
+            return $this->view('Admin/editAboutUs', $data);
+        }
 
         else {
-            // $filename = (is_uploaded_file($_FILES['image']['tmp_name'])) ? 
-            //         $this->imageUpload() : $accessory->image;
+           
+            $filename = (is_uploaded_file($_FILES['image']['tmp_name'])) ? 
+                    $this->imageUpload() : $aboutus->image;
 
             $text = trim($_POST['aboutus_content']);
             $about_us = [
                 "text" => $text,
-                "image" => $this->imageUpload()
+                "image" => $filename
             ];
-
+            
             if ($this->aboutUsModel->updateAboutUs($_SESSION['admin_id'], $about_us)) {
                 echo "updating about us...";
                 echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/AboutUs/">';
@@ -452,6 +458,7 @@ class Admin extends Controller
                 // good credentials
                 $_SESSION['admin_id'] = $admin->admin_id;
                 echo '<meta http-equiv="Refresh" content=".5; url=' . URLROOT . '/Admin">';
+                unset($_SESSION['attempts']);                       // if logged in successfully, unset the session
             } else {
                 $_SESSION['attempts']++;
                 // wrong credentials
@@ -488,6 +495,9 @@ class Admin extends Controller
         // redirect to home page
     }
 
+    /*
+     * Validates the email 
+     */
     private function validate_email($email)
     {
         if (isset($email)) {
