@@ -1,4 +1,6 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+
 class Admin extends Controller
 {
     public function __construct()
@@ -451,7 +453,7 @@ class Admin extends Controller
                 $_SESSION['admin_id'] = $admin->admin_id;
                 echo '<meta http-equiv="Refresh" content=".5; url=' . URLROOT . '/Admin">';
             } else {
-                $_SESSION['attempts'] = $_SESSION['attempts'] + 1;
+                $_SESSION['attempts']++;
                 // wrong credentials
                 if ($_SESSION['attempts'] <= 3) {
                     $data = [
@@ -461,7 +463,13 @@ class Admin extends Controller
                 }
                 else {
                     unset($_SESSION['attempts']);
-                    return $this->view('Admin/phpmailer');
+                    if ($this->sendmail()) {
+                        $data = [
+                            "message" => "Email sent",
+                            "color" => "success"
+                        ];
+                        return $this->view('Admin/login', $data);
+                    }
                 }
             }
         }
@@ -492,4 +500,78 @@ class Admin extends Controller
 
         return false;
     }
+
+    /*
+     * Allows Admin to be able to send reset password email when the Forgot password is clicked in the Login view 
+     */
+    public function forgotPassword() {
+        if (!isset($_POST['submit'])) 
+            $this->view('Admin/forgotPassword');
+
+        else {
+            if ($admin = $this->loginModel->getAdminByEmail(trim($_POST['email']))) {  // ensures that it will only send when email is valid
+                if ($this->sendmail()) {
+                    $data = [
+                        "message" => "Email sent",
+                        "color" => "success"
+                    ];
+                } 
+                
+                else {
+                    $data = [
+                        'message' => $mail->ErrorInfo,
+                    ];    
+                }
+                $this->view('Admin/forgotPassword', $data);
+            }
+            else {
+                $data = [
+                    "message" => "Wrong email"
+                ];
+                $this->view('Admin/forgotPassword', $data);
+            }
+        } 
+    }
+
+    /*
+     * Sends reset password to email 
+     */
+    public function sendmail(){
+
+        $name = "ShishaShop";  // Name of your website or yours
+        $to = "ceejchilz02@gmail.com";  // mail of receiver  // for testing purpose only login to this one and send to self
+        $subject = "Reset password";
+        $body = "<a href = 'http://localhost/Sysdev-project/Admin/changePassword'>Reset password</a>";
+        $from = "vaniercompsci@gmail.com";  // you mail
+        $password = "sysdev123";  // your mail password
+
+        $mail = new PHPMailer();
+
+        //SMTP Settings
+        $mail->isSMTP();
+        // $mail->SMTPDebug = 3;  Keep It commented this is used for debugging                          
+        $mail->Host = "smtp.gmail.com"; // smtp address of your email
+        $mail->SMTPAuth = true;
+        $mail->Username = $from;
+        $mail->Password = $password;
+        $mail->Port = 587;  // port
+        $mail->SMTPSecure = "tls";  // tls or ssl
+        $mail->smtpConnect([
+        'ssl' => [
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+            ]
+        ]);
+
+        //Email Settings
+        $mail->isHTML(true);
+        $mail->setFrom($from, $name);
+        $mail->addAddress($to); // enter email address whom you want to send
+        $mail->Subject = ("$subject");
+        $mail->Body = $body;
+
+        return $mail->send();     // used by forgot password
+    }
+
 }

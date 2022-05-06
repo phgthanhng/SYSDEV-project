@@ -1,11 +1,11 @@
-<?php
+<!-- <?php
 
     use PHPMailer\PHPMailer\PHPMailer;
     function sendmail(){
         $name = "ShishaShop";  // Name of your website or yours
-        $to = "phuongthanhnguyen136@gmail.com";  // mail of reciever
+        $to = "ceejchilz02@gmail.com";  // mail of receiver
         $subject = "Reset password";
-        $body = "<a href = 'http://localhost/Sysdev-project/Admin/login'>Reset password</a>";
+        $body = "<a href = 'http://localhost/Sysdev-project/Admiin/changePassword'>Reset password</a>";
         $from = "vaniercompsci@gmail.com";  // you mail
         $password = "sysdev123";  // your mail password
 
@@ -51,4 +51,4 @@
         // if (isset($_GET['sendmail'])) {
         //     sendmail();
         // }
-?>
+?> -->
