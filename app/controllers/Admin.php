@@ -278,7 +278,7 @@ class Admin extends Controller
     /*
      * Updates the password of the admin
      */
-    public function changePassword()
+    public function changePassword()   
     {
         if (!isLoggedIn())
             return $this->denyPermission();
@@ -537,11 +537,11 @@ class Admin extends Controller
      * Sends reset password to email 
      */
     public function sendmail(){
-
+        $GLOBALS['token'] = bin2hex(random_bytes(20));
         $name = "ShishaShop";  // Name of your website or yours
         $to = "vaniercompsci@gmail.com";  // mail of receiver  // for testing purpose only login to this one and send to self
         $subject = "Reset password";
-        $body = "<a href = 'http://localhost/Sysdev-project/Admin/changePassword'>Reset password</a>";
+        $body = "<a href = 'http://localhost/Sysdev-project/Admin/changePassword?token=".$GLOBALS['token'].">Reset password</a>";
         $from = "vaniercompsci@gmail.com";  // you mail
         $password = "sysdev123";  // your mail password
 
