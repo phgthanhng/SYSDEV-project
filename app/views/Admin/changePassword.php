@@ -16,13 +16,16 @@ function validateForm() {
       <h2 class="text-center" style="color: #ffffff;">Change Password</h2>
         <div class="mb-3">
           <!-- put admin's email here -->
-          <input class="form-control" type="email" name="email" id="email" value="" readonly />
+          <input class="form-control" type="email" name="email" id="email" value="<?= $data['admin']->email ?>" readonly />
         </div>
         <div class="mb-3">
-          <input class="form-control" type="password" name="password" id="password" placeholder="Password" />
+          <input class="form-control" type="password" name="password" id="password" placeholder="Password" required/>
         </div>
         <div class="mb-3">
-          <input class="form-control" type="password" name="verify_password" id="verify_password" placeholder="Confirm your password" />
+          <input class="form-control" type="password" name="password" id="password" placeholder="New Password" required/>
+        </div>
+        <div class="mb-3">
+          <input class="form-control" type="password" name="verify_password" id="verify_password" placeholder="Confirm your password" required/>
         </div>
         <div class="mb-3">
           <button class="btn btn-primary d-block w-100" type="submit">

@@ -241,8 +241,39 @@ class Admin extends Controller {
     public function changeEmail() {
         if (!isLoggedIn()) 
             return $this->denyPermission();
+
+            $admin = $this->loginModel->getAdmin($_SESSION['admin_id']);
+
+            $data = [
+                'admin' => $admin,
+                'new_email' => '',
+                'verify_email' => '',
+                'message' => ''
+            ];
+
+            if(!isset($_POST['submit'])){
+                
+                return $this->view('Admin/changeEmail',$data);
+            }
+            else{
+                
+                $data['new_email'] = $_POST['email'];
+                $data['verify_email'] = $_POST['verify_email'];
+                
+                if($data['new_email']!=$data['verify_email']){
+                    $data['message'] = 'Please enter matching emails!';
+                    return $this->view('Admin/changeEmail',$data);
+                }
+                else{
+                    if($this->loginModel->updateEmail($_SESSION['admin_id'],$data['new_email'])){
+                        echo 'Updating your email';
+                        echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/changeEmail">';
+                    }
+                }
+                
+            }
         
-        return $this->view('Admin/changeEmail');
+        
     }
 
     /*
@@ -252,7 +283,19 @@ class Admin extends Controller {
         if (!isLoggedIn()) 
             return $this->denyPermission();
         
-        return $this->view('Admin/changePassword');
+        $admin = $this->loginModel->getAdmin($_SESSION['admin_id']);
+
+        $data = [
+            'admin' => $admin,
+            'password' => '',
+            'new_password' => '',
+            'verify_password' => '',
+            'message' => ''
+        ];
+
+        if(!isset($_POST['submit'])){
+            return $this->view('Admin/changePassword',$data);
+        }
     }
 
     /*
