@@ -471,4 +471,17 @@ class Admin extends Controller {
         echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/">';
          // redirect to home page
     }
+
+    private function validate_email($email)
+    {
+        if (isset($email)) {
+            $email = trim($email);
+            $sanitized_email = filter_var($email, FILTER_SANITIZE_EMAIL);
+            $validated_email = filter_var($sanitized_email, FILTER_VALIDATE_EMAIL);
+
+            return $validated_email;
+        }
+
+        return false;
+    }
 }
