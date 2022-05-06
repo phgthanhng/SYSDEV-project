@@ -54,3 +54,20 @@ sortPriceDESC.onclick = (event) => {
 
     window.location.search = search;
 }
+
+paramsString = new URLSearchParams(search);
+let currentSearchTerm = paramsString.get("name");
+const searchInput = document.getElementById("search");
+searchInput.onkeydown = (event) => {
+    const text = searchInput.value;
+    const keycode = event.keyCode ? event.keyCode : event.which;
+    if (keycode == 13 && text.length !== 0) {
+        search += search.startsWith("?") ? `&name=${text}` : search += `name=${text}`;
+        search = search.replace(`&name=${currentSearchTerm}`, "");
+        search = search.replace(`?name=${currentSearchTerm}`, "");
+
+        currentSearchTerm = text;
+
+        window.location.search = search;
+    }
+}
