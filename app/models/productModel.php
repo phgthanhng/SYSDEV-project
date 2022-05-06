@@ -385,7 +385,6 @@
             if (isset($sort))
                 $query .= $sort == "0" ? "ORDER BY price ASC" : "ORDER BY price DESC";
 
-            var_dump($query);
             $this->query($query);
             return $this->getResultSet();
         }

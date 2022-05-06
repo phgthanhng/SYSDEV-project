@@ -9,7 +9,7 @@ for (let checkbox of checkboxes) {
     const id = fullid.substring(middle + 1, fullid.length);
 
     // set checked if its found in the url
-    if (search.indexOf(`${type}[]=${id}`) > -1) {
+    if (search.replaceAll('%20', ' ').indexOf(`${type}[]=${id}`) > -1) {
         checkbox.checked = true;
     }
 
@@ -18,8 +18,8 @@ for (let checkbox of checkboxes) {
         if (checkbox.checked) { // if its checked, add param to url and refresh
             search += search.startsWith("?") ? `&${type}[]=${id}` : search += `${type}[]=${id}`;
         } else { // if its unchecked, remove that param from url and refresh
-            search = search.replace(`?${type}[]=${id}`, "");
-            search = search.replace(`&${type}[]=${id}`, "");
+            search = search.replace(`?${type}[]=${id}`.replaceAll(' ', '%20'), "");
+            search = search.replace(`&${type}[]=${id}`.replaceAll(' ', '%20'), "");
         }
         window.location.search = search;
     };
