@@ -280,21 +280,58 @@ class Admin extends Controller
      */
     public function changePassword()
     {
-        if (!isLoggedIn())
+        if (!isLoggedIn() && !isset($GLOBALS['reset_token']))
             return $this->denyPermission();
-        
-        $admin = $this->loginModel->getAdmin($_SESSION['admin_id']);
+        if (!isLoggedIn() && !isset($_GET['token']) && $_GET['token'] !== $GLOBALS['reset_token'])
+            return $this->denyPermission();
 
-        $data = [
-            'admin' => $admin,
-            'password' => '',
-            'new_password' => '',
-            'verify_password' => '',
-            'message' => ''
-        ];
 
-        if(!isset($_POST['submit'])){
+        if (!isset($_POST['submit'])){
+            $data = [];
+            if (isLoggedIn()) {
+                $admin = $this->loginModel->getAdmin($_SESSION['admin_id']);
+
+                $data = [
+                    'admin' => $admin
+                ];
+            }
+            else { 
+                $data = [
+                    'reset_token' => $_GET['token']
+                ];
+            }
+            
             return $this->view('Admin/changePassword',$data);
+            
+
+        } else {
+            if (isLoggedIn()) {
+                $admin = $this->loginModel->getAdmin($_SESSION['admin_id']);
+                $password = $_POST['password'];
+                $new_password = $_POST['new_password'];
+                $verify_password = $_POST['verify_password'];
+
+                // check if both passwords are the same
+                if ($new_password !== $verify_password) {
+                    return $this->view('Admin/changePassword', [
+                        'admin' => $admin,
+                        'message' => 'Passwords do not match!'
+                    ]);
+                }
+
+                // verify that the current password is right
+                if (!password_verify($password, $admin->password)){
+                    return $this->view('Admin/changePassword', [
+                        'admin' => $admin,
+                        'message' => 'Password is incorrect'
+                    ]);
+                }
+
+                if ($this->loginModel->updatePassword($_SESSION['admin_id'], password_hash($new_password, PASSWORD_DEFAULT))) {
+                    echo 'Password updated!';
+                    echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/">';
+                }
+            }
         }
     }
 
@@ -505,11 +542,15 @@ class Admin extends Controller
      * Allows Admin to be able to send reset password email when the Forgot password is clicked in the Login view 
      */
     public function forgotPassword() {
+        // if (!isLoggedIn()) {
+        //     if (isset($GLOBALS['reset_token']))
+        // }
         if (!isset($_POST['submit'])) 
             $this->view('Admin/forgotPassword');
 
         else {
-            if ($admin = $this->loginModel->getAdminByEmail(trim($_POST['email']))) {  // ensures that it will only send when email is valid
+            $admin = $this->loginModel->getAdminByEmail(trim($_POST['email']));
+            if (isset($admin->admin_id)) {  // ensures that it will only send when email is valid
                 if ($this->sendmail()) {
                     $data = [
                         "message" => "Email sent",
@@ -519,7 +560,7 @@ class Admin extends Controller
                 
                 else {
                     $data = [
-                        'message' => $mail->ErrorInfo,
+                        'message' => "Error in sending email",
                     ];    
                 }
                 $this->view('Admin/forgotPassword', $data);
@@ -537,6 +578,7 @@ class Admin extends Controller
      * Sends reset password to email 
      */
     public function sendmail(){
+        $token = bin2hex(random_bytes(20));
 
         $name = "ShishaShop";  // Name of your website or yours
         $to = "vaniercompsci@gmail.com";  // mail of receiver  // for testing purpose only login to this one and send to self
