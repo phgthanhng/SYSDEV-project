@@ -5,7 +5,7 @@
         $name = "ShishaShop";  // Name of your website or yours
         $to = "phuongthanhnguyen136@gmail.com";  // mail of reciever
         $subject = "Reset password";
-        $body = "<a href = 'http://localhost/Sysdev-project/Admin/login'>Reset password</a>";
+        $body = "Click here: <a href = 'http://localhost/Sysdev-project/Admin/changePassword'>Reset password</a>";
         $from = "vaniercompsci@gmail.com";  // you mail
         $password = "sysdev123";  // your mail password
 
