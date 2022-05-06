@@ -539,7 +539,7 @@ class Admin extends Controller
     public function sendmail(){
 
         $name = "ShishaShop";  // Name of your website or yours
-        $to = "ceejchilz02@gmail.com";  // mail of receiver  // for testing purpose only login to this one and send to self
+        $to = "vaniercompsci@gmail.com";  // mail of receiver  // for testing purpose only login to this one and send to self
         $subject = "Reset password";
         $body = "<a href = 'http://localhost/Sysdev-project/Admin/changePassword'>Reset password</a>";
         $from = "vaniercompsci@gmail.com";  // you mail
