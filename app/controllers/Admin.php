@@ -239,7 +239,38 @@ class Admin extends Controller
         if (!isLoggedIn())
             return $this->denyPermission();
 
-        return $this->view('Admin/changeEmail');
+            $admin = $this->loginModel->getAdmin($_SESSION['admin_id']);
+
+            $data = [
+                'admin' => $admin,
+                'new_email' => '',
+                'verify_email' => '',
+                'message' => ''
+            ];
+
+            if(!isset($_POST['submit'])){
+                
+                return $this->view('Admin/changeEmail',$data);
+            }
+            else{
+                
+                $data['new_email'] = $_POST['email'];
+                $data['verify_email'] = $_POST['verify_email'];
+                
+                if($data['new_email']!=$data['verify_email']){
+                    $data['message'] = 'Please enter matching emails!';
+                    return $this->view('Admin/changeEmail',$data);
+                }
+                else{
+                    if($this->loginModel->updateEmail($_SESSION['admin_id'],$data['new_email'])){
+                        echo 'Updating your email';
+                        echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/changeEmail">';
+                    }
+                }
+                
+            }
+        
+        
     }
 
     /*
@@ -249,8 +280,20 @@ class Admin extends Controller
     {
         if (!isLoggedIn())
             return $this->denyPermission();
+        
+        $admin = $this->loginModel->getAdmin($_SESSION['admin_id']);
 
-        return $this->view('Admin/changePassword');
+        $data = [
+            'admin' => $admin,
+            'password' => '',
+            'new_password' => '',
+            'verify_password' => '',
+            'message' => ''
+        ];
+
+        if(!isset($_POST['submit'])){
+            return $this->view('Admin/changePassword',$data);
+        }
     }
 
     /*
@@ -437,5 +480,16 @@ class Admin extends Controller
         // redirect to home page
     }
 
+    private function validate_email($email)
+    {
+        if (isset($email)) {
+            $email = trim($email);
+            $sanitized_email = filter_var($email, FILTER_SANITIZE_EMAIL);
+            $validated_email = filter_var($sanitized_email, FILTER_VALIDATE_EMAIL);
 
+            return $validated_email;
+        }
+
+        return false;
+    }
 }
