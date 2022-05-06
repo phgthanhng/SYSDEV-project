@@ -278,7 +278,7 @@ class Admin extends Controller
     /*
      * Updates the password of the admin
      */
-    public function changePassword()
+    public function changePassword()   
     {
         if (!isLoggedIn() && !isset($GLOBALS['reset_token']))
             return $this->denyPermission();
@@ -343,9 +343,14 @@ class Admin extends Controller
         if (!isLoggedIn())
             return $this->denyPermission();
 
-        if (!isset($_POST['submit']))
-            return $this->view('Admin/editContactUs');
+        if (!isset($_POST['submit'])) {
+            $contact = $this->contactModel->getContactById(0);
+            $data = [
+            "contact" => $contact
+            ];
 
+            $this->view('Admin/editContactUs', $data);
+        }
         else {
             $name = trim($_POST['name']);
             $email = trim($_POST['email']);
@@ -373,20 +378,26 @@ class Admin extends Controller
     {
         if (!isLoggedIn())
             return $this->denyPermission();
+        $aboutus = $this->aboutUsModel->getAboutUsById(0);
 
-        if (!isset($_POST['submit']))
-            return $this->view('Admin/editAboutUs');
+        if (!isset($_POST['submit'])) { 
+            $data = [
+                'aboutus' => $aboutus
+                ];
+            return $this->view('Admin/editAboutUs', $data);
+        }
 
         else {
-            // $filename = (is_uploaded_file($_FILES['image']['tmp_name'])) ? 
-            //         $this->imageUpload() : $accessory->image;
+           
+            $filename = (is_uploaded_file($_FILES['image']['tmp_name'])) ? 
+                    $this->imageUpload() : $aboutus->image;
 
             $text = trim($_POST['aboutus_content']);
             $about_us = [
                 "text" => $text,
-                "image" => $this->imageUpload()
+                "image" => $filename
             ];
-
+            
             if ($this->aboutUsModel->updateAboutUs($_SESSION['admin_id'], $about_us)) {
                 echo "updating about us...";
                 echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/AboutUs/">';
@@ -443,13 +454,8 @@ class Admin extends Controller
 
         $fileData = getimagesize($file['tmp_name']);
 
-        if (
-            $fileData != false &&
-            in_array($fileData['mime'], array_keys($acceptedTypes))
-        ) {
-
+        if ($fileData != false &&  in_array($fileData['mime'], array_keys($acceptedTypes))) {
             //save the file to its permanent location
-
             $folder = dirname(APPROOT) . '/public/img';
             $filename = uniqid() . '.' . $acceptedTypes[$fileData['mime']];
             move_uploaded_file($file['tmp_name'], "$folder/$filename");
@@ -489,6 +495,7 @@ class Admin extends Controller
                 // good credentials
                 $_SESSION['admin_id'] = $admin->admin_id;
                 echo '<meta http-equiv="Refresh" content=".5; url=' . URLROOT . '/Admin">';
+                unset($_SESSION['attempts']);                       // if logged in successfully, unset the session
             } else {
                 $_SESSION['attempts']++;
                 // wrong credentials
@@ -525,6 +532,9 @@ class Admin extends Controller
         // redirect to home page
     }
 
+    /*
+     * Validates the email 
+     */
     private function validate_email($email)
     {
         if (isset($email)) {
@@ -583,7 +593,7 @@ class Admin extends Controller
         $name = "ShishaShop";  // Name of your website or yours
         $to = "vaniercompsci@gmail.com";  // mail of receiver  // for testing purpose only login to this one and send to self
         $subject = "Reset password";
-        $body = "<a href = 'http://localhost/Sysdev-project/Admin/changePassword'>Reset password</a>";
+        $body = "<a href = 'http://localhost/Sysdev-project/Admin/changePassword?token=".$GLOBALS['token'].">Reset password</a>";
         $from = "vaniercompsci@gmail.com";  // you mail
         $password = "sysdev123";  // your mail password
 

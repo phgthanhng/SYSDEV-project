@@ -13,9 +13,10 @@
         </div>
         <div class="accessory_input" style="background-color: #ffffff" name="name">
         <label class="form-label" style="margin-top: 10px">Content:</label>
-        <textarea class="form-control" name="aboutus_content" row="10" style="height:350px;"></textarea>
+        <textarea class="form-control" name="aboutus_content" row="10" style="height:350px;">
+        <?php echo $data['aboutus']->text?></textarea>
         <label class="form-label" style="margin-top: 10px">Image:</label>
-        <input class="form-control form-control" type="file" required="" name="image" />
+        <input class="form-control form-control" type="file" name="image" />
         </div>
         <div class="submit-row" style="margin-bottom: 8px; padding-top: 0px">
             <button class="btn btn-primary d-block box-shadow w-100" id="submit-id-submit" type="submit"
