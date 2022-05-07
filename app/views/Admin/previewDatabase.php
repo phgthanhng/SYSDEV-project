@@ -67,7 +67,6 @@
                 <thead>
                     <tr>
                     <th>Accessory ID</th>
-                    <th>Hookah ID</th>
                     <th>Name</th>
                     <th>Brand</th>
                     <th>Price</th>
@@ -81,11 +80,6 @@
                 <?php foreach ($data['accessories'] as $accessory) : ?>
                     <tr>
                       <td><?= $accessory->accessory_id?></td>
-                      <?php if ($accessory->hookah_id==null) : ?>
-                        <td>NULL</td>
-                      <?php else : ?>
-                        <td><?= $accessory->hookah_id?></td>
-                      <?php endif;?>                     
                       <td><?= $accessory->name?></td>
                       <td><?= $accessory->brand?></td>
                       <td><?= $accessory->price?></td>
