@@ -10,6 +10,7 @@ class Admin extends Controller
         $this->productModel = $this->model('productModel');
         $this->contactModel = $this->model('contactModel');
         $this->aboutUsModel = $this->model('aboutUsModel');
+        $this->pwdResetModel = $this->model('pwdResetModel');
     }
 
     /*
@@ -280,12 +281,14 @@ class Admin extends Controller
      */
     public function changePassword()   
     {
-        if (!isLoggedIn() && !isset($GLOBALS['reset_token']))
-            return $this->denyPermission();
-        if (!isLoggedIn() && !isset($_GET['token']) && $_GET['token'] !== $GLOBALS['reset_token'])
+        $pwdReset = $this->pwdResetModel->getLatestToken();
+        // restricting access to users who are signed in or if they have the correct token
+        if ((!isLoggedIn() && !isset($pwdReset->token)) 
+            || (!isLoggedIn() && !isset($_GET['token'])) 
+            || (isset($_GET['token']) && $_GET['token'] != $pwdReset->token && $pwdReset->expire > date("U")))
             return $this->denyPermission();
 
-
+        // if trying to access the view (GET request)
         if (!isset($_POST['submit'])){
             $data = [];
             if (isLoggedIn()) {
@@ -297,19 +300,21 @@ class Admin extends Controller
             }
             else { 
                 $data = [
-                    'reset_token' => $_GET['token']
+                    'token' => $_GET['token']
                 ];
             }
             
-            return $this->view('Admin/changePassword',$data);
+            return $this->view('Admin/changePassword', $data);
             
 
-        } else {
-            if (isLoggedIn()) {
+        } else { // POST request
+    
+            $new_password = $_POST['new_password'];
+            $verify_password = $_POST['verify_password'];
+
+            if (isLoggedIn()) { // if already signed in, no need to check token
                 $admin = $this->loginModel->getAdmin($_SESSION['admin_id']);
                 $password = $_POST['password'];
-                $new_password = $_POST['new_password'];
-                $verify_password = $_POST['verify_password'];
 
                 // check if both passwords are the same
                 if ($new_password !== $verify_password) {
@@ -330,6 +335,14 @@ class Admin extends Controller
                 if ($this->loginModel->updatePassword($_SESSION['admin_id'], password_hash($new_password, PASSWORD_DEFAULT))) {
                     echo 'Password updated!';
                     echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/">';
+                }
+            }
+            else // if using a token
+            {
+                if ($this->loginModel->updatePassword(1, password_hash($new_password, PASSWORD_DEFAULT))) {
+                    $this->pwdResetModel->clearTable();
+                    echo 'Password updated!';
+                    echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/login">';
                 }
             }
         }
@@ -533,22 +546,6 @@ class Admin extends Controller
     }
 
     /*
-     * Validates the email 
-     */
-    private function validate_email($email)
-    {
-        if (isset($email)) {
-            $email = trim($email);
-            $sanitized_email = filter_var($email, FILTER_SANITIZE_EMAIL);
-            $validated_email = filter_var($sanitized_email, FILTER_VALIDATE_EMAIL);
-
-            return $validated_email;
-        }
-
-        return false;
-    }
-
-    /*
      * Allows Admin to be able to send reset password email when the Forgot password is clicked in the Login view 
      */
     public function forgotPassword() {
@@ -561,7 +558,15 @@ class Admin extends Controller
         else {
             $admin = $this->loginModel->getAdminByEmail(trim($_POST['email']));
             if (isset($admin->admin_id)) {  // ensures that it will only send when email is valid
-                if ($this->sendmail()) {
+                $token = $this->sendmail();
+                if (isset($token)) {
+                    $dbdata = [
+                        "email" => $_POST['email'],
+                        "token" => $token,
+                        "expire" => date("U") + 1800
+                    ];
+                    $this->pwdResetModel->insertToken($dbdata);
+
                     $data = [
                         "message" => "Email sent",
                         "color" => "success"
@@ -593,7 +598,7 @@ class Admin extends Controller
         $name = "ShishaShop";  // Name of your website or yours
         $to = "vaniercompsci@gmail.com";  // mail of receiver  // for testing purpose only login to this one and send to self
         $subject = "Reset password";
-        $body = "<a href = 'http://localhost/Sysdev-project/Admin/changePassword?token=".$GLOBALS['token'].">Reset password</a>";
+        $body = "<a href = 'http://localhost/Sysdev-project/Admin/changePassword?token=".$token."'>Reset password</a>";
         $from = "vaniercompsci@gmail.com";  // you mail
         $password = "sysdev123";  // your mail password
 
@@ -623,7 +628,8 @@ class Admin extends Controller
         $mail->Subject = ("$subject");
         $mail->Body = $body;
 
-        return $mail->send();     // used by forgot password
+        if ($mail->send())
+            return $token;
     }
 
 }

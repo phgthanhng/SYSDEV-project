@@ -1,4 +1,9 @@
-<?php require APPROOT . '/views/includes/adminheader.php';  ?>
+<?php 
+  if (isLoggedIn())
+    require APPROOT . '/views/includes/adminheader.php';  
+  else 
+    require APPROOT . '/views/includes/header.php';
+?>
 
 <script>
 function validateForm() {
@@ -14,14 +19,16 @@ function validateForm() {
     <section class="login-dark">
       <form method="post" name="editPassword" onsubmit="return validateForm()">
       <h2 class="text-center" style="color: #ffffff;">Change Password</h2>
-        <div class="mb-3">
-          <!-- put admin's email here -->
-          <input class="form-control" type="email" name="email" id="email" value="<?= $data['admin']->email ?>" readonly />
-        </div>
         <?php if (isset($data['admin'])) : ?>
+          <div class="mb-3">
+            <!-- put admin's email here -->
+            <input class="form-control" type="email" name="email" id="email" value="<?= $data['admin']->email ?>" readonly />
+          </div>
           <div class="mb-3">
             <input class="form-control" type="password" name="password" id="password" placeholder="Current Password" required />
           </div>
+        <?php else : ?>
+          <input type="text" name="token" value="<?= $data['token'] ?>" hidden>
         <?php endif ?>
         <div class="mb-3">
           <input class="form-control" type="password" name="new_password" id="new_password" placeholder="New Password" required />
