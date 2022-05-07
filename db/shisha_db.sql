@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2022 at 07:08 PM
+-- Generation Time: May 07, 2022 at 09:58 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `shisha_db`
 --
-CREATE DATABASE IF NOT EXISTS `shisha_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `shisha_db`;
 
 -- --------------------------------------------------------
 
@@ -50,10 +48,9 @@ INSERT INTO `about_us` (`about_id`, `image`, `text`) VALUES
 
 CREATE TABLE `accessory` (
   `accessory_id` int(11) NOT NULL,
-  `hookah_id` int(11) DEFAULT NULL,
   `name` varchar(50) NOT NULL,
   `brand` varchar(50) NOT NULL,
-  `description` varchar(300) NOT NULL,
+  `description` varchar(1000) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
@@ -64,13 +61,13 @@ CREATE TABLE `accessory` (
 -- Dumping data for table `accessory`
 --
 
-INSERT INTO `accessory` (`accessory_id`, `hookah_id`, `name`, `brand`, `description`, `quantity`, `price`, `image`, `category`) VALUES
-(1, NULL, 'Russian Vase Drop', 'Unknown', 'Measurements\r\n\r\nHeight: 11 inches\r\n\r\nBase diameter: 6 inches\r\n\r\nInside opening diameter: 1 3/4 inches', 30, '44.95', '6269fbe504cde.jpg', 'Vase'),
-(2, NULL, 'MVP 360 Glass Vase', 'Aladin', 'Your broke your Aladin MVP 360 hookah?\r\nNo problem, here you get an original spare glass for your hookah.\r\nDirectly equipped with the threaded ring.\r\n\r\nHeight: 18cm\r\n\r\n- high quality V2A stainless steel', 20, '44.95', '6269fc2e73583.jpg', 'Vase'),
-(3, NULL, 'Malouka', 'Khalil Mamoon', 'These high quality glass hookah vases from Khalil Mamoon are some of the most beautiful hookah vases you will ever own. 12 inches tall, these Khalil Mamoon vases are made with thicker glass than a normal hookah vase and feature elegant, colorful designs.  Each vase has an opening dimension of 1.75 i', 10, '39.95', '6269fca18001f.jpg', 'Vase'),
-(4, NULL, 'Egyptian Veil Vase', 'Khalil Mamoon', 'If you love the Egyptian style, you would definitely love this Egyptian Veil hookah vase! This is a medium and pretty authentic Egyptian vase with unique design that we can offer you in two base colors: green and black but each of them with perfect golden ornaments. This vase takes size of 26mm. It ', 40, '16.95', '6269fd21ca39f.jpg', 'Egyptian Veil Vase'),
-(5, NULL, 'Long Disposable Mouth Tips(50 PCS)', 'Cocous', 'Practice good hygiene. Individually Wrapped: use one-and-done design, disposable, our long hookah tips give you more control over every drag and don’t require you to share your mouth content because they attach and detach easily.', 20, '9.95', '6269fd996fa1a.jpg', 'Mouth Tips'),
-(6, NULL, 'Long Disposable Mouth Tips-Colourful (50PCS)', 'Cocous', 'Practice good hygiene.  These extra-long mouth tips are shaped to conform to the contours of your mouth with ease, making the hookah experience fun and enjoyable. ', 40, '9.95', '6269fdf06c400.jpg', 'Mouth Tips');
+INSERT INTO `accessory` (`accessory_id`, `name`, `brand`, `description`, `quantity`, `price`, `image`, `category`) VALUES
+(1, 'Russian Vase Drop', 'Unknown', 'Measurements\r\n\r\nHeight: 11 inches\r\n\r\nBase diameter: 6 inches\r\n\r\nInside opening diameter: 1 3/4 inches', 30, '44.95', '6269fbe504cde.jpg', 'Vase'),
+(2, 'MVP 360 Glass Vase', 'Aladin', 'Your broke your Aladin MVP 360 hookah?\r\nNo problem, here you get an original spare glass for your hookah.\r\nDirectly equipped with the threaded ring.\r\n\r\nHeight: 18cm\r\n\r\n- high quality V2A stainless steel', 20, '44.95', '6269fc2e73583.jpg', 'Vase'),
+(3, 'Malouka', 'Khalil Mamoon', 'These high quality glass hookah vases from Khalil Mamoon are some of the most beautiful hookah vases you will ever own. 12 inches tall, these Khalil Mamoon vases are made with thicker glass than a normal hookah vase and feature elegant, colorful designs.  Each vase has an opening dimension of 1.75 i', 10, '39.95', '6269fca18001f.jpg', 'Vase'),
+(4, 'Egyptian Veil Vase', 'Khalil Mamoon', 'If you love the Egyptian style, you would definitely love this Egyptian Veil hookah vase! This is a medium and pretty authentic Egyptian vase with unique design that we can offer you in two base colors: green and black but each of them with perfect golden ornaments. This vase takes size of 26mm. It ', 40, '16.95', '6269fd21ca39f.jpg', 'Egyptian Veil Vase'),
+(5, 'Long Disposable Mouth Tips(50 PCS)', 'Cocous', 'Practice good hygiene. Individually Wrapped: use one-and-done design, disposable, our long hookah tips give you more control over every drag and don’t require you to share your mouth content because they attach and detach easily.', 20, '9.95', '6269fd996fa1a.jpg', 'Mouth Tips'),
+(6, 'Long Disposable Mouth Tips-Colourful (50PCS)', 'Cocous', 'Practice good hygiene.  These extra-long mouth tips are shaped to conform to the contours of your mouth with ease, making the hookah experience fun and enjoyable. ', 40, '9.95', '6269fdf06c400.jpg', 'Mouth Tips');
 
 -- --------------------------------------------------------
 
@@ -91,7 +88,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `contact_id`, `about_id`, `email`, `password`) VALUES
-(1, 0, 0, 'admin@email.com', '$2y$10$q4T2FL2p40yHNX9LADmXMuVEhp.FNywmy4VuHmbXX4n1bCFxelDMC');
+(1, 0, 0, 'admin@email.com', '$2y$10$xvU35iOkI8rXove4IRHgwO0DRVZZuhISCWOacXWFfPHp4B.dsYSjm');
 
 -- --------------------------------------------------------
 
@@ -124,7 +121,7 @@ CREATE TABLE `hookah` (
   `hookah_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `brand` varchar(50) NOT NULL,
-  `description` varchar(300) NOT NULL,
+  `description` varchar(1000) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
@@ -186,8 +183,7 @@ ALTER TABLE `about_us`
 -- Indexes for table `accessory`
 --
 ALTER TABLE `accessory`
-  ADD PRIMARY KEY (`accessory_id`),
-  ADD KEY `FK_accessory_hookah_id` (`hookah_id`);
+  ADD PRIMARY KEY (`accessory_id`);
 
 --
 -- Indexes for table `admin`
@@ -258,12 +254,6 @@ ALTER TABLE `pwdreset`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `accessory`
---
-ALTER TABLE `accessory`
-  ADD CONSTRAINT `FK_accessory_hookah_id` FOREIGN KEY (`hookah_id`) REFERENCES `hookah` (`hookah_id`);
 
 --
 -- Constraints for table `admin`
