@@ -7,6 +7,7 @@
     <title>shishaShop</title>
     <link rel="stylesheet" href="<?= URLROOT ?>/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap" />
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
     <link rel="stylesheet" href="<?= URLROOT ?>/fonts/font-awesome.min.css" />
     <link rel="stylesheet" href="<?= URLROOT ?>/fonts/ionicons.min.css" />

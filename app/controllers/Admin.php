@@ -54,8 +54,17 @@ class Admin extends Controller
             ];
 
             if ($this->productModel->addHookah($data)) {
-                echo 'Adding hookah to database...';
-                echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/Admin/manageProduct">';
+                $data = [
+                    'message' => "Hookah added successfully!",
+                    'color' => 'success'
+                ];
+                $this->view('Admin/addHookah', $data);
+            }
+            else {
+                $data = [
+                    'message' => "Hookah not added successfully!",
+                ];
+                $this->view('Admin/addHookah', $data);
             }
         }
     }
@@ -83,8 +92,17 @@ class Admin extends Controller
             ];
 
             if ($this->productModel->addAccessory($data)) {
-                echo 'Adding accessory to database...';
-                echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/Admin/manageProduct">';
+                $data = [
+                    'message' => "Accessory added successfully!",
+                    'color' => 'success'
+                ];
+                $this->view('Admin/addAccessory', $data);
+            }
+            else {
+                $data = [
+                    'message' => "Accessory not added successfully!"
+                ];
+                $this->view('Admin/addAccessory', $data);
             }
         }
     }

@@ -11,6 +11,23 @@
             ">
                 Add a hookah
             </h4>
+                   
+       <?php 
+            if (isset($data['message'])) {  // check if theres an error message. If so, display it
+                if (isset($data['color'])) { 
+                    echo '<div class="alert alert-success alert-dismissible fade show mt-3" role="alert" style="height:auto;">
+                    <strong>'.$data['message'].'</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>';
+                }
+                else {
+                   echo '<div class="alert alert-default alert-dismissible fade show mt-3" role="alert" style="background-color:rgb(192,51,51);height:auto;">
+                    <strong>'.$data['message'].'</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>';
+                }
+            }
+        ?>
         </div>
         <div class="accessory_input" style="background-color: #ffffff" name="name">
             <label class="form-label">Name:</label><input class="form-control form-control" type="text" required=""
@@ -35,6 +52,7 @@
             <div class="d-flex justify-content-between"></div>
         </div>
     </div>
+    
 </form>
 
 <?php require APPROOT . '/views/includes/footer.php';  ?>

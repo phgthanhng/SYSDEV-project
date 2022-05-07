@@ -29,7 +29,7 @@
                       <?php else :?>
                         <td class="text-center"><a data-toggle="tooltip" title="View Details" class="link-info text-decoration-none fa-solid fa-up-right-from-square fs-3" href="<?= URLROOT ?>/Accessories/detail/<?= $product->product_id ?>"></a></td>
                         <td class="text-center"><a data-toggle="tooltip" title="Edit Accessory" class="link-success text-decoration-none fa-solid fa-pen-to-square fs-3" href="<?= URLROOT ?>/Admin/editAccessory/<?= $product->product_id ?>"></a></td>
-                        <td class="text-center"><a data-toggle="tooltip" title="Delete Accessory" class="link-danger text-decoration-none fa-regular fa-trash-can fs-3" href="<?= URLROOT ?>/Admin/deleteAccessory/<?= $product->product_id ?>"></a></td>
+                        <td class="text-center"><a data-toggle="tooltip" title="Delete Accessory" class="link-danger text-decoration-none fa-regular fa-trash-can fs-3" href="<?= URLROOT ?>/Admin/deleteAccessory/<?= $product->product_id ?>" onclick="return confirm('Are you sure you want to delete this product?');"></a></td>
                       <?php endif; ?>
                     </tr>
                   <?php endforeach; ?>
