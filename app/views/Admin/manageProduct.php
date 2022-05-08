@@ -17,7 +17,7 @@
                     <tr class="border border-warning ">
                       <td class="text-center"><?= $product->description?></td>
                       <td>
-                          <a data-toggle="tooltip" title="View Details" class="link-info" href="<?= URLROOT ?>/Hookah/detail/<?= $product->product_id ?>" style="text-decoration: none">
+                          <a data-toggle="tooltip" title="View Details" class="link-info" href="<?= URLROOT ?>/<?= $product->description?>/detail/<?= $product->product_id ?>" style="text-decoration: none">
                           <?= $product->name?>
                           </a>
                         </td>
@@ -27,8 +27,8 @@
                         <td class="text-center"><a data-toggle="tooltip" title="Edit Hookah" class="link-success text-decoration-none fa-solid fa-pen-to-square fs-3" href="<?= URLROOT ?>/Admin/editHookah/<?= $product->product_id ?>"></a></td>
                         <td class="text-center">
                             
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-toggle="tooltip" title="Delete Hookah" class="link-danger text-decoration-none fa-regular fa-trash-can fs-3" href=""></a>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <a data-bs-toggle="modal" data-bs-target="#exampleModal<?= $product->product_id?>" data-toggle="tooltip" title="Delete Hookah" class="link-danger text-decoration-none fa-regular fa-trash-can fs-3" href=""></a>
+                            <div class="modal fade" id="exampleModal<?= $product->product_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                     <div class="modal-header">
@@ -55,9 +55,9 @@
                         <td class="text-center"><a data-toggle="tooltip" title="View Details" class="link-info text-decoration-none fa-solid fa-up-right-from-square fs-3" href="<?= URLROOT ?>/Accessories/detail/<?= $product->product_id ?>"></a></td>
                         <td class="text-center"><a data-toggle="tooltip" title="Edit Accessory" class="link-success text-decoration-none fa-solid fa-pen-to-square fs-3" href="<?= URLROOT ?>/Admin/editAccessory/<?= $product->product_id ?>"></a></td>
                         <td class="text-center">
-                        <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-toggle="tooltip" title="Delete Accessory" class="link-danger text-decoration-none fa-regular fa-trash-can fs-3" href=""></a>
+                        <a data-bs-toggle="modal" data-bs-target="#exampleModal<?= $product->product_id?>" data-toggle="tooltip" title="Delete Accessory" class="link-danger text-decoration-none fa-regular fa-trash-can fs-3" href=""></a>
                             <!--Modal-->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal<?= $product->product_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                     <div class="modal-header">
