@@ -29,12 +29,12 @@
                     </div>';
                 }
                 else {
-                   $totalAttemptCount = 4;
+                   $totalAttemptCount = 3;
                    echo '<div class="alert alert-default alert-dismissible fade show mt-3" role="alert" style="background-color:rgb(192,51,51);height:auto;">
                     <strong>'.$data['message'].'</strong>
                     <br> ';
                     if(isset($_SESSION['attempts'])){
-                      echo '<strong>Remaining # of attempts('.$_SESSION['attempts'].'/4): '. $totalAttemptCount - $_SESSION['attempts'].'</strong>';
+                      echo '<br><strong>Remaining # of attempts('.$_SESSION['attempts'].'/3): '. $totalAttemptCount - $_SESSION['attempts'].'</strong>';
                     }
                     echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>';
