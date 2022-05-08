@@ -18,7 +18,7 @@
             Log In
           </button>
         </div>
-        <a class="forgot" href="<?= URLROOT ?>/Admin/forgotPassword">Forgot your email or password?</a>
+        <a class="forgot" href="<?= URLROOT ?>/Admin/forgotPassword">Forgot your password?</a>
 
        <?php 
             if (isset($data['message'])) {  // check if theres an error message. If so, display it
@@ -29,12 +29,14 @@
                     </div>';
                 }
                 else {
-                   $totalAttemptCount = 4;
+                   $totalAttemptCount = 3;
                    echo '<div class="alert alert-default alert-dismissible fade show mt-3" role="alert" style="background-color:rgb(192,51,51);height:auto;">
                     <strong>'.$data['message'].'</strong>
-                    <br>
-                    <strong>Remaining # of attempts('.$_SESSION['attempts'].'/4): '. $totalAttemptCount - $_SESSION['attempts'].'</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <br> ';
+                    if(isset($_SESSION['attempts'])){
+                      echo '<br><strong>Remaining # of attempts('.$_SESSION['attempts'].'/3): '. $totalAttemptCount - $_SESSION['attempts'].'</strong>';
+                    }
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>';
                 }
             }

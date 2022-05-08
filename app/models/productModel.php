@@ -14,7 +14,7 @@
             $this->query("SELECT hookah_id as product_id, name, price, IF(description, '', 'Hookah') as description 
                           FROM hookah
                           UNION 
-                          SELECT accessory_id as product_id, name, price, IF(description, '', 'Accessory') as description 
+                          SELECT accessory_id as product_id, name, price, IF(description, '', 'Accessories') as description 
                           FROM accessory
                           ORDER BY name ASC
                           ");

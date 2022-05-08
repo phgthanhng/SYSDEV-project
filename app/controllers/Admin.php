@@ -54,8 +54,17 @@ class Admin extends Controller
             ];
 
             if ($this->productModel->addHookah($data)) {
-                echo 'Adding hookah to database...';
-                echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/Admin/manageProduct">';
+                $data = [
+                    'message' => "Hookah added successfully!",
+                    'color' => 'success'
+                ];
+                $this->view('Admin/addHookah', $data);
+            }
+            else {
+                $data = [
+                    'message' => "Hookah not added successfully!",
+                ];
+                $this->view('Admin/addHookah', $data);
             }
         }
     }
@@ -83,8 +92,17 @@ class Admin extends Controller
             ];
 
             if ($this->productModel->addAccessory($data)) {
-                echo 'Adding accessory to database...';
-                echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/Admin/manageProduct">';
+                $data = [
+                    'message' => "Accessory added successfully!",
+                    'color' => 'success'
+                ];
+                $this->view('Admin/addAccessory', $data);
+            }
+            else {
+                $data = [
+                    'message' => "Accessory not added successfully!"
+                ];
+                $this->view('Admin/addAccessory', $data);
             }
         }
     }
@@ -508,10 +526,11 @@ class Admin extends Controller
                 $_SESSION['admin_id'] = $admin->admin_id;
                 echo '<meta http-equiv="Refresh" content=".5; url=' . URLROOT . '/Admin">';
                 unset($_SESSION['attempts']);                       // if logged in successfully, unset the session
-            } else {
+            } 
+            else {
                 $_SESSION['attempts']++;
                 // wrong credentials
-                if ($_SESSION['attempts'] <= 3) {
+                if ($_SESSION['attempts'] < 3) {
                     $data = [
                         "message" => "Wrong credentials"
                     ];
@@ -556,9 +575,6 @@ class Admin extends Controller
      * Allows Admin to be able to send reset password email when the Forgot password is clicked in the Login view 
      */
     public function forgotPassword() {
-        // if (!isLoggedIn()) {
-        //     if (isset($GLOBALS['reset_token']))
-        // }
         if (!isset($_POST['submit'])) 
             $this->view('Admin/forgotPassword');
 
