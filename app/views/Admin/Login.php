@@ -18,7 +18,7 @@
             Log In
           </button>
         </div>
-        <a class="forgot" href="<?= URLROOT ?>/Admin/forgotPassword">Forgot your email or password?</a>
+        <a class="forgot" href="<?= URLROOT ?>/Admin/forgotPassword">Forgot your password?</a>
 
        <?php 
             if (isset($data['message'])) {  // check if theres an error message. If so, display it
