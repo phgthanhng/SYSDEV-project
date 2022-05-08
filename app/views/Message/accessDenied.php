@@ -4,7 +4,7 @@
 
 <style>
 body{
-  background-color: #1C2127;
+  background-color: #ffffff;
 }
 .container{
   position: absolute;
@@ -13,7 +13,7 @@ body{
 .message{
   font-family: 'Poppins', sans-serif;
   font-size: 30px;
-  color: white;
+  color: black;
   font-weight: 500;
   position: absolute;
   top: 230px;
@@ -22,7 +22,7 @@ body{
 .message2{
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
-  color: white;
+  color: black;
   font-weight: 300;
   width: 360px;
   position: absolute;
