@@ -4,28 +4,8 @@
   else 
     require APPROOT . '/views/includes/header.php';
 ?>
-<style>
-  body {
-    text-align: center;
-  }
-  :root {
-    --borderWidth: 7px;
-    --height: 24px;
-    --width: 12px;
-    --borderColor: #78b13f;
-  }
-  .check {
-    text-align: center;
-    display: inline-block;
-    transform: rotate(45deg);
-    height: var(--height);
-    width: var(--width);
-    border-bottom: var(--borderWidth) solid var(--borderColor);
-    border-right: var(--borderWidth) solid var(--borderColor);
-  }
-</style>
 
-<div style="width: 100%">
+<div style="width: 100%; text-align: center;">
     <section class="login-dark">
     <form method="GET" 
       action="
