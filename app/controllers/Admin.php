@@ -350,16 +350,17 @@ class Admin extends Controller
                 }
 
                 if ($this->loginModel->updatePassword($_SESSION['admin_id'], password_hash($new_password, PASSWORD_DEFAULT))) {
-                    echo 'Password updated!';
-                    echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/">';
+                    return $this->view('Message/changePasswordSuccess', [
+                        "isLoggedIn" => true
+                    ]);
                 }
             }
             else // if using a token
             {
                 if ($this->loginModel->updatePassword(1, password_hash($new_password, PASSWORD_DEFAULT))) {
                     $this->pwdResetModel->clearTable();
-                    echo 'Password updated!';
-                    echo '<meta http-equiv="Refresh" content="2; url='.URLROOT.'/Admin/login">';
+
+                    return $this->view('Message/changePasswordSuccess');
                 }
             }
         }
