@@ -1,7 +1,7 @@
   <?php require APPROOT . '/views/includes/header.php';  ?>
   <div style="width: 100%">
   
-    <section class="login-dark">
+    <section class="login-dark mt-5">
       <form method="post">
         <h2 class="visually-hidden">Login Form</h2>
         <div class="illustration">
