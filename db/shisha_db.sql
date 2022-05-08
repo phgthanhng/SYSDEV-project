@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2022 at 09:58 PM
+-- Generation Time: May 09, 2022 at 01:53 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `about_us` (
   `about_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `text` varchar(800) NOT NULL
+  `text` varchar(1500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `about_us` (
 --
 
 INSERT INTO `about_us` (`about_id`, `image`, `text`) VALUES
-(0, '626c73538b582.jpg', 'jkljkljkl');
+(0, '6278577b936bd.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed id semper risus in hendrerit gravida. Blandit volutpat maecenas volutpat blandit aliquam etiam erat. Viverra justo nec ultrices dui. Dignissim enim sit amet venenatis urna cursus eget nunc. Tellus in metus vulputate eu scelerisque felis imperdiet. Ipsum dolor sit amet consectetur adipiscing elit ut aliquam purus. Amet massa vitae tortor condimentum lacinia quis. Vitae ultricies leo integer malesuada nunc vel risus commodo. Nec feugiat in fermentum posuere urna nec tincidunt praesent.\r\n\r\nAuctor elit sed vulputate mi sit amet. Purus sit amet volutpat consequat mauris. Ultrices vitae auctor eu augue ut. Ac feugiat sed lectus vestibulum mattis. At auctor urna nunc id cursus metus aliquam eleifend. Accumsan sit amet nulla facilisi morbi tempus. Enim nunc faucibus a pellentesque sit. Non sodales neque sodales ut etiam sit. Ullamcorper malesuada proin libero nunc consequat interdum varius sit. Et tortor consequat id porta nibh venenatis cras sed felis. Ut aliquam purus sit amet luctus. Risus pretium quam vulputate dignissim suspendisse in.\r\n\r\nAmet purus gravida quis blandit. Eget felis eget nunc lobortis mattis aliquam faucibus. Commodo sed egestas egestas fringilla phasellus. Felis imperdiet proin fermentum leo vel orci porta non pulvinar. Mattis pellentesque id nibh tortor id. Et malesuada fames ac turpis egestas maecenas. At auctor urna nunc id. Placerat');
 
 -- --------------------------------------------------------
 
