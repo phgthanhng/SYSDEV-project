@@ -63,10 +63,7 @@
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
-
-            
         </div>
-
     </div>
 
     <div class="products" >
@@ -108,10 +105,11 @@
                         </a>
                     </div>
                 <?php endforeach; ?>
+            <?php else : ?>
+                <div style="text-align: center">
+                    No accessories found            
+                </div>
             <?php endif; ?>
-
-
-            
         </div>
     </div>
 </div>

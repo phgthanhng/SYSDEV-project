@@ -119,14 +119,13 @@ else
                         </a>
                     </div>
                 <?php endforeach; ?>
+            <?php else : ?>
+                <div style="text-align: center">
+                    No accessories found            
+                </div>
             <?php endif; ?>
-
-
-           
         </div>
     </div>
-
-
 </div>
 
 <?php require APPROOT . '/views/includes/footer.php';  ?>
