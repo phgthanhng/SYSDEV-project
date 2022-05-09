@@ -118,7 +118,7 @@
                 </tbody>
             </table>
         </div>
-    <h1 style="margin-bottom: 25px;margin-top: 50px;text-align: center;">Contact Us Table</h1>
+        <h1 style="margin-bottom: 25px;margin-top: 50px;text-align: center;">Contact Us Table</h1>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -138,6 +138,30 @@
                       <td><?= $contact->businessEmail?></td>
                       <td><?= $contact->phone?></td>
                       <td><?= $contact->location?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <h1 style="margin-bottom: 25px;margin-top: 50px;text-align: center;">PwdRest Table</h1>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Token</th>
+                    <th>Expire</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($data['pwdResets'] as $pwdReset) : ?>
+                    <tr>
+                      <td><?= $pwdReset->pwdReset_id?></td>
+                      <td><?= $pwdReset->email?></td>
+                      <td><?= $pwdReset->token?></td>
+                      <td><?= $pwdReset->expire?></td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

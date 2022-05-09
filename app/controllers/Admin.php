@@ -449,13 +449,15 @@ class Admin extends Controller
         $accessories = $this->productModel->getAllAccessories();
         $contact = $this->contactModel->getAllContact();
         $aboutUs = $this->aboutUsModel->getAllAboutUs();
+        $pwdReset = $this->pwdResetModel->getAllPwdReset();
 
         $database = [
             'admins' => $admin,
             'hookahs' => $hookahs,
             'accessories' => $accessories,
             'contacts' => $contact,
-            'aboutUs' => $aboutUs
+            'aboutUs' => $aboutUs,
+            'pwdResets' => $pwdReset 
         ];
 
         return $this->view('Admin/previewDatabase', $database);
