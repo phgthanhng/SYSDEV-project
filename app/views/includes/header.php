@@ -51,7 +51,7 @@
                         <input class="form-control search-field" type="search" id="search-field-1" name="search" style="border-radius: 30px" placeholder="Search by name" />
                     </div>
                 </form> -->
-                <a href="<?= URLROOT ?>/Admin/login" style="text-decoration: none; margin-right: 0; margin-left: auto"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                <a data-toggle="tooltip" title="Admin Login" href="<?= URLROOT ?>/Admin/login" style="text-decoration: none; margin-right: 0; margin-left: auto"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
             </div>
         </div>
     </nav>
