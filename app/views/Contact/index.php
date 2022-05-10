@@ -4,7 +4,7 @@
         Contact us
     </h1>
     <h5 style="text-align: center; margin-bottom: 20px">
-        Name: <?= $data['contact']->name ?>
+        Contact Name: <?= $data['contact']->name ?>
     </h5>
     <h5 style="text-align: center; margin-bottom: 20px">
         Email: <?= $data['contact']->businessEmail ?>
