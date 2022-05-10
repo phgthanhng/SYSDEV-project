@@ -9,6 +9,16 @@
             parent::__construct();
         }
 
+         /*
+         * Retrieves all pwdreset rows from the database
+         */
+        public function getAllPwdReset(){
+            $this->query("SELECT * 
+                          FROM pwdreset");
+            
+            return $this->getResultSet();
+        }
+
         /**
         * Get a column by email
         */

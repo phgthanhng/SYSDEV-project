@@ -13,6 +13,6 @@ class Home extends Controller
      */
     public function index()
     {
-        $this->view('Home/index');
+        return !isLoggedIn() ? $this->view('Home/index') :  $this->view('Admin/index');
     }
 }
