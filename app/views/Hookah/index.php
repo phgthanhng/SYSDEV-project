@@ -84,7 +84,7 @@ else
     <div class="products" >
         <h1 style="text-align: center; margin-top: 50px; margin-bottom:50px">Browse Hookahs(<?= count($data["hookahs"])?>)</h1>
         
-        <div class="d-flex align-items-center" style="margin-left: 30px; margin-bottom: 30px">
+        <div class="d-flex align-items-center" style="margin: 30px 50px 50px 30px">
             <input class="form-control search-field" type="search" id="search" name="search" style="border-radius: 30px" placeholder="Search by name" />
         </div>
 

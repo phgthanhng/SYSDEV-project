@@ -25,16 +25,16 @@ function validateForm() {
             <input class="form-control" type="email" name="email" id="email" value="<?= $data['admin']->email ?>" readonly />
           </div>
           <div class="mb-3">
-            <input class="form-control" type="password" name="password" id="password" placeholder="Current Password" required />
+            <input class="form-control" type="password" name="password" id="password" minlength="7" placeholder="Current Password" required />
           </div>
         <?php else : ?>
           <input type="text" name="token" value="<?= $data['token'] ?>" hidden>
         <?php endif ?>
         <div class="mb-3">
-          <input class="form-control" type="password" name="new_password" id="new_password" placeholder="New Password" required />
+          <input class="form-control" type="password" name="new_password" minlength="7" id="new_password" placeholder="New Password" required />
         </div>
         <div class="mb-3">
-          <input class="form-control" type="password" name="verify_password" id="verify_password" placeholder="Confirm your password" required />
+          <input class="form-control" type="password" name="verify_password" minlength="7" id="verify_password" placeholder="Confirm your password" required />
         </div>
         <div class="mb-3">
           <button class="btn btn-primary d-block w-100" type="submit" name="submit">

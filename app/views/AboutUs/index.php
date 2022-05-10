@@ -1,8 +1,8 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
 
-<div class="container" style="margin-bottom: 40px">
-    <h1 style="text-align: center; margin-top: 50px">About us</h1>
-    <div class="row" style="margin-top: 50px; margin-bottom: 50px">
+<div class="container" style="margin-bottom: 40px;">
+    <h1 style="text-align: center; margin-top: 100px">About us</h1>
+    <div class="row" style="margin-top: 60px; margin-bottom: 50px">
         <div class="float-start col" style="
             height: 400px; /*width: 500px;*/
             opacity: 0.8;

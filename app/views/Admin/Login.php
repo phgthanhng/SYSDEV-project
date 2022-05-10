@@ -11,7 +11,7 @@
           <input class="form-control" type="email" name="email" placeholder="Email" required=""/>
         </div>
         <div class="mb-3">
-          <input class="form-control" type="password" name="password" placeholder="Password" required=""/>
+          <input class="form-control" type="password" name="password" placeholder="Password" required="" minlength="7"/>
         </div>
         <div class="mb-3">
           <button class="btn btn-primary d-block w-100" type="submit" name="submit">

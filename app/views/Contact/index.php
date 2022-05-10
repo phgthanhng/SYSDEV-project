@@ -1,8 +1,11 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
-<div>
+<div style="margin-top: 100px;">
     <h1 class="display-5" style="text-align: center; margin-bottom: 100px; margin-top: 40px">
         Contact us
     </h1>
+    <h5 style="text-align: center; margin-bottom: 20px">
+        Name: <?= $data['contact']->name ?>
+    </h5>
     <h5 style="text-align: center; margin-bottom: 20px">
         Email: <?= $data['contact']->businessEmail ?>
     </h5>
