@@ -281,7 +281,7 @@ class Admin extends Controller
                     $data['message'] = 'Please enter matching emails!';
                     return $this->view('Admin/changeEmail',$data);
                 }
-                else if($data['new_email']==$data['admin']->email){
+                else if(strcasecmp($data['new_email'],$data['admin']->email) == 0){
                     $data['message'] = 'Cannot change to same email!';
                     return $this->view('Admin/changeEmail',$data);
                 }
