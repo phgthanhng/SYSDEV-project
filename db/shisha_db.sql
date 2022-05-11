@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2022 at 01:53 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: May 11, 2022 at 05:44 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,7 @@ CREATE TABLE `about_us` (
 --
 
 INSERT INTO `about_us` (`about_id`, `image`, `text`) VALUES
-(0, '6278577b936bd.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed id semper risus in hendrerit gravida. Blandit volutpat maecenas volutpat blandit aliquam etiam erat. Viverra justo nec ultrices dui. Dignissim enim sit amet venenatis urna cursus eget nunc. Tellus in metus vulputate eu scelerisque felis imperdiet. Ipsum dolor sit amet consectetur adipiscing elit ut aliquam purus. Amet massa vitae tortor condimentum lacinia quis. Vitae ultricies leo integer malesuada nunc vel risus commodo. Nec feugiat in fermentum posuere urna nec tincidunt praesent.\r\n\r\nAuctor elit sed vulputate mi sit amet. Purus sit amet volutpat consequat mauris. Ultrices vitae auctor eu augue ut. Ac feugiat sed lectus vestibulum mattis. At auctor urna nunc id cursus metus aliquam eleifend. Accumsan sit amet nulla facilisi morbi tempus. Enim nunc faucibus a pellentesque sit. Non sodales neque sodales ut etiam sit. Ullamcorper malesuada proin libero nunc consequat interdum varius sit. Et tortor consequat id porta nibh venenatis cras sed felis. Ut aliquam purus sit amet luctus. Risus pretium quam vulputate dignissim suspendisse in.\r\n\r\nAmet purus gravida quis blandit. Eget felis eget nunc lobortis mattis aliquam faucibus. Commodo sed egestas egestas fringilla phasellus. Felis imperdiet proin fermentum leo vel orci porta non pulvinar. Mattis pellentesque id nibh tortor id. Et malesuada fames ac turpis egestas maecenas. At auctor urna nunc id. Placerat');
+(0, '6278577b936bd.jpg', 'Thousands of discerning, curious, fun-loving hookah enthusiasts come to Shisha Shop to fuel their passion for bringing people together around the hookah experience.\r\n\r\nThe most memorable and fun hookah experiences start with the right equipment, accessories, and shisha tobacco. Shisha Shop is built for those who love everything about hookah. That\'s why we\'re obsessed with giving our customers everything they need to relax and connect with others over a smoke.\r\n\r\nWe don\'t take ourselves too seriously, and neither should you. We insist upon loving hookah to the fullest and extend that to you, so you can be the life of your own hookah party.');
 
 -- --------------------------------------------------------
 
@@ -170,6 +170,13 @@ CREATE TABLE `pwdreset` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `pwdreset`
+--
+
+INSERT INTO `pwdreset` (`pwdReset_id`, `email`, `token`, `expire`) VALUES
+(1, 'admin@email.com', '9b0ebd877f6a460de4d7a7ebd40c8f6c4631ffd9', '1652241430');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -249,7 +256,7 @@ ALTER TABLE `hookah`
 -- AUTO_INCREMENT for table `pwdreset`
 --
 ALTER TABLE `pwdreset`
-  MODIFY `pwdReset_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pwdReset_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
