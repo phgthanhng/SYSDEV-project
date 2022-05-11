@@ -281,6 +281,10 @@ class Admin extends Controller
                     $data['message'] = 'Please enter matching emails!';
                     return $this->view('Admin/changeEmail',$data);
                 }
+                else if($data['new_email']==$data['admin']->email){
+                    $data['message'] = 'Cannot change to same email!';
+                    return $this->view('Admin/changeEmail',$data);
+                }
                 else{
                     if($this->loginModel->updateEmail($_SESSION['admin_id'],$data['new_email'])){
                         echo 'Updating your email';
